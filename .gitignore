@@ -1,0 +1,23 @@
+#py
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+#采集池
+data/pool/
+
+#其实传也行，但是清单里有 url 仍可重新下载（但愿一直能），存本地算了
+images/
+
+#其他
+图片样本/
+.playwright-mcp/
+Thumbs.db
+Desktop.ini
+.DS_Store
+.idea/
+项目笔记.md
+.env
+.env.*
+*.local
