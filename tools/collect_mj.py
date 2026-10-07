@@ -4,7 +4,7 @@
 命令行参数可临时覆盖配置文件
 eg:
   python tools/collect_mj.py
-  python tools/collect_mj.py --total 50 --no-images
+  python tools/collect_mj.py --target 15 --no-images
   python tools/collect_mj.py --keyword watercolor aquarelle --name vol1
   python tools/collect_mj.py --exclude portrait realistic --ar 9:16 3:4
 """
@@ -97,8 +97,8 @@ def load_config(path: Path) -> dict:
 def merge_cli_config(cfg: dict, args: argparse.Namespace) -> dict:
     """命令行参数覆盖配置文件（None 表示未指定）。"""
     grab, filt, img = cfg["抓取"], cfg["筛选"], cfg["图片"]
-    if args.total is not None:
-        grab["总条数"] = args.total
+    if args.target is not None:
+        filt["目标条数"] = args.target
     if args.start_page is not None:
         grab["起始页"] = args.start_page
     if args.delay is not None:
@@ -127,12 +127,17 @@ def merge_cli_config(cfg: dict, args: argparse.Namespace) -> dict:
 # 抓取
 
 
-def fetch_pool(total: int, start_page: int, delay: float, timeout: float):
-    """按页抓取直到凑够 total 条或接口给空。返回 (原始条目列表, 错误列表)。"""
-    raw_items: list = []
+def fetch_and_match(target, filt: dict, start_page: int, delay: float,
+                    timeout: float, fetched_at: str):
+    """逐页抓取并筛选，筛中凑够 target 条即提前停止翻页。
+    target 为 null/0 表示不设上限（可见数据全抓全筛）。
+    返回 (全部条目, 筛中条目, 错误列表)。筛中超出目标时截取前 target 条，其余留在全量里。
+    """
+    entries: list = []
+    matched: list = []
     errors: list = []
     page = start_page
-    while len(raw_items) < total:
+    while target is None or target <= 0 or len(matched) < target:
         url = f"{EXPLORE_API}?page={page}&feed=top&_ql=explore"
         body, err = http_get_retry(url, timeout=timeout)
         if body is None:
@@ -147,11 +152,21 @@ def fetch_pool(total: int, start_page: int, delay: float, timeout: float):
         if not items:
             log(f"  第 {page} 页为空，可见数据已抓完")
             break
-        raw_items.extend(items)
-        log(f"  第 {page} 页: +{len(items)} 条（累计 {len(raw_items)}）")
+        for raw in items:
+            entry = parse_entry(raw, fetched_at)
+            entries.append(entry)
+            if match_filters(entry, filt):
+                matched.append(entry)
+        log(f"  第 {page} 页: +{len(items)} 条（累计抓取 {len(entries)}，筛中 {len(matched)}）")
+        if target and len(matched) >= target:
+            log(f"  已达目标 {target} 条，停止翻页")
+            break
         page += 1
         time.sleep(delay)
-    return raw_items[:total], errors
+    if target and target > 0 and len(matched) > target:
+        log(f"  命中共 {len(matched)} 条，截取前 {target} 条（其余留在采集池）")
+        matched = matched[:target]
+    return entries, matched, errors
 
 
 # 解析
@@ -337,12 +352,12 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=(
             "示例:\n"
             "  python tools/collect_mj.py\n"
-            "  python tools/collect_mj.py --total 50 --no-images\n"
+            "  python tools/collect_mj.py --target 15 --no-images\n"
             "  python tools/collect_mj.py --keyword watercolor aquarelle --name vol1\n"
         ),
     )
     p.add_argument("--config", type=Path, default=DEFAULT_CONFIG, help="配置文件路径")
-    p.add_argument("--total", type=int, help="抓取总条数（默认 150，免登录上限约 150）")
+    p.add_argument("--target", type=int, help="目标筛中条数，凑够即停（0=不限，默认 15）")
     p.add_argument("--start-page", type=int, help="起始页码（默认 1）")
     p.add_argument("--delay", type=float, help="请求间隔秒（默认 1.5，勿低于 1）")
     p.add_argument("--timeout", type=float, help="单请求超时秒（默认 20）")
@@ -371,23 +386,24 @@ def main() -> int:
     grab, filt, img, out = cfg["抓取"], cfg["筛选"], cfg["图片"], cfg["输出"]
 
     fetched_at = now_iso()
-    log(f"MJ 采集器 | 目标 {grab['总条数']} 条 | 间隔 {grab['请求间隔秒']}s")
+    target = filt.get("目标条数")
+    log(f"MJ 采集器 | 目标筛中 {target if target else '不限'} 条 | 间隔 {grab['请求间隔秒']}s")
     log(f"筛选: 包含={filt['包含关键词'] or '—'}  排除={filt['排除关键词'] or '—'}"
         f"  画幅={filt['画幅'] or '—'}  字数={filt['prompt字数下限']}~{filt['prompt字数上限'] or '∞'}")
 
-    # 1) 抓取全量
-    log("\n[1/4] 抓取热榜…")
-    raw_items, errors = fetch_pool(
-        total=grab["总条数"],
+    # 1) 边抓边筛，凑够目标即停
+    log("\n[1/4] 抓取并筛选…")
+    entries, matched, errors = fetch_and_match(
+        target=target,
+        filt=filt,
         start_page=grab["起始页"],
         delay=grab["请求间隔秒"],
         timeout=grab["请求超时秒"],
+        fetched_at=fetched_at,
     )
-    if not raw_items:
+    if not entries:
         log("没有抓到任何数据，退出。")
         return 1
-
-    entries = [parse_entry(r, fetched_at) for r in raw_items]
 
     # 2) 全量存档（采集池）
     stamp = now_stamp()
@@ -400,8 +416,7 @@ def main() -> int:
     })
     log(f"[2/4] 采集池 -> {pool_path.relative_to(ROOT)}（{len(entries)} 条全量）")
 
-    # 3) 筛选 → 选品清单
-    matched = [e for e in entries if match_filters(e, filt)]
+    # 3) 选品清单（筛中条目）
     name = args.name or datetime.now().strftime("%Y-%m-%d")
     shortlist_path = ROOT / out["选品目录"] / f"{name}.json"
     if shortlist_path.exists():
@@ -410,6 +425,7 @@ def main() -> int:
         return 1
     fetch_info = {
         "时间": fetched_at,
+        "目标条数": target if target else "不限",
         "抓取条数": len(entries),
         "筛中条数": len(matched),
         "报错数": len(errors),
