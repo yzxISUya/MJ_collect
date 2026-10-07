@@ -1,16 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""MJ 采集器 — Midjourney Explore 公开接口作品抓取（免登录）
-
-从 https://www.midjourney.com/api/explore 拉取热榜作品，产出三种文件：
-
-  1. data/pool/mj_<时间戳>.json        本次抓取全量存档（选品原料，自动管理）
-  2. data/shortlist/<名字>.json       按筛选条件过滤后的选品清单（人工可删添）
-  3. images/<日期>/<job_id>.webp      选品条目作品图（可关）
-
-可调参数见 config/collector.json；命令行参数可临时覆盖配置文件。
-
-用法示例:
+"""
+命令行参数可临时覆盖配置文件
+eg:
   python tools/collect_mj.py
   python tools/collect_mj.py --total 50 --no-images
   python tools/collect_mj.py --keyword watercolor aquarelle --name vol1
@@ -28,7 +20,7 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
-# ---------------------------------------------------------------- 常量
+# 常量
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = ROOT / "config" / "collector.json"
@@ -37,7 +29,7 @@ EXPLORE_API = "https://www.midjourney.com/api/explore"
 JOB_PAGE = "https://www.midjourney.com/jobs/{job_id}"
 CDN_IMAGE = "https://cdn.midjourney.com/{job_id}/0_{grid}_{width}_N.webp"
 
-# MJ 站点对非浏览器请求较敏感，统一用常见浏览器 UA
+# MJ站点对非浏览器请求较敏感，统一用常见浏览器 UA
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
@@ -45,7 +37,7 @@ USER_AGENT = (
 
 PER_PAGE = 50  # MJ explore 接口每页固定 50 条
 
-# ---------------------------------------------------------------- 基础工具
+# 基础工具
 
 
 def log(msg: str) -> None:
@@ -94,7 +86,7 @@ def write_json(path: Path, obj) -> None:
         f.write("\n")
 
 
-# ---------------------------------------------------------------- 配置
+# 配置
 
 
 def load_config(path: Path) -> dict:
@@ -132,7 +124,7 @@ def merge_cli_config(cfg: dict, args: argparse.Namespace) -> dict:
     return cfg
 
 
-# ---------------------------------------------------------------- 抓取
+# 抓取
 
 
 def fetch_pool(total: int, start_page: int, delay: float, timeout: float):
@@ -162,7 +154,7 @@ def fetch_pool(total: int, start_page: int, delay: float, timeout: float):
     return raw_items[:total], errors
 
 
-# ---------------------------------------------------------------- 解析
+# 解析
 
 
 def parse_entry(raw: dict, fetched_at: str) -> dict:
@@ -217,7 +209,7 @@ def parse_entry(raw: dict, fetched_at: str) -> dict:
     }
 
 
-# ---------------------------------------------------------------- 筛选
+# 筛选
 
 
 def match_filters(entry: dict, filt: dict) -> bool:
@@ -246,7 +238,7 @@ def match_filters(entry: dict, filt: dict) -> bool:
     return True
 
 
-# ---------------------------------------------------------------- 图片
+# 图片
 
 
 def download_images(entries: list, img_cfg: dict, images_root: Path,
@@ -272,7 +264,7 @@ def download_images(entries: list, img_cfg: dict, images_root: Path,
         time.sleep(delay)
 
 
-# ---------------------------------------------------------------- 文档头
+# 文档头
 
 
 def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
@@ -335,7 +327,7 @@ MANUAL_ENTRY_TEMPLATE = {
 }
 
 
-# ---------------------------------------------------------------- 主流程
+# 主流程
 
 
 def build_parser() -> argparse.ArgumentParser:
