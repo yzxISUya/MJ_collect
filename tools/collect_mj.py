@@ -102,7 +102,58 @@ def load_seen_ids(*dirs: Path) -> set:
             for e in data.get("entries") or []:
                 if isinstance(e, dict) and e.get("id"):
                     seen.add(e["id"])
+            for cid in data.get("_consumed_ids") or []:
+                if cid:
+                    seen.add(cid)
     return seen
+
+
+def load_consumed(shortlist_dir: Path) -> set:
+    """已消费台账：进过任何清单的 id（entries 现存 + _consumed_ids 历史）。
+    删条目不清台账——保证『删掉=彻底放弃』不会被库存回补破坏。"""
+    consumed: set = set()
+    if not shortlist_dir.is_dir():
+        return consumed
+    for f in sorted(shortlist_dir.glob("*.json")):
+        try:
+            data = json.loads(f.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        if not isinstance(data, dict):
+            continue
+        for e in data.get("entries") or []:
+            if isinstance(e, dict) and e.get("id"):
+                consumed.add(e["id"])
+        for cid in data.get("_consumed_ids") or []:
+            if cid:
+                consumed.add(cid)
+    return consumed
+
+
+def load_inventory(pool_dir: Path, consumed: set) -> list:
+    """池子库存：全部筛中过的作品，去掉被任何清单消费过的。
+    按池文件名（含时间戳）升序 + 文件内原序 = 入库先后（FIFO，约等于热榜顺序）。"""
+    inventory: list = []
+    seen_ids: set = set()
+    if not pool_dir.is_dir():
+        return inventory
+    for f in sorted(pool_dir.glob("*.json")):
+        try:
+            data = json.loads(f.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        if not isinstance(data, dict):
+            continue
+        for e in data.get("entries") or []:
+            if not isinstance(e, dict):
+                continue
+            eid = e.get("id")
+            if not eid or eid in seen_ids:
+                continue
+            seen_ids.add(eid)
+            if eid not in consumed:
+                inventory.append(e)
+    return inventory
 
 
 # 配置
@@ -312,7 +363,7 @@ def download_images(entries: list, img_cfg: dict, images_root: Path,
 
 def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
     return {
-        "怎么删": "删掉 entries 数组里不要的整个 { } 块（注意保留上下条目的逗号）。",
+        "怎么删": "删掉 entries 数组里不要的整个 { } 块（注意保留上下条目的逗号）。删除后不会被重新送上（_consumed_ids 台账仍记着它）；反悔就去 data/pool 复制回来。",
         "怎么加": (
             "把文件末尾的 _manual_entry_template 整个复制进 entries 数组，"
             "改好内容；手动条目 source 写 'manual'（或其他平台名），id 自拟唯一即可。"
@@ -320,8 +371,8 @@ def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
         "注意": [
             "author（作者署名）与 source_url（源链接）是合规红线，必留。",
             "entries 里的条目顺序即排版候选顺序，可自由挪动。",
-            "同名再运行=新命中追加到 entries 末尾，已有条目（含手改/手补）一字不动。",
-            "删掉的条目不会再被自动抓回（算已见）；要找回就去 data/pool 对应文件复制。",
+            "同名再运行=新条目追加到 entries 末尾（优先从池子库存取），已有条目（含手改/手补）一字不动。",
+            "删掉的条目不会再被自动抓回（_consumed_ids 台账记着）；要找回就去 data/pool 对应文件复制。",
             "多余字段可自行添加，后续流水线会忽略不认识的字段。",
         ],
         "字段说明": {
@@ -338,6 +389,7 @@ def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
             "image.local": "下载后的本地路径，没下图则为 null",
             "fetched_at": "采集时间",
             "notes": "人工备注位（自由使用）",
+            "_consumed_ids": "消费台账（工具维护）：进过本清单的全部 id，删条目不清账",
         },
         "本次运行": fetch_info,
         "筛选条件": filt,
@@ -425,39 +477,75 @@ def main() -> int:
     log(f"筛选: 包含={filt['包含关键词'] or '—'}  排除={filt['排除关键词'] or '—'}"
         f"  画幅={filt['画幅'] or '—'}  字数={filt['prompt字数下限']}~{filt['prompt字数上限'] or '∞'}")
 
-    # 0) 已见集合（跨次增量去重；--include-seen 时抓取不跳过，但入库仍只存新作品）
-    seen: set = load_seen_ids(ROOT / out["采集池目录"], ROOT / out["选品目录"])
+    # 0) 库存与台账（联网去重的已见集合 + 池子库存 + 已消费台账）
+    pool_dir = ROOT / out["采集池目录"]
+    shortlist_dir = ROOT / out["选品目录"]
+    consumed: set = load_consumed(shortlist_dir)
+    seen: set = load_seen_ids(pool_dir, shortlist_dir)
     if dedup:
-        log(f"去重：开，历史已见 {len(seen)} 条（本次只入库新作品）")
+        log(f"去重：开，历史已见 {len(seen)} 条（联网只捞新作品）")
     else:
-        log(f"去重：关（--include-seen，清单可含已见 {len(seen)} 条）")
+        log(f"去重：关（--include-seen，联网可含已见 {len(seen)} 条）")
 
-    # 1) 边抓边筛，凑够目标即停
-    log("\n[1/4] 抓取并筛选…")
-    entries, matched, errors, skipped = fetch_and_match(
-        target=target,
-        filt=filt,
-        start_page=grab["起始页"],
-        delay=grab["请求间隔秒"],
-        timeout=grab["请求超时秒"],
-        fetched_at=fetched_at,
-        seen=seen,
-    )
-    if not entries:
+    # 1) 选品取货：池子库存优先（过当前筛选），不够才联网补足
+    log("\n[1/4] 选品取货（库存优先）…")
+    inventory = [e for e in load_inventory(pool_dir, consumed) if match_filters(e, filt)]
+    picked: list = []
+    picked_ids: set = set()
+    for e in inventory:
+        if target and target > 0 and len(picked) >= target:
+            break
+        picked.append(e)
+        picked_ids.add(e["id"])
+    inv_count = len(picked)
+    if inv_count:
+        log(f"  池子库存取 {inv_count} 条（当前筛选下库存余 {len(inventory) - inv_count} 条）")
+    need = None if not target or target <= 0 else max(target - inv_count, 0)
+    entries: list = []
+    matched: list = []
+    errors: list = []
+    skipped = 0
+    if need is None or need > 0:
+        if need is None:
+            log("  目标不限：联网全量补足…")
+        else:
+            log(f"  还差 {need} 条，联网补足…")
+        entries, matched, errors, skipped = fetch_and_match(
+            target=need,
+            filt=filt,
+            start_page=grab["起始页"],
+            delay=grab["请求间隔秒"],
+            timeout=grab["请求超时秒"],
+            fetched_at=fetched_at,
+            seen=seen,
+        )
+    else:
+        log("  库存已够，无需联网")
+
+    if not picked and not entries and not matched:
         if skipped:
             log(f"没有新作品：{skipped} 条全部已见，本次无入库。")
         else:
             log("没有抓到任何数据，退出。")
         if errors:
-            err_path = ROOT / out["采集池目录"] / f"mj_{stamp}_errors.json"
+            err_path = pool_dir / f"mj_{stamp}_errors.json"
             write_json(err_path, errors)
             log(f"[!] {len(errors)} 个错误，详见 {err_path.relative_to(ROOT)}")
         return 0 if skipped else 1
 
-    # 2) 口味库存（采集池=全部筛中作品，含超出清单目标的余量；--include-seen 时不重复入库）
+    # 联网新命中的也按 FIFO 进取货单（库存已够时上方循环已满员，这里自然跳过）
+    for e in matched:
+        if target and target > 0 and len(picked) >= target:
+            break
+        if e["id"] in picked_ids or e["id"] in consumed:
+            continue
+        picked.append(e)
+        picked_ids.add(e["id"])
+
+    # 2) 口味库存（采集池=联网新筛中，含清单未收的余量；--include-seen 时不重复入库）
     pool_entries = matched if dedup else [e for e in matched if e["id"] not in seen]
     if pool_entries:
-        pool_path = ROOT / out["采集池目录"] / f"mj_{stamp}.json"
+        pool_path = pool_dir / f"mj_{stamp}.json"
         write_json(pool_path, {
             "type": "pool",
             "fetched_at": fetched_at,
@@ -468,56 +556,55 @@ def main() -> int:
     else:
         log("[2/4] 无新筛中作品入库")
 
-    # 3) 选品清单（同名追加合并：已有条目一字不动，只把新命中 append 进去）
+    # 3) 选品清单（同名追加合并 + 消费台账；已有条目一字不动）
     name = args.name or datetime.now().strftime("%Y-%m-%d")
-    shortlist_path = ROOT / out["选品目录"] / f"{name}.json"
+    shortlist_path = shortlist_dir / f"{name}.json"
     existing: list = []
+    file_consumed: list = []
     if shortlist_path.exists():
         try:
             data = json.loads(shortlist_path.read_text(encoding="utf-8"))
             existing = data.get("entries") or []
+            file_consumed = list(data.get("_consumed_ids") or [])
         except (json.JSONDecodeError, OSError):
             log(f"[!] 旧清单无法解析，拒绝合并: {shortlist_path.relative_to(ROOT)}")
             return 1
-    existing_ids = {e.get("id") for e in existing if isinstance(e, dict)}
-    appended: list = []
-    for e in matched:
-        if target and target > 0 and len(appended) >= target:
-            break
-        if e["id"] in existing_ids:
-            continue
-        existing.append(e)
-        existing_ids.add(e["id"])
-        appended.append(e)
-    if len(matched) > len(appended):
-        log(f"  筛中共 {len(matched)} 条，清单只收 {len(appended)} 条（其余入采集池库存）")
+    # 台账回填：兼容没有 _consumed_ids 的旧文件（现存 entries 视为已消费）
+    for e in existing:
+        if isinstance(e, dict) and e.get("id") and e["id"] not in file_consumed:
+            file_consumed.append(e["id"])
+    existing.extend(picked)
+    file_consumed.extend(p["id"] for p in picked)
     fetch_info = {
         "时间": fetched_at,
         "目标条数": target if target else "不限",
         "去重": "开" if dedup else "关",
-        "本次新抓": len(entries),
+        "库存取": inv_count,
+        "联网取": len(picked) - inv_count,
+        "联网新抓": len(entries),
         "跳过已见": skipped,
-        "筛中条数": len(matched),
-        "清单新增": len(appended),
+        "联网筛中": len(matched),
+        "清单新增": len(picked),
         "清单总条数": len(existing),
         "报错数": len(errors),
     }
-    if existing or appended:
+    if existing:
         write_json(shortlist_path, {
             "type": "shortlist",
             "_readme": build_readme(fetch_info, filt, img),
             "entries": existing,
+            "_consumed_ids": file_consumed,
             "_manual_entry_template": MANUAL_ENTRY_TEMPLATE,
         })
-        log(f"[3/4] 选品清单 -> {shortlist_path.relative_to(ROOT)}（本次新增 {len(appended)} 条，共 {len(existing)} 条）")
+        log(f"[3/4] 选品清单 -> {shortlist_path.relative_to(ROOT)}（本次新增 {len(picked)} 条，共 {len(existing)} 条）")
     else:
         log("[3/4] 无筛中条目，选品清单未创建/未变更")
 
     # 4) 只给本次新进清单的条目下图
-    if img["下载图片"] and appended:
+    if img["下载图片"] and picked:
         log("[4/4] 下载图片…")
         download_images(
-            appended, img, ROOT / out["图片目录"],
+            picked, img, ROOT / out["图片目录"],
             delay=grab["请求间隔秒"], timeout=grab["请求超时秒"], errors=errors,
         )
         # 图片本地路径回写进选品清单
@@ -525,6 +612,7 @@ def main() -> int:
             "type": "shortlist",
             "_readme": build_readme(fetch_info, filt, img),
             "entries": existing,
+            "_consumed_ids": file_consumed,
             "_manual_entry_template": MANUAL_ENTRY_TEMPLATE,
         })
     else:
