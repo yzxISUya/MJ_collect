@@ -1,13 +1,13 @@
 {
   "type": "shortlist",
   "_readme": {
-    "怎么删": "删掉 entries 数组里不要的整个 { } 块（注意保留上下条目的逗号）。删除后不会被重新送上（_consumed_ids 台账仍记着它）；反悔就去 data/pool 复制回来。",
+    "怎么删": "删掉 entries 数组里不要的整个 { } 块（注意保留上下条目的逗号）。删除后不会被重新送上（_consumed_ids 台账仍记着它）；反悔可在 2 天 feed 窗口内用 --include-seen 重捞。",
     "怎么加": "把文件末尾的 _manual_entry_template 整个复制进 entries 数组，改好内容；手动条目 source 写 'manual'（或其他平台名），id 自拟唯一即可。",
     "注意": [
       "author（作者署名）与 source_url（源链接）是合规红线，必留。",
       "entries 里的条目顺序即排版候选顺序，可自由挪动。",
       "同名再运行=新条目追加到 entries 末尾（分数排序择优），已有条目（含手改/手补）一字不动。",
-      "删掉的条目不会再被自动抓回（_consumed_ids 台账记着）；要找回就去 data/pool 对应文件复制。",
+      "删掉的条目不会再被自动抓回（_consumed_ids 台账记着）；反悔可在 2 天 feed 窗口内用 --include-seen 重捞。",
       "多余字段可自行添加，后续流水线会忽略不认识的字段。"
     ],
     "字段说明": {
@@ -19,7 +19,7 @@
       "size": "图像素尺寸",
       "job_type": "MJ 任务类型",
       "publish_time": "作品发布（入队）时间",
-      "feed_rank": "热榜位置（页码×50+序号；库存老条目为 null）",
+      "feed_rank": "热榜位置（页码×50+序号；手动条目为 null）",
       "match": "评分结果（工具维护）：relevance 相关度 / heat 热度 / score 总分 / why 理由 / facets 分面明细（text,weight,score,why）",
       "source_url": "作品源链接（必填）",
       "image.url": "图片直链（384/640 档）",
@@ -29,28 +29,27 @@
       "_consumed_ids": "消费台账（工具维护）：进过本清单的全部 id，删条目不清账"
     },
     "本次运行": {
-      "时间": "2026-10-08T16:59:45+08:00",
-      "目标条数": 5,
+      "时间": "2026-10-08T20:56:38+08:00",
+      "目标条数": 4,
       "去重": "开",
-      "评分器": "llm",
-      "意图": "少女肖像10，偏抽象3，个性化4",
+      "评分器": "embedding",
+      "意图": "robot30，简约2，Machine4",
       "热度权重": 0.5,
       "热度高原/终点": "75/150",
       "最低相关分": 0.2,
-      "库存候选": 0,
       "联网新抓": 150,
       "跳过已见": 0,
       "候选总数": 150,
-      "达门槛数": 90,
-      "清单新增": 5,
-      "清单总条数": 5,
+      "达门槛数": 23,
+      "清单新增": 4,
+      "清单总条数": 4,
       "报错数": 0
     },
     "筛选条件": {
       "_说明": "目标条数=想给清单新增的条目数（按总分择优取 top-N）。『意图』=带权重的分面，如 \"少女肖像10，偏抽象2，个性化5\"（尾随数字=权重；'少女肖像=10' 显式写法适合文本自带数字的分面；不写数字=权重1；也可在配置里写成 [{\"文本\":\"少女肖像\",\"权重\":10},…]）。相关度=各分面打分后加权平均，大权重分面主导——想让某分面绝对必须，用『包含关键词』硬闸（语义模式下每个词都必须命中）。『包含关键词』在词法模式下是打分素材（权重默认第1词100/50/25/10，可用『关键词权重』覆盖；词边界匹配，首尾写 * 放宽）。排除词/画幅/字数是硬条件。删掉的条目有消费台账记账，永不再上（找回去 data/pool 复制）。",
-      "目标条数": 5,
+      "目标条数": 4,
       "去重": true,
-      "意图": "少女肖像10，偏抽象3，个性化4",
+      "意图": "robot30，简约2，Machine4",
       "包含关键词": [],
       "关键词权重": [],
       "排除关键词": [],
@@ -67,74 +66,72 @@
   },
   "entries": [
     {
-      "id": "5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
+      "id": "26cf29c3-9e70-4115-9036-123e06cbd158",
       "source": "midjourney",
-      "author": "alairachele",
-      "prompt_text": "Loose expressive oil painting, close-up of a pale woman's face with closed eyes filling the frame, emerging from a soft light aqua wash, the left side dissolving into thin translucent paint drips, a few small rust accents, subtle peach warmth on eyelid and nose, soft red lips, blurred soft edges, dreamy melancholy",
+      "author": "tao_heng_yuan",
+      "prompt_text": "一个小巧可爱的小女孩外表的机器人，全身照，手是机械手，手上没有任何东西。真实人物照片质感。",
       "params": {
         "version": "8.2",
-        "ar": "5:7",
+        "ar": "9:16",
         "stylize": null,
         "chaos": null,
         "weird": null,
         "seed": null,
-        "raw": false,
-        "no": [
-          "hair, photograph, glossy, makeup, white"
-        ],
+        "raw": true,
+        "no": [],
         "sref": [],
-        "personalize": null
+        "personalize": "i7tiyk5"
       },
       "size": {
-        "width": 928,
-        "height": 1312
+        "width": 1648,
+        "height": 2944
       },
-      "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 02:13",
-      "feed_rank": 69,
-      "source_url": "https://www.midjourney.com/jobs/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-08 02:47",
+      "feed_rank": 82,
+      "source_url": "https://www.midjourney.com/jobs/26cf29c3-9e70-4115-9036-123e06cbd158",
       "image": {
-        "url": "https://cdn.midjourney.com/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff/0_0_640_N.webp",
-        "local": "images/2026-10-08/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff.webp"
+        "url": "https://cdn.midjourney.com/26cf29c3-9e70-4115-9036-123e06cbd158/0_0_640_N.webp",
+        "local": "images/2026-10-08/26cf29c3-9e70-4115-9036-123e06cbd158.webp"
       },
-      "fetched_at": "2026-10-08T16:59:45+08:00",
+      "fetched_at": "2026-10-08T20:56:38+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.894,
-        "heat": 1.0,
-        "score": 1.341,
-        "rank": 69,
-        "why": "主分面[少女肖像] 特写女性面部，闭眼，完全符合少女肖像",
+        "relevance": 0.886,
+        "heat": 0.907,
+        "score": 1.288,
+        "rank": 82,
+        "why": "主分面[robot] 向量相似度 0.688",
         "facets": [
           {
-            "text": "少女肖像",
-            "weight": 10.0,
+            "text": "robot",
+            "weight": 30.0,
             "score": 1.0,
-            "why": "特写女性面部，闭眼，完全符合少女肖像"
+            "why": "向量相似度 0.688"
           },
           {
-            "text": "个性化",
+            "text": "Machine",
             "weight": 4.0,
-            "score": 0.7,
-            "why": "锈色点缀、桃色温暖等细节体现个性化"
+            "score": 0.429,
+            "why": "向量相似度 0.393"
           },
           {
-            "text": "偏抽象",
-            "weight": 3.0,
-            "score": 0.8,
-            "why": "松散表现主义油画，溶解滴落，抽象感强"
+            "text": "简约",
+            "weight": 2.0,
+            "score": 0.094,
+            "why": "向量相似度 0.242"
           }
         ]
       }
     },
     {
-      "id": "dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
+      "id": "57b47577-2f95-4449-8a5a-0f69a7a07ffc",
       "source": "midjourney",
-      "author": "lutzmader",
-      "prompt_text": "a macro portrait showcasing a woman's face decorated in gold leaf and blue glitter makeup. her light colored hair is windswept across her forehead. a black bird, likely a raven, with a curved beak and dark, reflective feathers, is in sharp focus in the immediate foreground, positioned in front of her mouth and chin.",
+      "author": "Docix",
+      "prompt_text": "a jack o lantern themed mecha battle robot caricature, holding a cheeseburger, field background",
       "params": {
         "version": "8.2",
-        "ar": "3:5",
+        "ar": "2:3",
         "stylize": null,
         "chaos": null,
         "weird": null,
@@ -142,58 +139,58 @@
         "raw": false,
         "no": [],
         "sref": [],
-        "personalize": null
+        "personalize": "4mp2qy3"
       },
       "size": {
-        "width": 848,
-        "height": 1424
+        "width": 896,
+        "height": 1344
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 03:12",
-      "feed_rank": 48,
-      "source_url": "https://www.midjourney.com/jobs/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
+      "publish_time": "2026-10-07 23:40",
+      "feed_rank": 16,
+      "source_url": "https://www.midjourney.com/jobs/57b47577-2f95-4449-8a5a-0f69a7a07ffc",
       "image": {
-        "url": "https://cdn.midjourney.com/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186/0_0_640_N.webp",
-        "local": "images/2026-10-08/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186.webp"
+        "url": "https://cdn.midjourney.com/57b47577-2f95-4449-8a5a-0f69a7a07ffc/0_0_640_N.webp",
+        "local": "images/2026-10-08/57b47577-2f95-4449-8a5a-0f69a7a07ffc.webp"
       },
-      "fetched_at": "2026-10-08T16:59:45+08:00",
+      "fetched_at": "2026-10-08T20:56:38+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.8,
+        "relevance": 0.692,
         "heat": 1.0,
-        "score": 1.2,
-        "rank": 48,
-        "why": "主分面[少女肖像] 女性面部微距肖像，非常聚焦",
+        "score": 1.038,
+        "rank": 16,
+        "why": "主分面[robot] 向量相似度 0.551",
         "facets": [
           {
-            "text": "少女肖像",
-            "weight": 10.0,
-            "score": 0.9,
-            "why": "女性面部微距肖像，非常聚焦"
+            "text": "robot",
+            "weight": 30.0,
+            "score": 0.78,
+            "why": "向量相似度 0.551"
           },
           {
-            "text": "个性化",
+            "text": "Machine",
             "weight": 4.0,
-            "score": 0.7,
-            "why": "乌鸦前景和装饰妆容有特色"
+            "score": 0.378,
+            "why": "向量相似度 0.370"
           },
           {
-            "text": "偏抽象",
-            "weight": 3.0,
-            "score": 0.6,
-            "why": "金箔蓝闪粉装饰，有一定抽象感"
+            "text": "简约",
+            "weight": 2.0,
+            "score": 0.0,
+            "why": "向量相似度 0.138"
           }
         ]
       }
     },
     {
-      "id": "c1899306-175b-470a-8e82-8a9dc60de9cb",
+      "id": "29a8adf0-4aab-4866-9d0a-442f1c76ab19",
       "source": "midjourney",
-      "author": "Gen413X",
-      "prompt_text": "a digital painting of a young woman's face in a close up portrait. her skin is warm toned and covered in prominent freckles across her nose and cheeks. she has dark wavy hair framing her face, long dark eyelashes, and green eyes looking forward with a slight squint. her lips are full and painted with a glossy red lipstick, slightly parted. the background is dark with bokeh lights",
+      "author": "annahalle",
+      "prompt_text": "funny alien captain sketches",
       "params": {
         "version": "8.2",
-        "ar": "25:14",
+        "ar": null,
         "stylize": null,
         "chaos": null,
         "weird": null,
@@ -201,175 +198,115 @@
         "raw": false,
         "no": [],
         "sref": [],
-        "personalize": null
+        "personalize": "sumlejl"
       },
       "size": {
-        "width": 1456,
-        "height": 816
+        "width": 1024,
+        "height": 1024
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-07 20:58",
-      "feed_rank": 32,
-      "source_url": "https://www.midjourney.com/jobs/c1899306-175b-470a-8e82-8a9dc60de9cb",
-      "image": {
-        "url": "https://cdn.midjourney.com/c1899306-175b-470a-8e82-8a9dc60de9cb/0_0_640_N.webp",
-        "local": "images/2026-10-08/c1899306-175b-470a-8e82-8a9dc60de9cb.webp"
-      },
-      "fetched_at": "2026-10-08T16:59:45+08:00",
-      "notes": "",
-      "match": {
-        "relevance": 0.718,
-        "heat": 1.0,
-        "score": 1.076,
-        "rank": 32,
-        "why": "主分面[少女肖像] 年轻女性面部特写肖像，完全贴合",
-        "facets": [
-          {
-            "text": "少女肖像",
-            "weight": 10.0,
-            "score": 1.0,
-            "why": "年轻女性面部特写肖像，完全贴合"
-          },
-          {
-            "text": "个性化",
-            "weight": 4.0,
-            "score": 0.4,
-            "why": "雀斑、绿眼等特征常见，个性化一般"
-          },
-          {
-            "text": "偏抽象",
-            "weight": 3.0,
-            "score": 0.2,
-            "why": "数字绘画写实风格，无抽象"
-          }
-        ]
-      }
-    },
-    {
-      "id": "d6897a30-1529-4b56-8b5c-9f5978109082",
-      "source": "midjourney",
-      "author": "AsteroidTank",
-      "prompt_text": "a vintage retro black ink line art drawing on a white background. the drawing depicts stylized face, eyes closed, chin up, mouth slightly open. Vector art. No shading.",
-      "params": {
-        "version": "8.2",
-        "ar": "3:4",
-        "stylize": 50,
-        "chaos": null,
-        "weird": 4,
-        "seed": null,
-        "raw": false,
-        "no": [],
-        "sref": [],
-        "personalize": null
-      },
-      "size": {
-        "width": 928,
-        "height": 1232
-      },
-      "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 01:37",
+      "publish_time": "2026-10-08 11:51",
       "feed_rank": 43,
-      "source_url": "https://www.midjourney.com/jobs/d6897a30-1529-4b56-8b5c-9f5978109082",
+      "source_url": "https://www.midjourney.com/jobs/29a8adf0-4aab-4866-9d0a-442f1c76ab19",
       "image": {
-        "url": "https://cdn.midjourney.com/d6897a30-1529-4b56-8b5c-9f5978109082/0_0_640_N.webp",
-        "local": "images/2026-10-08/d6897a30-1529-4b56-8b5c-9f5978109082.webp"
+        "url": "https://cdn.midjourney.com/29a8adf0-4aab-4866-9d0a-442f1c76ab19/0_0_640_N.webp",
+        "local": "images/2026-10-08/29a8adf0-4aab-4866-9d0a-442f1c76ab19.webp"
       },
-      "fetched_at": "2026-10-08T16:59:45+08:00",
+      "fetched_at": "2026-10-08T20:56:38+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.712,
+        "relevance": 0.461,
         "heat": 1.0,
-        "score": 1.068,
+        "score": 0.691,
         "rank": 43,
-        "why": "主分面[少女肖像] 风格化面部，但无性别年龄细节",
+        "why": "主分面[robot] 向量相似度 0.444",
         "facets": [
           {
-            "text": "少女肖像",
-            "weight": 10.0,
-            "score": 0.7,
-            "why": "风格化面部，但无性别年龄细节"
+            "text": "robot",
+            "weight": 30.0,
+            "score": 0.541,
+            "why": "向量相似度 0.444"
           },
           {
-            "text": "个性化",
+            "text": "Machine",
             "weight": 4.0,
-            "score": 0.6,
-            "why": "复古墨线风格有特色"
+            "score": 0.0,
+            "why": "向量相似度 0.139"
           },
           {
-            "text": "偏抽象",
-            "weight": 3.0,
-            "score": 0.9,
-            "why": "黑白墨线矢量艺术，高度抽象"
+            "text": "简约",
+            "weight": 2.0,
+            "score": 0.176,
+            "why": "向量相似度 0.279"
           }
         ]
       }
     },
     {
-      "id": "4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+      "id": "09dfb7ae-2a05-427b-abc3-f6a565f7f909",
       "source": "midjourney",
-      "author": "bitstas",
-      "prompt_text": "High fashion editorial photo of a pale young female model wearing a fitted knee length dress made entirely from glossy red adhesive tape strips. Sleek, elegant silhouette; knees, arms, and hands fully visible and unwrapped. Set in a narrow medieval European street with aged stone walls, worn plaster, old wooden doors, wet cobblestones, and soft autumn atmosphere with yellow, red, and orange foliage. Hard directional side light cutting across the street, model partly illuminated and partly in deep shadow, sharp architectural shadows, glossy red tape catching specular highlights, high contrast, rich blacks, restrained cinematic color grading. High angle shot, model on the right third of the frame, large negative space left. Cinematic fashion realism, sophisticated and strange. 35mm analog photography, fine film grain, subtle halation, soft highlight bloom, realistic lens imperfections, rich tonal depth.",
+      "author": "centurymedia",
+      "prompt_text": "DIGITAL",
       "params": {
         "version": "8.2",
-        "ar": "3:4",
+        "ar": null,
         "stylize": null,
-        "chaos": 15,
+        "chaos": null,
         "weird": null,
         "seed": null,
         "raw": false,
         "no": [],
         "sref": [],
-        "personalize": "xbwnv61"
+        "personalize": null
       },
       "size": {
-        "width": 928,
-        "height": 1232
+        "width": 1024,
+        "height": 1024
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-07 19:16",
-      "feed_rank": 55,
-      "source_url": "https://www.midjourney.com/jobs/4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+      "publish_time": "2026-10-08 05:48",
+      "feed_rank": 76,
+      "source_url": "https://www.midjourney.com/jobs/09dfb7ae-2a05-427b-abc3-f6a565f7f909",
       "image": {
-        "url": "https://cdn.midjourney.com/4a3580b8-32bb-4bb2-ad41-36939be02d1b/0_0_640_N.webp",
-        "local": "images/2026-10-08/4a3580b8-32bb-4bb2-ad41-36939be02d1b.webp"
+        "url": "https://cdn.midjourney.com/09dfb7ae-2a05-427b-abc3-f6a565f7f909/0_0_640_N.webp",
+        "local": "images/2026-10-08/09dfb7ae-2a05-427b-abc3-f6a565f7f909.webp"
       },
-      "fetched_at": "2026-10-08T16:59:45+08:00",
+      "fetched_at": "2026-10-08T20:56:38+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.712,
-        "heat": 1.0,
-        "score": 1.068,
-        "rank": 55,
-        "why": "主分面[少女肖像] 年轻女模特肖像，但全身构图",
+        "relevance": 0.456,
+        "heat": 0.987,
+        "score": 0.681,
+        "rank": 76,
+        "why": "主分面[robot] 向量相似度 0.395",
         "facets": [
           {
-            "text": "少女肖像",
-            "weight": 10.0,
-            "score": 0.8,
-            "why": "年轻女模特肖像，但全身构图"
+            "text": "robot",
+            "weight": 30.0,
+            "score": 0.432,
+            "why": "向量相似度 0.395"
           },
           {
-            "text": "个性化",
+            "text": "Machine",
             "weight": 4.0,
-            "score": 0.8,
-            "why": "红色胶带裙、中世纪街道等非常独特"
+            "score": 0.674,
+            "why": "向量相似度 0.503"
           },
           {
-            "text": "偏抽象",
-            "weight": 3.0,
-            "score": 0.3,
-            "why": "写实时尚摄影，无抽象元素"
+            "text": "简约",
+            "weight": 2.0,
+            "score": 0.372,
+            "why": "向量相似度 0.367"
           }
         ]
       }
     }
   ],
   "_consumed_ids": [
-    "5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
-    "dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
-    "c1899306-175b-470a-8e82-8a9dc60de9cb",
-    "d6897a30-1529-4b56-8b5c-9f5978109082",
-    "4a3580b8-32bb-4bb2-ad41-36939be02d1b"
+    "26cf29c3-9e70-4115-9036-123e06cbd158",
+    "57b47577-2f95-4449-8a5a-0f69a7a07ffc",
+    "29a8adf0-4aab-4866-9d0a-442f1c76ab19",
+    "09dfb7ae-2a05-427b-abc3-f6a565f7f909"
   ],
   "_manual_entry_template": {
     "id": "manual-YYYYMMDD-01",

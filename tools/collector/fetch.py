@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import time
 import urllib.request
+from datetime import datetime
 from pathlib import Path
 
 from collector import log
@@ -13,6 +14,7 @@ from collector.config import ROOT
 from collector.schema import CDN_IMAGE
 
 EXPLORE_API = "https://www.midjourney.com/api/explore"
+PER_PAGE = 50  # MJ explore 接口每页固定 50 条
 
 # MJ 站点对非浏览器请求较敏感，统一用常见浏览器 UA
 USER_AGENT = (
@@ -65,7 +67,7 @@ def download_images(entries: list, img_cfg: dict, images_root: Path,
     """给进清单的条目下图；已有本地文件的跳过。"""
     width = img_cfg["宽度档"]
     grid = img_cfg["格子"]
-    day_dir = images_root / time.strftime("%Y-%m-%d")
+    day_dir = images_root / datetime.now().strftime("%Y-%m-%d")
     total = len(entries)
     for i, entry in enumerate(entries, 1):
         local = entry.get("image", {}).get("local")

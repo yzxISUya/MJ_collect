@@ -22,15 +22,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from collector import log, now_iso, now_stamp  # noqa: E402
 from collector.config import ROOT, DEFAULT_CONFIG, load_config, merge_cli_config  # noqa: E402
-from collector.fetch import fetch_page, download_images  # noqa: E402
+from collector.fetch import PER_PAGE, fetch_page, download_images  # noqa: E402
 from collector.filter import passes_hard, heat_score, fuse_score  # noqa: E402
 from collector.schema import parse_entry, build_readme  # noqa: E402
 from collector.scorers import (  # noqa: E402
     build_scorers, ChainScorer, set_env_path, parse_intent, ScorerUnavailable,
 )
 from collector.store import (  # noqa: E402
-    write_json, load_seen_ids, load_consumed, load_inventory,
-    load_shortlist, save_shortlist,
+    write_json, load_consumed, load_shortlist, save_shortlist,
 )
 
 
@@ -139,29 +138,18 @@ def main() -> int:
     log(f"硬条件: 包含(AND)={filt['包含关键词'] or '—'}  排除={filt['排除关键词'] or '—'}"
         f"  画幅={filt['画幅'] or '—'}  字数={filt['prompt字数下限']}~{filt['prompt字数上限'] or '∞'}")
 
-    # 0) 库存与台账
-    pool_dir = ROOT / out["采集池目录"]
+    # 0) 已见集合 = 消费台账（进过清单的全部 id；删条目不清账）
     shortlist_dir = ROOT / out["选品目录"]
-    consumed = load_consumed(shortlist_dir)
-    seen = load_seen_ids(pool_dir, shortlist_dir)
-    seen0 = set(seen)
+    seen = load_consumed(shortlist_dir)
     if dedup:
         log(f"去重：开，历史已见 {len(seen)} 条（联网只捞新作品）")
     else:
         log(f"去重：关（--include-seen，联网可含已见 {len(seen)} 条）")
 
-    # 1) 候选收集：库存=第 0 页 + 联网全扫（v3 无翻页门槛机器，全量收集后评分择优）
-    log("\n[1/4] 收集候选…")
+    # 1) 候选收集：联网全扫，过硬条件者进候选池（v3 全量收集后评分择优）
+    log("\n[1/3] 收集候选…")
     candidates: list = []
     cand_ids: set = set()
-    for e in load_inventory(pool_dir, consumed):
-        if not passes_hard(e, filt, must_keywords=semantic):
-            continue
-        cand_ids.add(e["id"])
-        candidates.append(e)
-    inv_count = len(candidates)
-    log(f"  库存候选 {inv_count} 条（过硬条件）")
-
     errors: list = []
     skipped = 0
     fetched_new = 0
@@ -185,7 +173,7 @@ def main() -> int:
                 seen.add(job_id)
             if job_id in cand_ids:
                 continue
-            rank = (page - 1) * 50 + idx + 1  # 热榜全局位置
+            rank = (page - 1) * PER_PAGE + idx + 1  # 热榜全局位置
             entry = parse_entry(raw, fetched_at, rank=rank)
             new_count += 1
             fetched_new += 1
@@ -203,13 +191,13 @@ def main() -> int:
         else:
             log("没有候选数据，退出。")
         if errors:
-            err_path = pool_dir / f"mj_{stamp}_errors.json"
+            err_path = ROOT / "data" / "errors" / f"mj_{stamp}_errors.json"
             write_json(err_path, errors)
             log(f"[!] {len(errors)} 个错误，详见 {err_path.relative_to(ROOT)}")
         return 0 if skipped else 1
 
     # 2) 评分：R（相关度）→ 融合 H（热度）→ S
-    log(f"\n[2/4] 评分（{len(candidates)} 条）…")
+    log(f"\n[2/3] 评分（{len(candidates)} 条）…")
     chain = build_scorers(mode, filt, score_cfg)
     scorer = ChainScorer(chain) if len(chain) > 1 else chain[0]
     try:
@@ -245,25 +233,7 @@ def main() -> int:
         tops = ", ".join(f"{s:.2f}" for s, _, _ in picked_rows[:8])
         log(f"  取 top {len(picked)}（S: {tops}）")
 
-    # 3) 口味库存：达软门槛者（含溢出）+ 被取走的放宽条目，只入本次新见
-    picked_ids = {e["id"] for e in picked}
-    pool_entries = [
-        e for s, r, e in scored
-        if (r >= r_min or e["id"] in picked_ids) and e["id"] not in seen0
-    ]
-    if pool_entries:
-        pool_path = pool_dir / f"mj_{stamp}.json"
-        write_json(pool_path, {
-            "type": "pool",
-            "fetched_at": fetched_at,
-            "count": len(pool_entries),
-            "entries": pool_entries,
-        })
-        log(f"[3/4] 采集池 -> {pool_path.relative_to(ROOT)}（入库 {len(pool_entries)} 条）")
-    else:
-        log("[3/4] 无新作品入库")
-
-    # 4) 选品清单（同名追加合并 + 消费台账；已有条目一字不动）
+    # 3) 选品清单（同名追加合并 + 消费台账；已有条目一字不动）
     name = args.name or datetime.now().strftime("%Y-%m-%d")
     shortlist_path = shortlist_dir / f"{name}.json"
     loaded = load_shortlist(shortlist_path)
@@ -285,7 +255,6 @@ def main() -> int:
         "热度权重": beta,
         "热度高原/终点": f"{k_plateau:g}/{m_end:g}",
         "最低相关分": r_min,
-        "库存候选": inv_count,
         "联网新抓": fetched_new,
         "跳过已见": skipped,
         "候选总数": len(candidates),
@@ -296,7 +265,7 @@ def main() -> int:
     }
     readme = build_readme(fetch_info, filt, img)
     save_shortlist(shortlist_path, existing, file_consumed, readme)
-    log(f"[4/4] 选品清单 -> {shortlist_path.relative_to(ROOT)}（本次新增 {len(picked)} 条，共 {len(existing)} 条）")
+    log(f"[3/3] 选品清单 -> {shortlist_path.relative_to(ROOT)}（本次新增 {len(picked)} 条，共 {len(existing)} 条）")
 
     # 图片：只给本次新进清单的条目下
     if img["下载图片"] and picked:
@@ -308,7 +277,7 @@ def main() -> int:
         save_shortlist(shortlist_path, existing, file_consumed, build_readme(fetch_info, filt, img))
 
     if errors:
-        err_path = pool_dir / f"mj_{stamp}_errors.json"
+        err_path = ROOT / "data" / "errors" / f"mj_{stamp}_errors.json"
         write_json(err_path, errors)
         log(f"\n[!] {len(errors)} 个错误，详见 {err_path.relative_to(ROOT)}")
 

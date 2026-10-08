@@ -92,7 +92,7 @@ MANUAL_ENTRY_TEMPLATE = {
 def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
     """选品清单文件头：操作指引 + 字段说明 + 本次运行参数回显。"""
     return {
-        "怎么删": "删掉 entries 数组里不要的整个 { } 块（注意保留上下条目的逗号）。删除后不会被重新送上（_consumed_ids 台账仍记着它）；反悔就去 data/pool 复制回来。",
+        "怎么删": "删掉 entries 数组里不要的整个 { } 块（注意保留上下条目的逗号）。删除后不会被重新送上（_consumed_ids 台账仍记着它）；反悔可在 2 天 feed 窗口内用 --include-seen 重捞。",
         "怎么加": (
             "把文件末尾的 _manual_entry_template 整个复制进 entries 数组，"
             "改好内容；手动条目 source 写 'manual'（或其他平台名），id 自拟唯一即可。"
@@ -101,7 +101,7 @@ def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
             "author（作者署名）与 source_url（源链接）是合规红线，必留。",
             "entries 里的条目顺序即排版候选顺序，可自由挪动。",
             "同名再运行=新条目追加到 entries 末尾（分数排序择优），已有条目（含手改/手补）一字不动。",
-            "删掉的条目不会再被自动抓回（_consumed_ids 台账记着）；要找回就去 data/pool 对应文件复制。",
+            "删掉的条目不会再被自动抓回（_consumed_ids 台账记着）；反悔可在 2 天 feed 窗口内用 --include-seen 重捞。",
             "多余字段可自行添加，后续流水线会忽略不认识的字段。",
         ],
         "字段说明": {
@@ -113,7 +113,7 @@ def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
             "size": "图像素尺寸",
             "job_type": "MJ 任务类型",
             "publish_time": "作品发布（入队）时间",
-            "feed_rank": "热榜位置（页码×50+序号；库存老条目为 null）",
+            "feed_rank": "热榜位置（页码×50+序号；手动条目为 null）",
             "match": "评分结果（工具维护）：relevance 相关度 / heat 热度 / score 总分 / why 理由 / facets 分面明细（text,weight,score,why）",
             "source_url": "作品源链接（必填）",
             "image.url": "图片直链（384/640 档）",
