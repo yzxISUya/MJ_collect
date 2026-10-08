@@ -29,19 +29,19 @@
       "_consumed_ids": "消费台账（工具维护）：进过本清单的全部 id，删条目不清账"
     },
     "本次运行": {
-      "时间": "2026-10-08T15:59:13+08:00",
+      "时间": "2026-10-08T16:31:42+08:00",
       "目标条数": 5,
       "去重": "开",
       "评分器": "llm",
-      "意图": "少女肖像，偏写实",
-      "热度权重": 0.1,
-      "热度高原/终点": "50/150",
+      "意图": "少女肖像，偏抽象，个性化",
+      "热度权重": 0.5,
+      "热度高原/终点": "75/150",
       "最低相关分": 0.2,
-      "库存候选": 1,
-      "联网新抓": 147,
-      "跳过已见": 3,
-      "候选总数": 148,
-      "达门槛数": 41,
+      "库存候选": 0,
+      "联网新抓": 150,
+      "跳过已见": 0,
+      "候选总数": 150,
+      "达门槛数": 82,
       "清单新增": 5,
       "清单总条数": 5,
       "报错数": 0
@@ -50,7 +50,7 @@
       "_说明": "目标条数=想给清单新增的条目数（按总分择优取 top-N）。『意图』用自然语言描述想要的作品（语义评分的核心输入，优先级也用自然语言写）；『包含关键词』在语义模式下是硬过滤（每个词都必须命中），在词法模式下是打分素材（权重默认第1词100/50/25/10，可用『关键词权重』覆盖；词边界匹配，首尾写 * 放宽）。排除词/画幅/字数是硬条件。删掉的条目有消费台账记账，永不再上（找回去 data/pool 复制）。",
       "目标条数": 5,
       "去重": true,
-      "意图": "少女肖像，偏写实",
+      "意图": "少女肖像，偏抽象，个性化",
       "包含关键词": [],
       "关键词权重": [],
       "排除关键词": [],
@@ -67,53 +67,133 @@
   },
   "entries": [
     {
-      "id": "7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35",
+      "id": "5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
       "source": "midjourney",
-      "author": "rem75.",
-      "prompt_text": "A beautiful 25 year old woman of unspecified ethnicity walking naturally along a rain soaked European city street under a large plain black umbrella, full body vertical street style composition. Dark brown hair tied back, oversized round tortoiseshell glasses, loose taupe gray cable knit sweater, short brown plaid pleated skirt, sheer black tights, chunky black Mary Jane shoes, black crossbody bag. One hand holds the umbrella; the other holds a single slim hand rolled cigarette of unbleached warm brown rolling paper close to her lips, small glowing ember, delicate wisp of smoke not obscuring her face, no filter. Eyes open, calm expression, natural movement, realistic matte skin, wet pavement reflections, soft overcast daylight, subtle drizzle. Candid Parisian street fashion photography, muted neutral tones, photorealistic, no coffee cup, no beverages, no logos.",
+      "author": "alairachele",
+      "prompt_text": "Loose expressive oil painting, close-up of a pale woman's face with closed eyes filling the frame, emerging from a soft light aqua wash, the left side dissolving into thin translucent paint drips, a few small rust accents, subtle peach warmth on eyelid and nose, soft red lips, blurred soft edges, dreamy melancholy",
+      "params": {
+        "version": "8.2",
+        "ar": "5:7",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [
+          "hair, photograph, glossy, makeup, white"
+        ],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 928,
+        "height": 1312
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 02:13",
+      "feed_rank": 66,
+      "source_url": "https://www.midjourney.com/jobs/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
+      "image": {
+        "url": "https://cdn.midjourney.com/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff/0_0_640_N.webp",
+        "local": "images/2026-10-08/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff.webp"
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.9,
+        "heat": 1.0,
+        "score": 1.35,
+        "rank": 66,
+        "why": "女性面部特写，油画笔触溶解、颜料滴落与梦幻忧郁氛围高度抽象且极具个人风格。"
+      }
+    },
+    {
+      "id": "d6897a30-1529-4b56-8b5c-9f5978109082",
+      "source": "midjourney",
+      "author": "AsteroidTank",
+      "prompt_text": "a vintage retro black ink line art drawing on a white background. the drawing depicts stylized face, eyes closed, chin up, mouth slightly open. Vector art. No shading.",
       "params": {
         "version": "8.2",
         "ar": "3:4",
-        "stylize": null,
-        "chaos": 35,
-        "weird": null,
+        "stylize": 50,
+        "chaos": null,
+        "weird": 4,
         "seed": null,
         "raw": false,
         "no": [],
         "sref": [],
-        "personalize": "bbrb74x"
+        "personalize": null
       },
       "size": {
         "width": 928,
         "height": 1232
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-07 21:42",
-      "feed_rank": 17,
-      "source_url": "https://www.midjourney.com/jobs/7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35",
+      "publish_time": "2026-10-08 01:37",
+      "feed_rank": 96,
+      "source_url": "https://www.midjourney.com/jobs/d6897a30-1529-4b56-8b5c-9f5978109082",
       "image": {
-        "url": "https://cdn.midjourney.com/7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35/0_0_640_N.webp",
-        "local": "images/2026-10-08/7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35.webp"
+        "url": "https://cdn.midjourney.com/d6897a30-1529-4b56-8b5c-9f5978109082/0_0_640_N.webp",
+        "local": "images/2026-10-08/d6897a30-1529-4b56-8b5c-9f5978109082.webp"
       },
-      "fetched_at": "2026-10-08T15:59:13+08:00",
+      "fetched_at": "2026-10-08T16:31:42+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.9,
-        "heat": 1.0,
-        "score": 0.99,
-        "rank": 17,
-        "why": "写实街拍风格的年轻女性全身肖像，皮肤质感与自然光描述明确，高度贴合少女肖像偏写实。"
+        "relevance": 0.8,
+        "heat": 0.72,
+        "score": 1.088,
+        "rank": 96,
+        "why": "风格化面部线稿，闭眼仰头，极简黑白矢量，抽象且个性鲜明。"
       }
     },
     {
-      "id": "1b941b78-b6a7-40d6-adb7-8934a09abc3d",
+      "id": "bbc6d239-9afe-461b-98e6-7aa78d2e57ee",
       "source": "midjourney",
-      "author": "@Fasdop",
-      "prompt_text": "Use the exact facial identity and styling of the woman in the first reference image. She is 25 years old. Evening lit honey colored stone alley, Puglia. She sits sideways on a stationary pastel yellow vintage Italian scooter on its center stand. She wears a fitted yellow cotton halter neck midi sundress with tiny white daisies, square neckline, draped skirt, thigh high side slit. Tan leather low heeled open toe mules, small gold hoop earrings, two delicate gold necklaces. Long blonde hair in loose waves, gentle sea breeze. She holds a pistachio gelato cone near her lips, playful relaxed glance at camera. Slow forward dolly, medium full to waist up portrait, 50mm lens, shallow depth of field, blurred limestone background. One continuous 8 second shot, Italian fashion music video aesthetic, ARRI Alexa 35, cinematic 4K, accurate skin and fabric texture, controlled highlights, realistic anatomy. Gentle wind and distant street ambience only. No text, logos, or artifacts.",
+      "author": "u6926988781",
+      "prompt_text": "a womans body, beautyful face, but thougtful look. Abstract realism.",
       "params": {
         "version": "8.2",
-        "ar": "16:9",
-        "stylize": 750,
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "6o6ikca"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 22:57",
+      "feed_rank": 99,
+      "source_url": "https://www.midjourney.com/jobs/bbc6d239-9afe-461b-98e6-7aa78d2e57ee",
+      "image": {
+        "url": "https://cdn.midjourney.com/bbc6d239-9afe-461b-98e6-7aa78d2e57ee/0_0_640_N.webp",
+        "local": "images/2026-10-08/bbc6d239-9afe-461b-98e6-7aa78d2e57ee.webp"
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.8,
+        "heat": 0.68,
+        "score": 1.072,
+        "rank": 99,
+        "why": "女性身体与面部，明确标注抽象现实主义，沉思神态契合抽象与个性化。"
+      }
+    },
+    {
+      "id": "dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
+      "source": "midjourney",
+      "author": "lutzmader",
+      "prompt_text": "a macro portrait showcasing a woman's face decorated in gold leaf and blue glitter makeup. her light colored hair is windswept across her forehead. a black bird, likely a raven, with a curved beak and dark, reflective feathers, is in sharp focus in the immediate foreground, positioned in front of her mouth and chin.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:5",
+        "stylize": null,
         "chaos": null,
         "weird": null,
         "seed": null,
@@ -123,153 +203,73 @@
         "personalize": null
       },
       "size": {
-        "width": 1456,
-        "height": 816
+        "width": 848,
+        "height": 1424
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-07 18:53",
-      "feed_rank": 85,
-      "source_url": "https://www.midjourney.com/jobs/1b941b78-b6a7-40d6-adb7-8934a09abc3d",
+      "publish_time": "2026-10-08 03:12",
+      "feed_rank": 1,
+      "source_url": "https://www.midjourney.com/jobs/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
       "image": {
-        "url": "https://cdn.midjourney.com/1b941b78-b6a7-40d6-adb7-8934a09abc3d/0_0_640_N.webp",
-        "local": "images/2026-10-08/1b941b78-b6a7-40d6-adb7-8934a09abc3d.webp"
+        "url": "https://cdn.midjourney.com/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186/0_0_640_N.webp",
+        "local": "images/2026-10-08/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186.webp"
       },
-      "fetched_at": "2026-10-08T15:59:13+08:00",
-      "notes": "",
-      "match": {
-        "relevance": 0.8,
-        "heat": 0.65,
-        "score": 0.852,
-        "rank": 85,
-        "why": "写实电影感年轻女性肖像，皮肤与布料质感真实，但更偏时尚视频而非静态肖像。"
-      }
-    },
-    {
-      "id": "a1583d26-731d-48f9-af06-6d01844f5d6e",
-      "source": "midjourney",
-      "author": "ottoart813",
-      "prompt_text": "Photorealistic portrait of a strikingly attractive woman with an hourglass figure, standing confidently before a massive ornately carved asymmetric picture frame - organic baroque curves blending into surreal abstract angles, half melted gold and dark wood intertwined - towering behind her, containing faint swirling mist. She wears an elegant fitted dress with rich textured fabric, one hand resting on the frame's edge, long flowing hair caught by a light breeze, enigmatic gaze directly at camera. Soft cinematic lighting: warm key light from one side, cool rim light outlining her silhouette. Background: dimly lit grand gallery hall, tall arched windows, faint visitor silhouettes, golden dust particles, architectural details in bokeh. Shallow depth of field. Canon EOS R5, 85mm f/1.4, ultra realistic skin texture, hyper detailed fabric and frame textures, volumetric lighting, high dynamic range, 8K.",
-      "params": {
-        "version": "8.2",
-        "ar": "3:4",
-        "stylize": null,
-        "chaos": null,
-        "weird": null,
-        "seed": null,
-        "raw": true,
-        "no": [],
-        "sref": [
-          "1281111984"
-        ],
-        "personalize": "or6gme4"
-      },
-      "size": {
-        "width": 928,
-        "height": 1232
-      },
-      "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-07 22:37",
-      "feed_rank": 119,
-      "source_url": "https://www.midjourney.com/jobs/a1583d26-731d-48f9-af06-6d01844f5d6e",
-      "image": {
-        "url": "https://cdn.midjourney.com/a1583d26-731d-48f9-af06-6d01844f5d6e/0_0_640_N.webp",
-        "local": "images/2026-10-08/a1583d26-731d-48f9-af06-6d01844f5d6e.webp"
-      },
-      "fetched_at": "2026-10-08T15:59:13+08:00",
+      "fetched_at": "2026-10-08T16:31:42+08:00",
       "notes": "",
       "match": {
         "relevance": 0.7,
-        "heat": 0.31,
-        "score": 0.722,
-        "rank": 119,
-        "why": "超写实女性肖像，皮肤质感细腻，但场景奇幻、构图偏环境人像。"
+        "heat": 1.0,
+        "score": 1.05,
+        "rank": 1,
+        "why": "女性面部特写肖像，金箔蓝闪粉妆容与黑鸟前景带来强烈抽象艺术感，个性化突出。"
       }
     },
     {
-      "id": "4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+      "id": "2c278770-2e06-4ad4-b7f3-2093463ddee3",
       "source": "midjourney",
-      "author": "bitstas",
-      "prompt_text": "High fashion editorial photo of a pale young female model wearing a fitted knee length dress made entirely from glossy red adhesive tape strips. Sleek, elegant silhouette; knees, arms, and hands fully visible and unwrapped. Set in a narrow medieval European street with aged stone walls, worn plaster, old wooden doors, wet cobblestones, and soft autumn atmosphere with yellow, red, and orange foliage. Hard directional side light cutting across the street, model partly illuminated and partly in deep shadow, sharp architectural shadows, glossy red tape catching specular highlights, high contrast, rich blacks, restrained cinematic color grading. High angle shot, model on the right third of the frame, large negative space left. Cinematic fashion realism, sophisticated and strange. 35mm analog photography, fine film grain, subtle halation, soft highlight bloom, realistic lens imperfections, rich tonal depth.",
+      "author": "u5296997712",
+      "prompt_text": "Abstract flat 2D artwork of a bald adult male head and neck in strict left facing side profile. Completely smooth bald scalp, no hair or hairline. Strong masculine silhouette: prominent forehead, defined straight nose, masculine lips, angular jaw, pronounced chin, strong neck. Entire silhouette constructed from large thick interconnected organic shapes, rounded psychedelic curves, flowing liquid forms, smooth maze like patterns following facial contours. Inside the upper skull, ONLY the words \"BRAIN FEELING\" - extremely large and dominant. \"BRAIN\" fills the upper skull, \"FEELING\" directly beneath, both spanning nearly full head width. Lettering is thick, rounded, fluid, psychedelic, organically merging into surrounding shapes, clearly readable. \"BRAIN FEELING\" IS THE ONLY TEXT IN THE IMAGE. Colors: rich saturated cobalt blue (#173EBB) and pure white (#FFFFFF) only. Solid pure white background edge to edge. Very subtle grain inside blue shapes only. No gradients, shadows, 3D, beard, realistic eyes, borders, logos, symbols, or extra elements.",
       "params": {
         "version": "8.2",
-        "ar": "3:4",
-        "stylize": null,
-        "chaos": 15,
+        "ar": "4:5",
+        "stylize": 40,
+        "chaos": null,
         "weird": null,
         "seed": null,
         "raw": false,
         "no": [],
         "sref": [],
-        "personalize": "xbwnv61"
+        "personalize": null
       },
       "size": {
-        "width": 928,
-        "height": 1232
-      },
-      "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-07 19:16",
-      "feed_rank": 138,
-      "source_url": "https://www.midjourney.com/jobs/4a3580b8-32bb-4bb2-ad41-36939be02d1b",
-      "image": {
-        "url": "https://cdn.midjourney.com/4a3580b8-32bb-4bb2-ad41-36939be02d1b/0_0_640_N.webp",
-        "local": "images/2026-10-08/4a3580b8-32bb-4bb2-ad41-36939be02d1b.webp"
-      },
-      "fetched_at": "2026-10-08T15:59:13+08:00",
-      "notes": "",
-      "match": {
-        "relevance": 0.7,
-        "heat": 0.12,
-        "score": 0.708,
-        "rank": 138,
-        "why": "写实时尚大片年轻女模肖像，胶片质感真实，但胶带服装设定偏概念。"
-      }
-    },
-    {
-      "id": "16181f24-510c-435a-850b-4b2978781439",
-      "source": "midjourney",
-      "author": "u6481343534",
-      "prompt_text": "生成3D都市女主，眉眼生得极美，属于淡极生艳的类型。眉形是天然舒展的细远山眉，颜色浅黑不浓重。一双琉璃色琥珀褐瞳，眼型偏长，眼尾微微轻扬，睫毛细密纤长，垂眸的时候会在眼下投出浅浅的阴影。情绪平静时眼底是一片清冷淡凉，不带什么温度；笑起来的时候眼尾弯起，柔和冲淡了身上那股疏离感。鼻梁挺翘精致，鼻尖秀气，唇形饱满，唇色是自然淡粉。下颌线条利落收紧，下巴尖瘦。黑发乌黑浓密，发质柔软，多数时候扎成高马尾，碎发落在颈侧；披发的时候长发垂落脊背，黑发衬得肤色愈发莹白。整张脸没有甜腻的幼态感，带着少年人的清韧，又藏着少女的柔艳，安静站在人群里就格外惹眼。",
-      "params": {
-        "version": "8.2",
-        "ar": null,
-        "stylize": null,
-        "chaos": null,
-        "weird": null,
-        "seed": null,
-        "raw": true,
-        "no": [],
-        "sref": [],
-        "personalize": "cyet1b4"
-      },
-      "size": {
-        "width": 2048,
-        "height": 2048
+        "width": 1968,
+        "height": 2464
       },
       "job_type": "v8-2_hd_diffusion",
-      "publish_time": "2026-10-07 17:06",
-      "feed_rank": 142,
-      "source_url": "https://www.midjourney.com/jobs/16181f24-510c-435a-850b-4b2978781439",
+      "publish_time": "2026-10-07 17:05",
+      "feed_rank": 83,
+      "source_url": "https://www.midjourney.com/jobs/2c278770-2e06-4ad4-b7f3-2093463ddee3",
       "image": {
-        "url": "https://cdn.midjourney.com/16181f24-510c-435a-850b-4b2978781439/0_0_640_N.webp",
-        "local": "images/2026-10-08/16181f24-510c-435a-850b-4b2978781439.webp"
+        "url": "https://cdn.midjourney.com/2c278770-2e06-4ad4-b7f3-2093463ddee3/0_0_640_N.webp",
+        "local": "images/2026-10-08/2c278770-2e06-4ad4-b7f3-2093463ddee3.webp"
       },
-      "fetched_at": "2026-10-08T15:59:13+08:00",
+      "fetched_at": "2026-10-08T16:31:42+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.7,
-        "heat": 0.08,
-        "score": 0.706,
-        "rank": 142,
-        "why": "细致刻画少女面部五官与气质，写实向但偏3D都市女主设定，肖像感强。"
+        "relevance": 0.6,
+        "heat": 0.893,
+        "score": 0.868,
+        "rank": 83,
+        "why": "抽象扁平男性头部侧影，有机曲线与文字构成强抽象性，但主体为男性。"
       }
     }
   ],
   "_consumed_ids": [
-    "7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35",
-    "1b941b78-b6a7-40d6-adb7-8934a09abc3d",
-    "a1583d26-731d-48f9-af06-6d01844f5d6e",
-    "4a3580b8-32bb-4bb2-ad41-36939be02d1b",
-    "16181f24-510c-435a-850b-4b2978781439"
+    "5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
+    "d6897a30-1529-4b56-8b5c-9f5978109082",
+    "bbc6d239-9afe-461b-98e6-7aa78d2e57ee",
+    "dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
+    "2c278770-2e06-4ad4-b7f3-2093463ddee3"
   ],
   "_manual_entry_template": {
     "id": "manual-YYYYMMDD-01",

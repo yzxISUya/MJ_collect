@@ -1,0 +1,3266 @@
+{
+  "type": "pool",
+  "fetched_at": "2026-10-08T16:31:42+08:00",
+  "count": 82,
+  "entries": [
+    {
+      "id": "5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
+      "source": "midjourney",
+      "author": "alairachele",
+      "prompt_text": "Loose expressive oil painting, close-up of a pale woman's face with closed eyes filling the frame, emerging from a soft light aqua wash, the left side dissolving into thin translucent paint drips, a few small rust accents, subtle peach warmth on eyelid and nose, soft red lips, blurred soft edges, dreamy melancholy",
+      "params": {
+        "version": "8.2",
+        "ar": "5:7",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [
+          "hair, photograph, glossy, makeup, white"
+        ],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 928,
+        "height": 1312
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 02:13",
+      "feed_rank": 66,
+      "source_url": "https://www.midjourney.com/jobs/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
+      "image": {
+        "url": "https://cdn.midjourney.com/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.9,
+        "heat": 1.0,
+        "score": 1.35,
+        "rank": 66,
+        "why": "女性面部特写，油画笔触溶解、颜料滴落与梦幻忧郁氛围高度抽象且极具个人风格。"
+      }
+    },
+    {
+      "id": "d6897a30-1529-4b56-8b5c-9f5978109082",
+      "source": "midjourney",
+      "author": "AsteroidTank",
+      "prompt_text": "a vintage retro black ink line art drawing on a white background. the drawing depicts stylized face, eyes closed, chin up, mouth slightly open. Vector art. No shading.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": 50,
+        "chaos": null,
+        "weird": 4,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 01:37",
+      "feed_rank": 96,
+      "source_url": "https://www.midjourney.com/jobs/d6897a30-1529-4b56-8b5c-9f5978109082",
+      "image": {
+        "url": "https://cdn.midjourney.com/d6897a30-1529-4b56-8b5c-9f5978109082/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.8,
+        "heat": 0.72,
+        "score": 1.088,
+        "rank": 96,
+        "why": "风格化面部线稿，闭眼仰头，极简黑白矢量，抽象且个性鲜明。"
+      }
+    },
+    {
+      "id": "bbc6d239-9afe-461b-98e6-7aa78d2e57ee",
+      "source": "midjourney",
+      "author": "u6926988781",
+      "prompt_text": "a womans body, beautyful face, but thougtful look. Abstract realism.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "6o6ikca"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 22:57",
+      "feed_rank": 99,
+      "source_url": "https://www.midjourney.com/jobs/bbc6d239-9afe-461b-98e6-7aa78d2e57ee",
+      "image": {
+        "url": "https://cdn.midjourney.com/bbc6d239-9afe-461b-98e6-7aa78d2e57ee/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.8,
+        "heat": 0.68,
+        "score": 1.072,
+        "rank": 99,
+        "why": "女性身体与面部，明确标注抽象现实主义，沉思神态契合抽象与个性化。"
+      }
+    },
+    {
+      "id": "dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
+      "source": "midjourney",
+      "author": "lutzmader",
+      "prompt_text": "a macro portrait showcasing a woman's face decorated in gold leaf and blue glitter makeup. her light colored hair is windswept across her forehead. a black bird, likely a raven, with a curved beak and dark, reflective feathers, is in sharp focus in the immediate foreground, positioned in front of her mouth and chin.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:5",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 848,
+        "height": 1424
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 03:12",
+      "feed_rank": 1,
+      "source_url": "https://www.midjourney.com/jobs/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
+      "image": {
+        "url": "https://cdn.midjourney.com/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.7,
+        "heat": 1.0,
+        "score": 1.05,
+        "rank": 1,
+        "why": "女性面部特写肖像，金箔蓝闪粉妆容与黑鸟前景带来强烈抽象艺术感，个性化突出。"
+      }
+    },
+    {
+      "id": "2c278770-2e06-4ad4-b7f3-2093463ddee3",
+      "source": "midjourney",
+      "author": "u5296997712",
+      "prompt_text": "Abstract flat 2D artwork of a bald adult male head and neck in strict left facing side profile. Completely smooth bald scalp, no hair or hairline. Strong masculine silhouette: prominent forehead, defined straight nose, masculine lips, angular jaw, pronounced chin, strong neck. Entire silhouette constructed from large thick interconnected organic shapes, rounded psychedelic curves, flowing liquid forms, smooth maze like patterns following facial contours. Inside the upper skull, ONLY the words \"BRAIN FEELING\" - extremely large and dominant. \"BRAIN\" fills the upper skull, \"FEELING\" directly beneath, both spanning nearly full head width. Lettering is thick, rounded, fluid, psychedelic, organically merging into surrounding shapes, clearly readable. \"BRAIN FEELING\" IS THE ONLY TEXT IN THE IMAGE. Colors: rich saturated cobalt blue (#173EBB) and pure white (#FFFFFF) only. Solid pure white background edge to edge. Very subtle grain inside blue shapes only. No gradients, shadows, 3D, beard, realistic eyes, borders, logos, symbols, or extra elements.",
+      "params": {
+        "version": "8.2",
+        "ar": "4:5",
+        "stylize": 40,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1968,
+        "height": 2464
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 17:05",
+      "feed_rank": 83,
+      "source_url": "https://www.midjourney.com/jobs/2c278770-2e06-4ad4-b7f3-2093463ddee3",
+      "image": {
+        "url": "https://cdn.midjourney.com/2c278770-2e06-4ad4-b7f3-2093463ddee3/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.6,
+        "heat": 0.893,
+        "score": 0.868,
+        "rank": 83,
+        "why": "抽象扁平男性头部侧影，有机曲线与文字构成强抽象性，但主体为男性。"
+      }
+    },
+    {
+      "id": "59eb0fa1-4f2d-462c-854c-d8c867bdfa6f",
+      "source": "midjourney",
+      "author": "u8149174512",
+      "prompt_text": "High-angle fisheye selfie close-up from above and slightly to one side, pronounced barrel distortion. Character leans forward and lifts her face toward lens, both eyes clearly visible. Rounded head dominates foreground; nearer shoulder appears larger, far shoulder and small body recede diagonally below. Curved floor and background edges visible. Adult female chibi: smoky blue gray short layered hair, lavender eyes, tiny silver crescent hair clip. Ivory sleeveless top, open dusty blue short sleeved shirt, loose blue gray shorts. Gentle expression, hands behind back. Refined Japanese 2D chibi anime illustration, ~two heads tall, large expressive eyes, subtle iris shading, small dark pupils, restrained catchlights, gentle blush, small open smile. Clean linework, crisp cel shading, selective soft tonal transitions. Soft neutral daylight, slight facial shading, creamy whites, cool blue gray shadows. Cozy cluttered room, cream furniture, blue gray walls, books and small objects. Highly detailed digital illustration.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1648,
+        "height": 2944
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 19:44",
+      "feed_rank": 95,
+      "source_url": "https://www.midjourney.com/jobs/59eb0fa1-4f2d-462c-854c-d8c867bdfa6f",
+      "image": {
+        "url": "https://cdn.midjourney.com/59eb0fa1-4f2d-462c-854c-d8c867bdfa6f/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.6,
+        "heat": 0.733,
+        "score": 0.82,
+        "rank": 95,
+        "why": "女性肖像但为Q版动漫鱼眼自拍，风格化强却偏可爱卡通，抽象感有限。"
+      }
+    },
+    {
+      "id": "c1899306-175b-470a-8e82-8a9dc60de9cb",
+      "source": "midjourney",
+      "author": "Gen413X",
+      "prompt_text": "a digital painting of a young woman's face in a close up portrait. her skin is warm toned and covered in prominent freckles across her nose and cheeks. she has dark wavy hair framing her face, long dark eyelashes, and green eyes looking forward with a slight squint. her lips are full and painted with a glossy red lipstick, slightly parted. the background is dark with bokeh lights",
+      "params": {
+        "version": "8.2",
+        "ar": "25:14",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1456,
+        "height": 816
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 20:58",
+      "feed_rank": 32,
+      "source_url": "https://www.midjourney.com/jobs/c1899306-175b-470a-8e82-8a9dc60de9cb",
+      "image": {
+        "url": "https://cdn.midjourney.com/c1899306-175b-470a-8e82-8a9dc60de9cb/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.5,
+        "heat": 1.0,
+        "score": 0.75,
+        "rank": 32,
+        "why": "少女面部特写肖像，但写实雀斑红唇加散景背景偏常规美妆人像，抽象与个性化不足。"
+      }
+    },
+    {
+      "id": "ef6d0901-8934-4609-8b77-0b8972eed048",
+      "source": "midjourney",
+      "author": "egvibes",
+      "prompt_text": "woman lying on a warm white seamless floor, head resting on her folded arms, calm direct gaze, sleek low bun, large yellow gold flower stud earring visible, small yellow gold flower pendant on a fine chain falling onto her forearm, soft even studio light, shallow depth of field, generous empty space at the top of the frame, shot on 50mm, subtle film grain",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "7x1plsa"
+      },
+      "size": {
+        "width": 1648,
+        "height": 2944
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 20:01",
+      "feed_rank": 38,
+      "source_url": "https://www.midjourney.com/jobs/ef6d0901-8934-4609-8b77-0b8972eed048",
+      "image": {
+        "url": "https://cdn.midjourney.com/ef6d0901-8934-4609-8b77-0b8972eed048/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.5,
+        "heat": 1.0,
+        "score": 0.75,
+        "rank": 38,
+        "why": "女性肖像构图简洁有留白，但整体偏商业极简，抽象与个性化程度一般。"
+      }
+    },
+    {
+      "id": "a1583d26-731d-48f9-af06-6d01844f5d6e",
+      "source": "midjourney",
+      "author": "ottoart813",
+      "prompt_text": "Photorealistic portrait of a strikingly attractive woman with an hourglass figure, standing confidently before a massive ornately carved asymmetric picture frame - organic baroque curves blending into surreal abstract angles, half melted gold and dark wood intertwined - towering behind her, containing faint swirling mist. She wears an elegant fitted dress with rich textured fabric, one hand resting on the frame's edge, long flowing hair caught by a light breeze, enigmatic gaze directly at camera. Soft cinematic lighting: warm key light from one side, cool rim light outlining her silhouette. Background: dimly lit grand gallery hall, tall arched windows, faint visitor silhouettes, golden dust particles, architectural details in bokeh. Shallow depth of field. Canon EOS R5, 85mm f/1.4, ultra realistic skin texture, hyper detailed fabric and frame textures, volumetric lighting, high dynamic range, 8K.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [
+          "1281111984"
+        ],
+        "personalize": "or6gme4"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 22:37",
+      "feed_rank": 67,
+      "source_url": "https://www.midjourney.com/jobs/a1583d26-731d-48f9-af06-6d01844f5d6e",
+      "image": {
+        "url": "https://cdn.midjourney.com/a1583d26-731d-48f9-af06-6d01844f5d6e/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.5,
+        "heat": 1.0,
+        "score": 0.75,
+        "rank": 67,
+        "why": "女性肖像置于超现实画框前，有抽象元素，但整体偏写实电影感商业人像。"
+      }
+    },
+    {
+      "id": "42b063b3-7a9a-4d13-940e-0fc2cfe6e722",
+      "source": "midjourney",
+      "author": "oktvnbgs",
+      "prompt_text": "Symmetrical front view of An artistic fantasy makeup portrait inspired by the Chinese legend ‘Jiao Ren’. A regal Young Korean Idol smile to camera, symbolizing the mermaid and fairy ancestry golden, orange, and royal navy tones in shimering white face paint. mermaid-scale eye makeup with metallic gold eyeliner shaped like a dragon curve, shimmering midnight blue and glittery cobalt gradient eyeshadow, pearl and crystal accents around the eyes. Deep ruby lips with golden glow, glowing porcelain white painted body with splitcake paint in ethereal light, wearing an elaborate headdress and earrings made of glass beads, Subtle mermaid scales painted on the temples and neck and shoulders, in the style of ippei gyobu mecha. the full-body portrait features exquisite details, white hair, long fantasy nail art. the background is arealistic convinience store interior with soft lighting, resulting in an ultra-high definition, high-resolution, and super-detailed image.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": 10,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/vmPxVY1JcfU",
+          "https://s.mj.run/YPikUjjTGqA",
+          "https://s.mj.run/C2w0VnJrUhY"
+        ],
+        "personalize": null
+      },
+      "size": {
+        "width": 1648,
+        "height": 2944
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 18:40",
+      "feed_rank": 119,
+      "source_url": "https://www.midjourney.com/jobs/42b063b3-7a9a-4d13-940e-0fc2cfe6e722",
+      "image": {
+        "url": "https://cdn.midjourney.com/42b063b3-7a9a-4d13-940e-0fc2cfe6e722/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.6,
+        "heat": 0.413,
+        "score": 0.724,
+        "rank": 119,
+        "why": "少女奇幻妆容肖像，人鱼鳞片眼妆有创意，但背景便利店与尾部堆砌削弱抽象感。"
+      }
+    },
+    {
+      "id": "331592d3-90a0-4e15-ab0e-dd915516550f",
+      "source": "midjourney",
+      "author": "nobodyandthecomputer",
+      "prompt_text": "Hyper-realistic yearbook photo of a fictional, garden woman character in a whimsical style; beautiful facial expression, absurd hairstyle, strikingly mismatched outfit; studio lighting, high school yearbook aesthetic; ultra-detailed, realistic skin texture,.",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": 65,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "fzae662"
+      },
+      "size": {
+        "width": 1792,
+        "height": 2688
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-08 02:50",
+      "feed_rank": 124,
+      "source_url": "https://www.midjourney.com/jobs/331592d3-90a0-4e15-ab0e-dd915516550f",
+      "image": {
+        "url": "https://cdn.midjourney.com/331592d3-90a0-4e15-ab0e-dd915516550f/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.6,
+        "heat": 0.347,
+        "score": 0.704,
+        "rank": 124,
+        "why": "女性肖像带荒诞发型与混搭服装，个性化明显，但整体偏写实年册风格。"
+      }
+    },
+    {
+      "id": "fdbc59ee-04ac-49ad-8c2f-507f6a0b77c3",
+      "source": "midjourney",
+      "author": "ghostgoo88",
+      "prompt_text": "girl doll brain the style of Tetsuo, horror, different angles, advertisement, detailed screen printed, ar 3:2",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 21:50",
+      "feed_rank": 5,
+      "source_url": "https://www.midjourney.com/jobs/fdbc59ee-04ac-49ad-8c2f-507f6a0b77c3",
+      "image": {
+        "url": "https://cdn.midjourney.com/fdbc59ee-04ac-49ad-8c2f-507f6a0b77c3/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 5,
+        "why": "女孩玩偶大脑恐怖风格，抽象怪异但信息零散，肖像属性不明确。"
+      }
+    },
+    {
+      "id": "49434a32-d138-4327-ab55-603b0d37f0dd",
+      "source": "midjourney",
+      "author": "hatzelflatzel.",
+      "prompt_text": "A gaunt fallen angel hovering above a foggy graveyard, facing the viewer, huge ruined wings of bone and torn membrane, corroded ribcage armor, long pale hair, cracked porcelain face with dark tear tracks, holding a tall spear with a crescent-forked blade, a total solar eclipse directly behind her head with a brilliant white ring and soft corona, faint gothic cathedral spires in the mist, a few skeletal figures rising from graves below, dystopian surrealism in the style of Zdzisław Beksiński, monochrome grayscale oil painting, pale glowing fog behind a dark figure, bottom third dark and empty",
+      "params": {
+        "version": "8.2",
+        "ar": "5:7",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [
+          "text, frame, border, color"
+        ],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 928,
+        "height": 1312
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:27",
+      "feed_rank": 9,
+      "source_url": "https://www.midjourney.com/jobs/49434a32-d138-4327-ab55-603b0d37f0dd",
+      "image": {
+        "url": "https://cdn.midjourney.com/49434a32-d138-4327-ab55-603b0d37f0dd/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 9,
+        "why": "女性形象但为堕落天使，哥特超现实，非少女肖像，仅部分相关。"
+      }
+    },
+    {
+      "id": "3e7993ee-1220-4d8a-bf08-f39b0d4958f9",
+      "source": "midjourney",
+      "author": "otameshi2026",
+      "prompt_text": "A subtle side-profile silhouette of a person standing among a field of golden pampas grass during a rich sunset. Warm backlight, dreamlike soft focus, peaceful mood. Panoramic composition with clear copy space on the upper portion of the image, cinematic lighting, photorealistic - high quality stock photo, 8k. photorealistic, catalog quality, stock photo of Japan, professional lighting, clean and modern atmosphere, rule of thirds composition, unique artistic placement, creative and distinct color palette, completely free of text, logos, trademarks, and intellectual property, natural and unposed look Leave one-third of the space blank for copying,Negative Prompt: gibberish text on paper, messy handwriting, unrealistic hands, extra fingers, deformed face, distorted anatomy, overcrowded background, logos, brand names",
+      "params": {
+        "version": "8.2",
+        "ar": "16:9",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1456,
+        "height": 816
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:48",
+      "feed_rank": 34,
+      "source_url": "https://www.midjourney.com/jobs/3e7993ee-1220-4d8a-bf08-f39b0d4958f9",
+      "image": {
+        "url": "https://cdn.midjourney.com/3e7993ee-1220-4d8a-bf08-f39b0d4958f9/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 34,
+        "why": "人物侧影剪影于蒲苇田，抽象氛围强但非少女肖像且无面部。"
+      }
+    },
+    {
+      "id": "e9d844d8-c51c-4bbf-8101-aae60fe597f4",
+      "source": "midjourney",
+      "author": ".magadeth",
+      "prompt_text": "a thirsty woman, The drawing should feel like an old novelty T-shirt graphic, underground comic, tattoo-shop flash sheet, bowling-shirt illustration, or hand-painted bar sign. Keep it loose and slightly crude rather than polished or geometrically perfect. Use mostly black-and-white or a very limited 1-2 color palette, with occasional chunky hand-lettering integrated into the artwork Everyday objects, dumb visual jokes, deadpan characters, odd symbols, and simple surreal situations. The mood should feel charmingly low-budget, slightly absurd, Think forgotten regional advertising, local-access television, weird promotional giveaways, and flea-market ephemera. No text, no shadows, no texture, no extra elements, no cartoon exaggeration. Avoid gradients, realistic shading, clean vector curves, no slick mascot design, or modern digital illustration.\"",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "nq7kwaj"
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 04:33",
+      "feed_rank": 51,
+      "source_url": "https://www.midjourney.com/jobs/e9d844d8-c51c-4bbf-8101-aae60fe597f4",
+      "image": {
+        "url": "https://cdn.midjourney.com/e9d844d8-c51c-4bbf-8101-aae60fe597f4/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 51,
+        "why": "有女性形象且风格粗犷个性化，但整体偏复古广告插画而非抽象肖像"
+      }
+    },
+    {
+      "id": "e4673acd-e181-40e4-8b21-c88f3f8471fd",
+      "source": "midjourney",
+      "author": "hapaopapao",
+      "prompt_text": "photorealistic eccentric male fashion character, blunt bowl haircut, mustache, narrow eyes, long face, deadpan expression, sporty retro jacket, strange but stylish, clean white background, fashion catalog portrait, slightly uncanny, memorable viral character, high detail",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 05:44",
+      "feed_rank": 61,
+      "source_url": "https://www.midjourney.com/jobs/e4673acd-e181-40e4-8b21-c88f3f8471fd",
+      "image": {
+        "url": "https://cdn.midjourney.com/e4673acd-e181-40e4-8b21-c88f3f8471fd/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 61,
+        "why": "个性化人物肖像但为男性，非少女"
+      }
+    },
+    {
+      "id": "4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+      "source": "midjourney",
+      "author": "bitstas",
+      "prompt_text": "High fashion editorial photo of a pale young female model wearing a fitted knee length dress made entirely from glossy red adhesive tape strips. Sleek, elegant silhouette; knees, arms, and hands fully visible and unwrapped. Set in a narrow medieval European street with aged stone walls, worn plaster, old wooden doors, wet cobblestones, and soft autumn atmosphere with yellow, red, and orange foliage. Hard directional side light cutting across the street, model partly illuminated and partly in deep shadow, sharp architectural shadows, glossy red tape catching specular highlights, high contrast, rich blacks, restrained cinematic color grading. High angle shot, model on the right third of the frame, large negative space left. Cinematic fashion realism, sophisticated and strange. 35mm analog photography, fine film grain, subtle halation, soft highlight bloom, realistic lens imperfections, rich tonal depth.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": 15,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "xbwnv61"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 19:16",
+      "feed_rank": 62,
+      "source_url": "https://www.midjourney.com/jobs/4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+      "image": {
+        "url": "https://cdn.midjourney.com/4a3580b8-32bb-4bb2-ad41-36939be02d1b/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 62,
+        "why": "全身时尚大片模特，红胶带裙有创意，但非少女肖像且偏商业时尚。"
+      }
+    },
+    {
+      "id": "d475c9ea-d95f-4563-8a5a-f66a864d5994",
+      "source": "midjourney",
+      "author": "bightandscratch",
+      "prompt_text": "in kishimoto illustrated art style: very muscular, short martial artist girl genin with half-braided, curly brown hair with blonde tips. Tsundere. Konoha ninja headband. Tan skin. Rope gloves. Pale blue accent. Kung fu training in japanese forest. Waterfall. Boulder. Blue and white accents on clothing. Full body portrait.",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 21:18",
+      "feed_rank": 63,
+      "source_url": "https://www.midjourney.com/jobs/d475c9ea-d95f-4563-8a5a-f66a864d5994",
+      "image": {
+        "url": "https://cdn.midjourney.com/d475c9ea-d95f-4563-8a5a-f66a864d5994/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 63,
+        "why": "火影画风女忍者全身像，动漫风格化但偏战斗设定，非抽象肖像。"
+      }
+    },
+    {
+      "id": "cabb6fa9-c5b4-4fc7-af76-4fd8a310eca7",
+      "source": "midjourney",
+      "author": "eugenschibakow",
+      "prompt_text": "Карикатурный шарж забавный образ стареющей поп певицы, с преувеличенными чертами лица, огромные солнцезащитные очки закрывают пол лица острый нос и пухлые губы экстравагантный макияж и прическа 9:16",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 02:20",
+      "feed_rank": 64,
+      "source_url": "https://www.midjourney.com/jobs/cabb6fa9-c5b4-4fc7-af76-4fd8a310eca7",
+      "image": {
+        "url": "https://cdn.midjourney.com/cabb6fa9-c5b4-4fc7-af76-4fd8a310eca7/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 64,
+        "why": "夸张漫画老歌手，非少女且偏讽刺漫画"
+      }
+    },
+    {
+      "id": "0738f76b-7834-4fb9-8d85-9a75f5552754",
+      "source": "midjourney",
+      "author": "peacelove",
+      "prompt_text": "以大量简化的杆状微生物作为基本图形单元，借助朝向、疏密和短轨迹的变化，在画面右侧形成几组相互关联的旋涡、流动带和局部有序结构。近看是一个个细胞，远看是一幅具有方向感的群体运动图景。 左侧保留完整、干净的标题区；右侧图形可以局部超出版面边界，避免像\"一个圆形图标贴在海报上\"。 建议风格与配色: 深海蓝或接近黑色的蓝作底，青绿、冰蓝和少量暖色作强调。以平面图形和适度的空间层次为主，不必做成复杂、油亮的三维模型。",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 00:47",
+      "feed_rank": 72,
+      "source_url": "https://www.midjourney.com/jobs/0738f76b-7834-4fb9-8d85-9a75f5552754",
+      "image": {
+        "url": "https://cdn.midjourney.com/0738f76b-7834-4fb9-8d85-9a75f5552754/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 72,
+        "why": "抽象微生物图形海报，抽象但无少女肖像"
+      }
+    },
+    {
+      "id": "1f84662d-3bba-4b38-a5a7-718be3738822",
+      "source": "midjourney",
+      "author": "yansnick",
+      "prompt_text": "Photorealistic candid snapshot, absurd corporate office scene. A young adult female employee carefully builds a house of playing cards on top of her overweight, stern, mean looking boss's head, focused on placing cards with both hands. The boss sits upright in office attire, staring deadpan directly into the camera, serious and still. She does not look at the camera. Awkward tension, deadpan corporate surrealism. Background: desks, paperwork, computers, office clutter, fluorescent lights, tired coworkers. Early 2000s Kodak consumer camera aesthetic - warm nostalgic tones, ugly office lighting, visible analog grain, slightly imperfect amateur framing, subtle motion blur, realistic skin texture, found photo feeling, Y2K realism. Feels accidentally captured by a coworker. Raw observational realism. No glossy editorial look, no cinematic polish.",
+      "params": {
+        "version": "8.2",
+        "ar": "4:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "spqzyqq"
+      },
+      "size": {
+        "width": 1232,
+        "height": 928
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 22:19",
+      "feed_rank": 74,
+      "source_url": "https://www.midjourney.com/jobs/1f84662d-3bba-4b38-a5a7-718be3738822",
+      "image": {
+        "url": "https://cdn.midjourney.com/1f84662d-3bba-4b38-a5a7-718be3738822/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 1.0,
+        "score": 0.6,
+        "rank": 74,
+        "why": "办公室荒诞场景中的年轻女职员，个性化但非肖像且偏写实"
+      }
+    },
+    {
+      "id": "ff600ea3-1747-4812-9693-5f8f9d7f9137",
+      "source": "midjourney",
+      "author": "27019617yuanguangda",
+      "prompt_text": "絵柄(全部の絵に共通): 日本のインディーの Web アニメ・MV の 1 コマのような、極端に単純化した平らな 2D の漫画絵。平らなベタ塗りの少ない色、くっきりした黒い線(外側は太く、内側は細い)、大きな頭と小さな体、角ばった大きな塊の髪、服のしわや小物はほとんど描かない。画面全体を塗り、透明な所を残さない。背景は平らな 1 色(場面が求めるときだけ大きな平らな形を少し)。グラデーション・光のにじみ・柔らかい影・つや・細かいアニメの目は描かない。線は内側の細い線(指の境・まつ毛・目の下・服のしわ)まで全部黒。黒以外の線は頬の赤い斜線だけ。単純なのは意図した設計で、雑な絵ではない。 この描き手の決まった手癖(どの絵でも同じ): - 目: アーモンド形の白目に、目尻の先まで伸びて跳ねる、とても太い黒い上まぶたの線。黒目は小さな黒い点で、見ている方へ寄せる。左右の黒目は同じ大きさ・同じ高さ・同じ向き。下まつ毛は短い 2 本の線。 - 開いた口は角の尖った台形。歯は、歯があると書いた人物にだけ描く。閉じた口は片方が丸まった短い線。 - 頬の赤みは、短い 3 本の赤い斜線。静かな・眠い場面では口は閉じるか小さく、頬の斜線も歯も付けない。あくびは目をぎゅっと閉じた縦長の丸い口。 - 眉は黒く塗った形。太さは人物の設定に従う。 - 髪は角ばった大きな塊で、どの人物にもはね毛が 1 本。 - 差し色として真紅(#e8283c)の小物を 1 つ。4 つの尖りの小さなきらめきを 2 つまで。 - 上着は両腕とも袖を通して普通に着る。手は丸い手のひらに短く分かれた指。重なる物はどちらが手前かはっきりさせる。光はにじまない。 === SCENE(登場人物 3 人の立ち絵。16:9 の横長) === 登場人物 3 人が並んで立っている全身の立ち絵 1 枚。3 人とも同じ絵柄・同じ線の太さ・同じ頭身の決まりで描く。 ・3 人の全身の正面の立ち姿を、同じ縮尺で横に並べる(左から 僕・友だち・ドパ)。頭のてっぺんから靴の先まで入れ、背比べとして見られるように足元を同じ高さにそろえる。3 人とも画面の縦の大部分を使って大きく描く。表情は各人物のふだんの顔。 ・3 人とも、同じ 1 人の描き手が同じ日に描いたように、同じ線の太さ・同じ塗り・同じ目と口の描き方にする。ドパだけ外側の線を太くしたり、顔や塗りを単純にしたりしない。 ・頭の大きさは 3 人ともほぼ同じにする。背の違いは、胴と脚の長さだけで出す(僕は胴と脚が長く、友だちは短い)。 ・ドパは友だちとまったく同じ背丈・同じ体つき(同じ頭の大きさ、同じ胴と脚の長さ、厚底ブーツの分だけ少し高い)。僕だけが頭ひとつ半高い。 ・人物はカメラを見ても見なくてもよい。顔の寄りや表情の見本は描かない(立ち絵だけ)。 【僕】10 代後半の女の子。制服(白いシャツ、紺のスカート)に黒いリュック。友だちより頭ひとつ半背が高く、手足が長く、猫背。黒に近い紺の長い髪で、前髪は自分で切ったガタガタのぱっつん。前髪の下からはっきり見える、太く短い黒い眉(ほかの 2 人よりずっと太い)、目の下にクマ、半目の三白眼で、たいてい冷めた顔。口を開けても歯は 1 本も描かない(歯の無い口。ギザギザの歯や八重歯は友だちとドパだけの印)。右耳にだけ白い有線イヤホンを付けている(正面から見ると画面の左側の耳。左耳には何も付けない)。見えるのは耳の白い粒と、耳の下から首すじを通って襟の中へ入る短いコードだけ。コードは粒から襟まで途中で途切れない 1 本の白い線で、首すじの肌の上に見える(髪の房の後ろに隠して途切れさせない)。コードを髪の上に通したり、髪の外や胸元に垂らしたりしない。もう片方のイヤホンは見えない(襟の中)。青緑の薄い上着を、両腕とも袖を通して普通に着ている(前は開けている。肩からずり落ちていない)。 【友だち】10 代後半の女の子。制服(白いシャツ、紺のスカート)に黒いリュック。背が低く、頭が大きく、手足が短い。根元が黒く伸びかけた銀髪(プリン)のショートで、大きなはね毛が 1 本。よく笑い、笑うと大きな八重歯が 1 本見える。朱色の薄い上着を、両腕とも袖を通して普通に着ている(前は開けている。肩からずり落ちていない)。リュックに、毛糸で作ったへたくそな三毛猫の顔のキーホルダー(白い丸に三角の耳 2 つ、茶と黒のぶち。形はいつも同じ)を付けている。 【ドパ】縦長のショート動画の中で踊る女の子。見る人を釣る役。いつもカメラ(見る人)を見る。毛先がギザギザに跳ねた、大きなマゼンタのツインテール。前髪の真ん中に、ピンクの再生の三角の形の大きな房が 1 つ。前髪の右横に白い\"×\"の形の髪留めと、ピンクの 2 本線の髪留め。目は、太く黒いまっすぐな上まぶたが瞳の上半分にかぶさった、重たいまぶたの自信たっぷりの半目で、瞳はピンクがかった赤(黒い瞳孔と小さな白い光)。口を開けると大きな八重歯が 1 本見え、舌を少し出す。衣装は白とマゼンタのフリルのミニドレス、胸に白い再生の三角が入ったマゼンタの大きなリボン、裾は白い波形のフリル、手首に白いふわふわのフリルのカフス、白い靴下に、ピンクの\"×\"の靴ひもの白い厚底ブーツ。自信たっぷりで、少し小悪魔っぽい。 【守ること】 ・背景は薄い灰色(#e6e6ea)の平らな 1 色だけ。ほかの物は描かない。 ・文字・記号・名札・矢印・寸法の線は描かない。絵柄(全部の絵に共通): 日本のインディーの Web アニメ・MV の 1 コマのような、極端に単純化した平らな 2D の漫画絵。平らなベタ塗りの少ない色、くっきりした黒い線(外側は太く、内側は細い)、大きな頭と小さな体、角ばった大きな塊の髪、服のしわや小物はほとんど描かない。画面全体を塗り、透明な所を残さない。背景は平らな 1 色(場面が求めるときだけ大きな平らな形を少し)。グラデーション・光のにじみ・柔らかい影・つや・細かいアニメの目は描かない。線は内側の細い線(指の境・まつ毛・目の下・服のしわ)まで全部黒。黒以外の線は頬の赤い斜線だけ。単純なのは意図した設計で、雑な絵ではない。 この描き手の決まった手癖(どの絵でも同じ): - 目: アーモンド形の白目に、目尻の先まで伸びて跳ねる、とても太い黒い上まぶたの線。黒目は小さな黒い点で、見ている方へ寄せる。左右の黒目は同じ大きさ・同じ高さ・同じ向き。下まつ毛は短い 2 本の線。 - 開いた口は角の尖った台形。歯は、歯があると書いた人物にだけ描く。閉じた口は片方が丸まった短い線。 - 頬の赤みは、短い 3 本の赤い斜線。静かな・眠い場面では口は閉じるか小さく、頬の斜線も歯も付けない。あくびは目をぎゅっと閉じた縦長の丸い口。 - 眉は黒く塗った形。太さは人物の設定に従う。 - 髪は角ばった大きな塊で、どの人物にもはね毛が 1 本。 - 差し色として真紅(#e8283c)の小物を 1 つ。4 つの尖りの小さなきらめきを 2 つまで。 - 上着は両腕とも袖を通して普通に着る。手は丸い手のひらに短く分かれた指。重なる物はどちらが手前かはっきりさせる。光はにじまない。 === SCENE(登場人物 3 人の立ち絵。16:9 の横長) === 登場人物 3 人が並んで立っている全身の立ち絵 1 枚。3 人とも同じ絵柄・同じ線の太さ・同じ頭身の決まりで描く。 ・3 人の全身の正面の立ち姿を、同じ縮尺で横に並べる(左から 僕・友だち・ドパ)。頭のてっぺんから靴の先まで入れ、背比べとして見られるように足元を同じ高さにそろえる。3 人とも画面の縦の大部分を使って大きく描く。表情は各人物のふだんの顔。 ・3 人とも、同じ 1 人の描き手が同じ日に描いたように、同じ線の太さ・同じ塗り・同じ目と口の描き方にする。ドパだけ外側の線を太くしたり、顔や塗りを単純にしたりしない。 ・頭の大きさは 3 人ともほぼ同じにする。背の違いは、胴と脚の長さだけで出す(僕は胴と脚が長く、友だちは短い)。 ・ドパは友だちとまったく同じ背丈・同じ体つき(同じ頭の大きさ、同じ胴と脚の長さ、厚底ブーツの分だけ少し高い)。僕だけが頭ひとつ半高い。 ・人物はカメラを見ても見なくてもよい。顔の寄りや表情の見本は描かない(立ち絵だけ)。 【僕】10 代後半の女の子。制服(白いシャツ、紺のスカート)に黒いリュック。友だちより頭ひとつ半背が高く、手足が長く、猫背。黒に近い紺の長い髪で、前髪は自分で切ったガタガタのぱっつん。前髪の下からはっきり見える、太く短い黒い眉(ほかの 2 人よりずっと太い)、目の下にクマ、半目の三白眼で、たいてい冷めた顔。口を開けても歯は 1 本も描かない(歯の無い口。ギザギザの歯や八重歯は友だちとドパだけの印)。右耳にだけ白い有線イヤホンを付けている(正面から見ると画面の左側の耳。左耳には何も付けない)。見えるのは耳の白い粒と、耳の下から首すじを通って襟の中へ入る短いコードだけ。コードは粒から襟まで途中で途切れない 1 本の白い線で、首すじの肌の上に見える(髪の房の後ろに隠して途切れさせない)。コードを髪の上に通したり、髪の外や胸元に垂らしたりしない。もう片方のイヤホンは見えない(襟の中)。青緑の薄い上着を、両腕とも袖を通して普通に着ている(前は開けている。肩からずり落ちていない)。 【友だち】10 代後半の女の子。制服(白いシャツ、紺のスカート)に黒いリュック。背が低く、頭が大きく、手足が短い。根元が黒く伸びかけた銀髪(プリン)のショートで、大きなはね毛が 1 本。よく笑い、笑うと大きな八重歯が 1 本見える。朱色の薄い上着を、両腕とも袖を通して普通に着ている(前は開けている。肩からずり落ちていない)。リュックに、毛糸で作ったへたくそな三毛猫の顔のキーホルダー(白い丸に三角の耳 2 つ、茶と黒のぶち。形はいつも同じ)を付けている。 【ドパ】縦長のショート動画の中で踊る女の子。見る人を釣る役。いつもカメラ(見る人)を見る。毛先がギザギザに跳ねた、大きなマゼンタのツインテール。前髪の真ん中に、ピンクの再生の三角の形の大きな房が 1 つ。前髪の右横に白い\"×\"の形の髪留めと、ピンクの 2 本線の髪留め。目は、太く黒いまっすぐな上まぶたが瞳の上半分にかぶさった、重たいまぶたの自信たっぷりの半目で、瞳はピンクがかった赤(黒い瞳孔と小さな白い光)。口を開けると大きな八重歯が 1 本見え、舌を少し出す。衣装は白とマゼンタのフリルのミニドレス、胸に白い再生の三角が入ったマゼンタの大きなリボン、裾は白い波形のフリル、手首に白いふわふわのフリルのカフス、白い靴下に、ピンクの\"×\"の靴ひもの白い厚底ブーツ。自信たっぷりで、少し小悪魔っぽい。 【守ること】 ・背景は薄い灰色(#e6e6ea)の平らな 1 色だけ。ほかの物は描かない。 ・文字・記号・名札・矢印・寸法の線は描かない。",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 20:33",
+      "feed_rank": 127,
+      "source_url": "https://www.midjourney.com/jobs/ff600ea3-1747-4812-9693-5f8f9d7f9137",
+      "image": {
+        "url": "https://cdn.midjourney.com/ff600ea3-1747-4812-9693-5f8f9d7f9137/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.5,
+        "heat": 0.307,
+        "score": 0.577,
+        "rank": 127,
+        "why": "三人全身立绘，扁平极简2D画风有辨识度，但非单人少女肖像且偏漫画设定。"
+      }
+    },
+    {
+      "id": "41441efd-898d-41d9-b434-41a0189ad49f",
+      "source": "midjourney",
+      "author": "酥酥",
+      "prompt_text": "Night time paparazzi shooting. She is getting into a black luxury SUV. Wear an oversized black leather jacket and sunglasses (optional). Raise your hand to protect her face from the strong flash (raise your hand to block the strong flash). The bodyguard's arms may be visible. Candid, high texture, motion blur.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": 150,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "4pnxyz5"
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:10",
+      "feed_rank": 128,
+      "source_url": "https://www.midjourney.com/jobs/41441efd-898d-41d9-b434-41a0189ad49f",
+      "image": {
+        "url": "https://cdn.midjourney.com/41441efd-898d-41d9-b434-41a0189ad49f/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.5,
+        "heat": 0.293,
+        "score": 0.573,
+        "rank": 128,
+        "why": "夜间狗仔拍摄女性，具象写实，抽象与个性化不足。"
+      }
+    },
+    {
+      "id": "53ae0cfc-72d5-4c0c-9cbd-65496dac565b",
+      "source": "midjourney",
+      "author": "Lavendel",
+      "prompt_text": "Beautiful women, long hair, very long bright orange dress, standing on the cliff, down below are clowds, warm evening light, no sun",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 16:45",
+      "feed_rank": 130,
+      "source_url": "https://www.midjourney.com/jobs/53ae0cfc-72d5-4c0c-9cbd-65496dac565b",
+      "image": {
+        "url": "https://cdn.midjourney.com/53ae0cfc-72d5-4c0c-9cbd-65496dac565b/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.5,
+        "heat": 0.267,
+        "score": 0.567,
+        "rank": 130,
+        "why": "悬崖长裙女性，唯美但偏具象，抽象个性化弱。"
+      }
+    },
+    {
+      "id": "5450ac4d-6a08-41dd-b855-8c6bb93f6382",
+      "source": "midjourney",
+      "author": "its.leo15912",
+      "prompt_text": "Graceful ancient beauty, unparalleled elegance. Traditional high bun with colored hair ornaments and white flower branches. Golden gradient Tang Dynasty blouse, delicate luxurious soft colorful materials. Cold toned background, leaning against lush flowering branches, goddess like blue glaze aesthetic. Fair porcelain cold white skin. Close up surreal dreamy film photography, soft pastels, bright hazy tones, shallow depth of field, high film grain, retro texture. Frontal movie light (1.6), light tracking (1.5), smooth cold white skin (1.7), best bone structure (1.2), net like face (1.6), net like makeup (1.6). 19 year old girl, pointed chin, balanced proportions, slender figure, exquisite makeup, delicate accessories, flowing messy hair, random angle, sweet lazy playful mood. Korean sweet style, Vivvy pure desire style, Jiangnan beauty temperament, idolistic youthful charm, small earrings and bracelets, sunny outdoor panoramic background, extreme detail, extreme rendering, contour light, INSTAGRAM style.",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": 50,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [
+          "text subtitles labels watermarks logos collage"
+        ],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:06",
+      "feed_rank": 91,
+      "source_url": "https://www.midjourney.com/jobs/5450ac4d-6a08-41dd-b855-8c6bb93f6382",
+      "image": {
+        "url": "https://cdn.midjourney.com/5450ac4d-6a08-41dd-b855-8c6bb93f6382/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 0.787,
+        "score": 0.557,
+        "rank": 91,
+        "why": "少女肖像但为唐风古装甜美偶像风，尾部关键词堆砌，抽象与个性化均弱。"
+      }
+    },
+    {
+      "id": "be7b1b01-33d9-496e-80c5-2822b9304408",
+      "source": "midjourney",
+      "author": "vonnideb",
+      "prompt_text": "glee. no face, flat, restrict this to impressive bold outlines only. outline image of the phenomenal caricature of a stunning plus size African American woman, high energy. she has on fur coat, now suitable for a coloring book page. praying The artwork is completely colorless, including her skin, making it ideal for coloring. She's depicted as a boss babe in full glam, with long beautiful immaculate white sleek massive ponytail updo with volcanic high syncopated finger waves, oversized stylish brightly colored glasses, and jewelry, wearing upscale luxury attire and captured in a praying pose with huge butterflies, The image emphasizes her powerful presence and stylish elegance, dark pink, Tiffany blue and gold. ar45:103,",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/O4PzO9CQasQ",
+          "https://s.mj.run/mEVVwBTjEpM",
+          "https://s.mj.run/mJZ_Pe-Ovm0"
+        ],
+        "personalize": "1xpfnle"
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 23:06",
+      "feed_rank": 150,
+      "source_url": "https://www.midjourney.com/jobs/be7b1b01-33d9-496e-80c5-2822b9304408",
+      "image": {
+        "url": "https://cdn.midjourney.com/be7b1b01-33d9-496e-80c5-2822b9304408/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.5,
+        "heat": 0.0,
+        "score": 0.5,
+        "rank": 150,
+        "why": "女性轮廓漫画肖像，无脸线稿有抽象性，但更偏涂色页与夸张漫画而非少女肖像。"
+      }
+    },
+    {
+      "id": "2706b80b-df45-4124-8ba6-d337a8c2147d",
+      "source": "midjourney",
+      "author": "u2938496453",
+      "prompt_text": "4 Vertical extreme close-up of kawaii turtle face, giant reflective eyes, tiny nostrils and gentle smile, smooth stylized reptile texture and pale peach background, soft beauty lighting with blank upper margin, no typography",
+      "params": {
+        "version": "8.2",
+        "ar": "4:7",
+        "stylize": null,
+        "chaos": 10,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "9lu8ach"
+      },
+      "size": {
+        "width": 1664,
+        "height": 2912
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 22:01",
+      "feed_rank": 114,
+      "source_url": "https://www.midjourney.com/jobs/2706b80b-df45-4124-8ba6-d337a8c2147d",
+      "image": {
+        "url": "https://cdn.midjourney.com/2706b80b-df45-4124-8ba6-d337a8c2147d/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 0.48,
+        "score": 0.496,
+        "rank": 114,
+        "why": "可爱特写肖像且风格化，但主体是乌龟非少女。"
+      }
+    },
+    {
+      "id": "da70b049-f37b-4003-9f14-45cc83ae3ce8",
+      "source": "midjourney",
+      "author": "Anita planet X",
+      "prompt_text": "Queen of hearts the card has a woman with long ultra glittery caramel hair wearing vibrant fractal patterned colour maid outfit she has on a diamond cross necklace and earrings she has enormous eyes glittery silver of colour she has fractal patterned gloves and matching shoes this is royalty queen of hearts. 3D animated. High quality.",
+      "params": {
+        "version": "8.2",
+        "ar": "4:5",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 960,
+        "height": 1200
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 04:18",
+      "feed_rank": 122,
+      "source_url": "https://www.midjourney.com/jobs/da70b049-f37b-4003-9f14-45cc83ae3ce8",
+      "image": {
+        "url": "https://cdn.midjourney.com/da70b049-f37b-4003-9f14-45cc83ae3ce8/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 0.373,
+        "score": 0.475,
+        "rank": 122,
+        "why": "红心皇后女性肖像，3D动画与分形图案有风格，但偏奇幻角色设定。"
+      }
+    },
+    {
+      "id": "758d7a9f-49f9-4dcf-98bb-da6469d624b7",
+      "source": "midjourney",
+      "author": "hidesa_sacressa",
+      "prompt_text": "Autumn, autumn-themed street, autumn scenery, lone wholesome woman, French chic, hand drawn",
+      "params": {
+        "version": "8.2",
+        "ar": "1:2",
+        "stylize": 50,
+        "chaos": 10,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "bny15rd"
+      },
+      "size": {
+        "width": 1552,
+        "height": 3104
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 18:49",
+      "feed_rank": 126,
+      "source_url": "https://www.midjourney.com/jobs/758d7a9f-49f9-4dcf-98bb-da6469d624b7",
+      "image": {
+        "url": "https://cdn.midjourney.com/758d7a9f-49f9-4dcf-98bb-da6469d624b7/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 0.32,
+        "score": 0.464,
+        "rank": 126,
+        "why": "秋日街头女性手绘，法式风格化但信息简略，抽象与个性化有限。"
+      }
+    },
+    {
+      "id": "1b2b66d1-53c9-4a75-97cb-bda4d48b7578",
+      "source": "midjourney",
+      "author": "Kennon",
+      "prompt_text": "create from my photo a close-up portrait of a beautiful woman, wet skin with water droplets, cinematic lighting in neon blue with red tones, soft but sharp details, glossy lips, dramatic shadows, futuristic and mysterious atmosphere, ultra-realistic, high detail, 8k, hyper-detailed, photo-realistic, looks exactly like the girl in the photo, all facial features preserved, hair color and eye color, nose, cheekbones, chin, just like in the photo",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:39",
+      "feed_rank": 131,
+      "source_url": "https://www.midjourney.com/jobs/1b2b66d1-53c9-4a75-97cb-bda4d48b7578",
+      "image": {
+        "url": "https://cdn.midjourney.com/1b2b66d1-53c9-4a75-97cb-bda4d48b7578/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 0.253,
+        "score": 0.451,
+        "rank": 131,
+        "why": "女性特写肖像，霓虹湿肤偏写实科幻，抽象与个性化不足。"
+      }
+    },
+    {
+      "id": "5c7c0f1a-f2cb-49a7-b7b9-4ad64a3402ac",
+      "source": "midjourney",
+      "author": "huxley",
+      "prompt_text": "stupid face person",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "5lwp4bc"
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 16:27",
+      "feed_rank": 7,
+      "source_url": "https://www.midjourney.com/jobs/5c7c0f1a-f2cb-49a7-b7b9-4ad64a3402ac",
+      "image": {
+        "url": "https://cdn.midjourney.com/5c7c0f1a-f2cb-49a7-b7b9-4ad64a3402ac/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 7,
+        "why": "提到人物面部但极简且偏丑化，缺乏少女肖像与抽象个性化信息。"
+      }
+    },
+    {
+      "id": "7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35",
+      "source": "midjourney",
+      "author": "rem75.",
+      "prompt_text": "A beautiful 25 year old woman of unspecified ethnicity walking naturally along a rain soaked European city street under a large plain black umbrella, full body vertical street style composition. Dark brown hair tied back, oversized round tortoiseshell glasses, loose taupe gray cable knit sweater, short brown plaid pleated skirt, sheer black tights, chunky black Mary Jane shoes, black crossbody bag. One hand holds the umbrella; the other holds a single slim hand rolled cigarette of unbleached warm brown rolling paper close to her lips, small glowing ember, delicate wisp of smoke not obscuring her face, no filter. Eyes open, calm expression, natural movement, realistic matte skin, wet pavement reflections, soft overcast daylight, subtle drizzle. Candid Parisian street fashion photography, muted neutral tones, photorealistic, no coffee cup, no beverages, no logos.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": 35,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "bbrb74x"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 21:42",
+      "feed_rank": 17,
+      "source_url": "https://www.midjourney.com/jobs/7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35",
+      "image": {
+        "url": "https://cdn.midjourney.com/7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 17,
+        "why": "全身街拍时尚人像，主体是城市街景与穿搭，非少女肖像且无抽象个性化。"
+      }
+    },
+    {
+      "id": "8c2f7755-0105-475d-8208-4bd411c2369c",
+      "source": "midjourney",
+      "author": "u6152348244",
+      "prompt_text": "В музее картин.. девушка держит картину в руках , на картине нарисовано только море, из картины льется вода",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": 50,
+        "chaos": null,
+        "weird": null,
+        "seed": "540382702",
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "2e174t3"
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 20:03",
+      "feed_rank": 23,
+      "source_url": "https://www.midjourney.com/jobs/8c2f7755-0105-475d-8208-4bd411c2369c",
+      "image": {
+        "url": "https://cdn.midjourney.com/8c2f7755-0105-475d-8208-4bd411c2369c/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 23,
+        "why": "博物馆中持画少女，场景叙事为主，肖像与抽象个性化均不突出。"
+      }
+    },
+    {
+      "id": "fbd658be-ad3b-4212-89ad-ae888da5ce23",
+      "source": "midjourney",
+      "author": "sanchi1112",
+      "prompt_text": "Full body group portrait of eight Ming Dynastycommoners and street vendors on a simplelight gray background. Characters: a tanghuluvendor with skewer pole, a steamed bunvendor with bamboo steamer, a sturdywoman with shoulder pole, a tall thin malepasserby, a plump shopping woman, a shortshrewd elderly woman, a young woman withwicker back basket, and a robust porter. Allwear authentic Ming winter commoner attirecross collar robes, padded jackets, bijia, beizi,skirts, wide legged trousers, leg wraps, clothshoes in coarse cotton, linen, or hemp; wornwith patches. Men's hair in buns orheadscarves; women in simple or low buns.Varied body types and diverse facial shapesround, long, square. Faces are exaggeratedand humorous vivid, slightly grotesque withbig noses, small eyes, large ears, pouting lips.Style resembles Chinese animated featurefilm supporting characters. No photorealism,no Pixar style, no chibi.",
+      "params": {
+        "version": "8.2",
+        "ar": "16:9",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 2944,
+        "height": 1648
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 20:16",
+      "feed_rank": 24,
+      "source_url": "https://www.midjourney.com/jobs/fbd658be-ad3b-4212-89ad-ae888da5ce23",
+      "image": {
+        "url": "https://cdn.midjourney.com/fbd658be-ad3b-4212-89ad-ae888da5ce23/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 24,
+        "why": "明代市井群像含年轻女性，但整体为群像且风格夸张，非少女肖像。"
+      }
+    },
+    {
+      "id": "4ba30af7-1440-4cca-9fb4-c6210b82ea1f",
+      "source": "midjourney",
+      "author": "u7963554118",
+      "prompt_text": "A surreal, Oriental-fantasy creature blending hand-painted sculpture, 3D paper art, intricate paper-cutting, and enamel craftsmanship. It retains accurate anatomical structure and natural proportions, with its form defined by bold color blocking, layered lamellae, bas-relief patterns, and delicate gold filigree. The palette is dominated by ivory white, royal blue, and cyan, accented with vermilion, ochre-orange, and matte gold. The surface features a refined, hand-painted texture with areas of soft ceramic luster, crisp contours, and exquisite layering. Decorative elements flow naturally along the lines of musculature, bone structure, and fur growth, creating an overall aesthetic that is elegant, fantastical, and evocative of a collectible art sculpture. The image depicts the creature's full body in a three-quarter profile view against a solid deep-blue background, illuminated by soft side lighting that highlights high-definition details.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "cnh6ed8"
+      },
+      "size": {
+        "width": 1648,
+        "height": 2944
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 17:02",
+      "feed_rank": 31,
+      "source_url": "https://www.midjourney.com/jobs/4ba30af7-1440-4cca-9fb4-c6210b82ea1f",
+      "image": {
+        "url": "https://cdn.midjourney.com/4ba30af7-1440-4cca-9fb4-c6210b82ea1f/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 31,
+        "why": "东方奇幻生物雕塑，抽象个性化强但非少女肖像。"
+      }
+    },
+    {
+      "id": "1eaa968f-a3b9-4042-857b-1b0e3272352e",
+      "source": "midjourney",
+      "author": "WhatIf",
+      "prompt_text": "a transparent anatomical heart, made of glass or resin, filled with white and blue floral patterns, as if flowers were printed or embedded inside the heart, inspired by porcelain design, realistic and elegant, cinematic lighting, black background, surreal and poetic mood.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": 200,
+        "chaos": 10,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [
+          "4103990610",
+          "2216056865",
+          "4129353691",
+          "2267855466",
+          "4046773981",
+          "4292682155",
+          "2877828649",
+          "969107170",
+          "1491485",
+          "689555301",
+          "3092646153",
+          "875296620",
+          "60617988",
+          "1583222085"
+        ],
+        "personalize": "9lbwhmv"
+      },
+      "size": {
+        "width": 1904,
+        "height": 2544
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 19:23",
+      "feed_rank": 40,
+      "source_url": "https://www.midjourney.com/jobs/1eaa968f-a3b9-4042-857b-1b0e3272352e",
+      "image": {
+        "url": "https://cdn.midjourney.com/1eaa968f-a3b9-4042-857b-1b0e3272352e/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 40,
+        "why": "透明解剖心脏与花卉，抽象诗意但非少女肖像。"
+      }
+    },
+    {
+      "id": "af231e4a-5cb6-4da4-91e1-d3ce8b4b860d",
+      "source": "midjourney",
+      "author": "sarahjanecreative",
+      "prompt_text": "soft sophisticated checkerboard pattern in dusty lavender and warm creamy ivory, tiny velvet bows and miniature mother-of-pearl crescent moons alternating delicately within selected squares, occasional tiny antique gold stars, romantic celestial fashion aesthetic, feminine modern luxury, clean graphic composition with subtle handmade imperfection, seamless repeating pattern, no typography",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:33",
+      "feed_rank": 48,
+      "source_url": "https://www.midjourney.com/jobs/af231e4a-5cb6-4da4-91e1-d3ce8b4b860d",
+      "image": {
+        "url": "https://cdn.midjourney.com/af231e4a-5cb6-4da4-91e1-d3ce8b4b860d/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 48,
+        "why": "抽象图案设计，偏女性化但无肖像"
+      }
+    },
+    {
+      "id": "fa328e8b-af2b-4397-9b4d-09368e9a5318",
+      "source": "midjourney",
+      "author": "warlockweirdo",
+      "prompt_text": "Nightmare home, beautiful, 18, blonde girlfriend, tall, eerie, dream state",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:24",
+      "feed_rank": 49,
+      "source_url": "https://www.midjourney.com/jobs/fa328e8b-af2b-4397-9b4d-09368e9a5318",
+      "image": {
+        "url": "https://cdn.midjourney.com/fa328e8b-af2b-4397-9b4d-09368e9a5318/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 49,
+        "why": "金发女友梦魇场景，氛围诡异但偏恐怖叙事，肖像与抽象性弱。"
+      }
+    },
+    {
+      "id": "3eab545b-1984-48f7-9e14-9776319fe437",
+      "source": "midjourney",
+      "author": "zekerzichtbaar",
+      "prompt_text": "Extremely minimal abstract logo symbol made of only two solid geometric shapes facing each other, one on the left and one on the right, with slightly rounded corners. The narrow white gap between the two shapes subtly forms the negative-space shape of a capital letter T. Simple, bold, balanced and calm. The symbol should feel abstract at first glance, with the T only noticeable on second look. Flat solid single color on a plain white background. No stripes, no multiple lines, no outlines, no gradients, no shadows, no 3D, no text. Modern, clean, professional brand symbol, centered, lots of white space, crisp vector edges.",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 16:48",
+      "feed_rank": 53,
+      "source_url": "https://www.midjourney.com/jobs/3eab545b-1984-48f7-9e14-9776319fe437",
+      "image": {
+        "url": "https://cdn.midjourney.com/3eab545b-1984-48f7-9e14-9776319fe437/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 53,
+        "why": "极简抽象几何标志，抽象但无少女肖像"
+      }
+    },
+    {
+      "id": "071b148b-fc99-4db2-920c-a3bab4a6c67d",
+      "source": "midjourney",
+      "author": "franco.gio",
+      "prompt_text": "uma criança estilo cartoon, cavalgando em um cavalo com asas e calda de dragão, sobrevoando nuvens coloridas.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/qcSLlXK9IdY",
+          "https://s.mj.run/5oF0WpB3fzY"
+        ],
+        "personalize": null
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 19:36",
+      "feed_rank": 65,
+      "source_url": "https://www.midjourney.com/jobs/071b148b-fc99-4db2-920c-a3bab4a6c67d",
+      "image": {
+        "url": "https://cdn.midjourney.com/071b148b-fc99-4db2-920c-a3bab4a6c67d/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 1.0,
+        "score": 0.45,
+        "rank": 65,
+        "why": "卡通儿童骑飞马，非少女肖像"
+      }
+    },
+    {
+      "id": "71c86fef-ba1c-452f-a176-2efc88da90d1",
+      "source": "midjourney",
+      "author": "Boutee",
+      "prompt_text": "Scandinavian-inspired minimalist art print featuring a large bird’s head filling most of the composition. The bird’s head should act as a bold outer silhouette, and within that silhouette the interior is filled with stylised flowers, petals, leaves, and organic botanical shapes. All of the floral elements must stay contained within the outline of the bird’s head, creating a decorative cutout effect. The flowers should be simple, bold, and graphic rather than detailed or realistic. Use a soft Nordic-inspired pastel palette with cream, dusty blue, sage green, pastel orange, soft yellow, blush pink, and muted teal. The overall piece should feel clean, decorative, nature-inspired, and distinctly Scandinavian, with flat shapes, minimal detail, smooth organic forms, and a balanced but visually rich composition. Contemporary wall art, no text, no frame.",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": 35,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "hc69kp2"
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:29",
+      "feed_rank": 80,
+      "source_url": "https://www.midjourney.com/jobs/71c86fef-ba1c-452f-a176-2efc88da90d1",
+      "image": {
+        "url": "https://cdn.midjourney.com/71c86fef-ba1c-452f-a176-2efc88da90d1/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.933,
+        "score": 0.44,
+        "rank": 80,
+        "why": "斯堪的纳维亚抽象鸟头花卉图案，抽象但非少女肖像"
+      }
+    },
+    {
+      "id": "b3855291-bb09-4fd2-a6c8-8e071bd2f1ae",
+      "source": "midjourney",
+      "author": "InnaNa",
+      "prompt_text": "Macro portrait , curved, detail, close-up, angle of curvature. Fashion, editorial",
+      "params": {
+        "version": "8.2",
+        "ar": "4:5",
+        "stylize": null,
+        "chaos": 40,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/C9xkAK28sJ8",
+          "https://s.mj.run/PMr6evAEcD8"
+        ],
+        "personalize": "gcim2of"
+      },
+      "size": {
+        "width": 1968,
+        "height": 2464
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 22:53",
+      "feed_rank": 81,
+      "source_url": "https://www.midjourney.com/jobs/b3855291-bb09-4fd2-a6c8-8e071bd2f1ae",
+      "image": {
+        "url": "https://cdn.midjourney.com/b3855291-bb09-4fd2-a6c8-8e071bd2f1ae/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.92,
+        "score": 0.438,
+        "rank": 81,
+        "why": "仅宏观特写与时尚编辑，缺少少女与抽象个性化元素。"
+      }
+    },
+    {
+      "id": "25f2d0f8-791e-42c9-9337-d03b191953c8",
+      "source": "midjourney",
+      "author": "mari_ugarte",
+      "prompt_text": "macro editorial beauty photograph, cropped female arm entering from the upper left, hand centered in frame holding a small round amber glass jar filled with white face cream, surrounded by tiny ivory wildflowers and lush dark green foliage, low camera angle, close intimate framing, soft out-of-focus flowers in the foreground, direct late-afternoon sunlight hitting the hand and jar, dramatic deep shadows behind, warm golden skin tones, muted botanical greens, cinematic analog film photography, 35mm, subtle grain, slightly underexposed, soft dreamy focus, natural imperfections, 1970s botanical skincare advertisement, quiet luxury, artisanal apothecary aesthetic",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "v7fifjs"
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 04:39",
+      "feed_rank": 141,
+      "source_url": "https://www.midjourney.com/jobs/25f2d0f8-791e-42c9-9337-d03b191953c8",
+      "image": {
+        "url": "https://cdn.midjourney.com/25f2d0f8-791e-42c9-9337-d03b191953c8/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.4,
+        "heat": 0.12,
+        "score": 0.424,
+        "rank": 141,
+        "why": "女性手臂持面霜，部分人体但非肖像，抽象个性化弱。"
+      }
+    },
+    {
+      "id": "d5f3ce4b-efd1-40df-b069-50a5d2071a1b",
+      "source": "midjourney",
+      "author": "muchenai",
+      "prompt_text": "The chinese woman raises her head and gazes straight into the camera with a cool expression, striding forward in a crossed model walk, arms swinging naturally, long hair lifted by the wind, while the sand wave keeps churning and spreading behind her.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": 30,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 21:52",
+      "feed_rank": 94,
+      "source_url": "https://www.midjourney.com/jobs/d5f3ce4b-efd1-40df-b069-50a5d2071a1b",
+      "image": {
+        "url": "https://cdn.midjourney.com/d5f3ce4b-efd1-40df-b069-50a5d2071a1b/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.747,
+        "score": 0.412,
+        "rank": 94,
+        "why": "中国女性走秀全身动态，场景化时尚摄影，非肖像且无抽象个性化。"
+      }
+    },
+    {
+      "id": "1b941b78-b6a7-40d6-adb7-8934a09abc3d",
+      "source": "midjourney",
+      "author": "@Fasdop",
+      "prompt_text": "Use the exact facial identity and styling of the woman in the first reference image. She is 25 years old. Evening lit honey colored stone alley, Puglia. She sits sideways on a stationary pastel yellow vintage Italian scooter on its center stand. She wears a fitted yellow cotton halter neck midi sundress with tiny white daisies, square neckline, draped skirt, thigh high side slit. Tan leather low heeled open toe mules, small gold hoop earrings, two delicate gold necklaces. Long blonde hair in loose waves, gentle sea breeze. She holds a pistachio gelato cone near her lips, playful relaxed glance at camera. Slow forward dolly, medium full to waist up portrait, 50mm lens, shallow depth of field, blurred limestone background. One continuous 8 second shot, Italian fashion music video aesthetic, ARRI Alexa 35, cinematic 4K, accurate skin and fabric texture, controlled highlights, realistic anatomy. Gentle wind and distant street ambience only. No text, logos, or artifacts.",
+      "params": {
+        "version": "8.2",
+        "ar": "16:9",
+        "stylize": 750,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1456,
+        "height": 816
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:53",
+      "feed_rank": 97,
+      "source_url": "https://www.midjourney.com/jobs/1b941b78-b6a7-40d6-adb7-8934a09abc3d",
+      "image": {
+        "url": "https://cdn.midjourney.com/1b941b78-b6a7-40d6-adb7-8934a09abc3d/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.707,
+        "score": 0.406,
+        "rank": 97,
+        "why": "女性骑摩托吃冰淇淋的时尚视频分镜，场景叙事为主，非肖像且无抽象。"
+      }
+    },
+    {
+      "id": "63b23f61-c9fd-49e7-8480-d44199aa83eb",
+      "source": "midjourney",
+      "author": "tangt_tang",
+      "prompt_text": "写实东方历史电影静帧，唐代乡村村口，一位归乡老人沿着熟悉的土路走到村口，刚刚停下脚步。几个乡村孩子原本在一旁玩耍，此刻好奇地围过来，其中一个孩子仰着头向老人发问，神情天真自然。老人原本脸上带一点回到故乡的轻微笑意，听见孩子的话后，神情轻轻停住，先看向孩子，又越过孩子看向身后的村庄，眼里有一种克制的复杂情绪:温和、熟悉、略带一点被当作外乡人的怔然。画面重点是\"回家的人，被孩子当成了客人\"的那一瞬间，不是重逢大哭，不是认亲戏。 1:1方形画幅，35mm电影摄影，中景偏近景，单一真实摄影机视角。老人位于画面中心或偏一侧，孩子在他身前较低的位置，形成自然仰视关系。背景能看见村口老树、土路、低矮屋舍或院墙，环境简朴真实，有唐代乡村生活感。画面重点在人物表情关系，不是纯风景。 老人约七十岁左右，唐代归乡老人形象，头发与胡须灰白，面容慈和、清瘦，有真实皱纹。穿朴素整洁的唐代乡村布袍，低饱和灰褐、米白、浅青灰色，衣着旧但干净，可拄一根木杖或带一个小包袱，不要官服，不要华贵。 孩子为唐代乡村小儿，4到8岁左右，穿朴素布衣、小袍，低饱和土黄、浅褐、灰青、米白色，头发自然束起或简单发髻，神情天真、不做作。 环境为安静的唐代乡村村口:老树、土路、草地、低墙、木门、小桥或村舍一角。自然柔和天光，带一点返乡午后或傍晚的安静气息。真实皮肤、布料、泥土、木杖与树皮质感，细腻胶片颗粒。 不要宫廷，不要宏大古城门，不要仙侠，不要哭泣夸张表情，不要文字题字，不要水印，不要多余人物。",
+      "params": {
+        "version": "8.2",
+        "ar": "1:1",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [
+          "text letters words calligraphy watermark logo subtitle"
+        ],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 01:08",
+      "feed_rank": 103,
+      "source_url": "https://www.midjourney.com/jobs/63b23f61-c9fd-49e7-8480-d44199aa83eb",
+      "image": {
+        "url": "https://cdn.midjourney.com/63b23f61-c9fd-49e7-8480-d44199aa83eb/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.627,
+        "score": 0.394,
+        "rank": 103,
+        "why": "唐代乡村人物场景，非少女肖像且不抽象。"
+      }
+    },
+    {
+      "id": "06eb6f6b-05bb-4571-9dc5-cd3a652c326b",
+      "source": "midjourney",
+      "author": "uuzzz_56617",
+      "prompt_text": "可爱拟人化小狗IP形象，采用3D潮玩盲盒风格，大头小身约2头身比例，整体造型圆润、紧凑、可爱，双腿站立",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "77wktld"
+      },
+      "size": {
+        "width": 2048,
+        "height": 2048
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 19:52",
+      "feed_rank": 112,
+      "source_url": "https://www.midjourney.com/jobs/06eb6f6b-05bb-4571-9dc5-cd3a652c326b",
+      "image": {
+        "url": "https://cdn.midjourney.com/06eb6f6b-05bb-4571-9dc5-cd3a652c326b/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.507,
+        "score": 0.376,
+        "rank": 112,
+        "why": "拟人小狗IP潮玩，非少女且不抽象。"
+      }
+    },
+    {
+      "id": "54b41d39-c09f-41aa-84f4-d528d4ac9418",
+      "source": "midjourney",
+      "author": "lucaponsato",
+      "prompt_text": "slight impasto painting, thick painting style, man covered in fire laying on the ground in a living room, another man is sitting on a chair holding a bucket of water, unique POV, barely muted colors, slightly grainy, minimalist",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 22:06",
+      "feed_rank": 113,
+      "source_url": "https://www.midjourney.com/jobs/54b41d39-c09f-41aa-84f4-d528d4ac9418",
+      "image": {
+        "url": "https://cdn.midjourney.com/54b41d39-c09f-41aa-84f4-d528d4ac9418/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.493,
+        "score": 0.374,
+        "rank": 113,
+        "why": "厚涂抽象风格，但主体是着火男子，非少女。"
+      }
+    },
+    {
+      "id": "3615d39c-6c52-4a1d-9f65-47ffb8ea91ac",
+      "source": "midjourney",
+      "author": "pr.digital",
+      "prompt_text": "Intergenerational Dynamics in Psychogerontology Training and Research represented by a happy face of an old woman",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "j6jj1bp"
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:14",
+      "feed_rank": 129,
+      "source_url": "https://www.midjourney.com/jobs/3615d39c-6c52-4a1d-9f65-47ffb8ea91ac",
+      "image": {
+        "url": "https://cdn.midjourney.com/3615d39c-6c52-4a1d-9f65-47ffb8ea91ac/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.28,
+        "score": 0.342,
+        "rank": 129,
+        "why": "老年女性笑脸，仅沾边肖像，无抽象个性化。"
+      }
+    },
+    {
+      "id": "08f7a8fb-d7f3-455b-8822-b4057223ba3c",
+      "source": "midjourney",
+      "author": "gracewang",
+      "prompt_text": "Complete graphic livery design for this exact sailing yacht, preserving hull geometry, sail shapes, mast position, proportions and viewing angle. Concept: GALENE (Γαλήνη), ancient Greek Nereid, personification of calm sea - serene, graceful, protective. The woman and sea form one continuous visual language across hull, mainsail, headsail and spinnaker: elegant feminine silhouette, flowing contours, negative space, calm water geometry. Inspired by Greek relief sculpture, Nereid imagery, vase linework and Mediterranean stillness, translated into radically contemporary graphic identity. Large scale composition, monumental scale, sophisticated negative space, elegant asymmetry, dynamic relationship with sail geometry. White yacht base, restrained deep blue, sea green and subtle warm neutral accents. No stripes, no badge logo, no Greek borders, no trident, no mermaid, no photorealistic portrait, no ornament. Professional yacht livery presentation, realistic visualization, clean daylight, full yacht visible, highly refined.",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 20:53",
+      "feed_rank": 135,
+      "source_url": "https://www.midjourney.com/jobs/08f7a8fb-d7f3-455b-8822-b4057223ba3c",
+      "image": {
+        "url": "https://cdn.midjourney.com/08f7a8fb-d7f3-455b-8822-b4057223ba3c/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.2,
+        "score": 0.33,
+        "rank": 135,
+        "why": "帆船涂装设计含女性剪影，但主体为船体非肖像。"
+      }
+    },
+    {
+      "id": "ce436486-b1a6-42c3-b808-8f6f9b3188be",
+      "source": "midjourney",
+      "author": "Roland",
+      "prompt_text": "cute pixar like girl full body pose with dragon themed clothing and or decorations on the clothing , rustic",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "6371454"
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:00",
+      "feed_rank": 144,
+      "source_url": "https://www.midjourney.com/jobs/ce436486-b1a6-42c3-b808-8f6f9b3188be",
+      "image": {
+        "url": "https://cdn.midjourney.com/ce436486-b1a6-42c3-b808-8f6f9b3188be/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.3,
+        "heat": 0.08,
+        "score": 0.312,
+        "rank": 144,
+        "why": "皮克斯风女孩全身像，可爱卡通，与抽象个性化意图偏离。"
+      }
+    },
+    {
+      "id": "1f5172d3-e01c-4e3b-b521-d63dacd26fcb",
+      "source": "midjourney",
+      "author": "u8386755556",
+      "prompt_text": "surreal mir fällt etwas ein wie techhnik skuril funktioniert",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/yQFWoCPC3BU"
+        ],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 21:03",
+      "feed_rank": 6,
+      "source_url": "https://www.midjourney.com/jobs/1f5172d3-e01c-4e3b-b521-d63dacd26fcb",
+      "image": {
+        "url": "https://cdn.midjourney.com/1f5172d3-e01c-4e3b-b521-d63dacd26fcb/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 6,
+        "why": "语义模糊的德语碎片，仅能隐约感到超现实倾向，无明确少女肖像。"
+      }
+    },
+    {
+      "id": "6e54b88f-2669-4453-83ba-0d4cd1363734",
+      "source": "midjourney",
+      "author": "Noil Klune",
+      "prompt_text": "many veiled roman sculptures dancing in a church. nicola samori style. white and yellow ocre colors.",
+      "params": {
+        "version": "8.2",
+        "ar": "2:1",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "f5d5vsi"
+      },
+      "size": {
+        "width": 1536,
+        "height": 768
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:26",
+      "feed_rank": 10,
+      "source_url": "https://www.midjourney.com/jobs/6e54b88f-2669-4453-83ba-0d4cd1363734",
+      "image": {
+        "url": "https://cdn.midjourney.com/6e54b88f-2669-4453-83ba-0d4cd1363734/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 10,
+        "why": "罗马雕塑群舞场景，非少女肖像，仅风格化沾边。"
+      }
+    },
+    {
+      "id": "7e43bfa2-52fd-45cf-b389-e29f598c0c32",
+      "source": "midjourney",
+      "author": "pobiliusz",
+      "prompt_text": "A happy carismatic indonesian caracter in the center of the image, looking into camera and having on plates good looking diffrent gyozas, dumplings and pierogi . The dishes shows details. There is a half of the upper space of the image space left free with nothing.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "xhnag2c"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 22:51",
+      "feed_rank": 11,
+      "source_url": "https://www.midjourney.com/jobs/7e43bfa2-52fd-45cf-b389-e29f598c0c32",
+      "image": {
+        "url": "https://cdn.midjourney.com/7e43bfa2-52fd-45cf-b389-e29f598c0c32/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 11,
+        "why": "印尼人物与饺子，与少女肖像意图基本无关。"
+      }
+    },
+    {
+      "id": "6a7be0b7-d43c-4871-b02e-0cef75d72435",
+      "source": "midjourney",
+      "author": "u8466729496",
+      "prompt_text": "glass greenhouse reading nook built as a studio set, oversized pastel leaves forming a natural parasol over a cozy reading chair, candy-colored potted plants, soft golden studio light, whimsical botanical surrealism, vintage storybook tone",
+      "params": {
+        "version": "8.2",
+        "ar": "4:5",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "bsuiuzm"
+      },
+      "size": {
+        "width": 1968,
+        "height": 2464
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 18:02",
+      "feed_rank": 20,
+      "source_url": "https://www.midjourney.com/jobs/6a7be0b7-d43c-4871-b02e-0cef75d72435",
+      "image": {
+        "url": "https://cdn.midjourney.com/6a7be0b7-d43c-4871-b02e-0cef75d72435/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 20,
+        "why": "温室阅读角场景，无少女肖像。"
+      }
+    },
+    {
+      "id": "9a5d0570-8295-4ac4-9ba8-705895d9cbaf",
+      "source": "midjourney",
+      "author": "ananubosas",
+      "prompt_text": "Watercolour depicting the interior of an Arab white room, with the three wise men from the Bible looking out of the arab window at a starry night sky and pointing at a shooting star with a smiling face. The background scenery shows the outskirts of a medieval Arab city. Pastel colours, chibi, kawaii, childlike style. only image. no frame",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 19:32",
+      "feed_rank": 37,
+      "source_url": "https://www.midjourney.com/jobs/9a5d0570-8295-4ac4-9ba8-705895d9cbaf",
+      "image": {
+        "url": "https://cdn.midjourney.com/9a5d0570-8295-4ac4-9ba8-705895d9cbaf/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 37,
+        "why": "水彩室内与三博士，含人物但非少女肖像。"
+      }
+    },
+    {
+      "id": "a9356e88-b3d7-4651-a3c2-1f290c0877eb",
+      "source": "midjourney",
+      "author": "ilikecc._90067",
+      "prompt_text": "这是一张黑白的照片，黑色的沙滩和飞翔的海鸥",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1792,
+        "height": 2688
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 23:52",
+      "feed_rank": 42,
+      "source_url": "https://www.midjourney.com/jobs/a9356e88-b3d7-4651-a3c2-1f290c0877eb",
+      "image": {
+        "url": "https://cdn.midjourney.com/a9356e88-b3d7-4651-a3c2-1f290c0877eb/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 42,
+        "why": "黑白照片但主体是沙滩海鸥，无人物肖像"
+      }
+    },
+    {
+      "id": "e6c25d5b-884e-4003-850b-1ffd733e1ae7",
+      "source": "midjourney",
+      "author": "Mage of Maple",
+      "prompt_text": "elusive liminal spaces",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": 4,
+        "weird": 2,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "q1rzw8r"
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 23:09",
+      "feed_rank": 46,
+      "source_url": "https://www.midjourney.com/jobs/e6c25d5b-884e-4003-850b-1ffd733e1ae7",
+      "image": {
+        "url": "https://cdn.midjourney.com/e6c25d5b-884e-4003-850b-1ffd733e1ae7/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 46,
+        "why": "阈限空间概念，抽象但无少女肖像"
+      }
+    },
+    {
+      "id": "92be7f6a-e7cc-445e-9c65-2d7c3333d92e",
+      "source": "midjourney",
+      "author": "32INC",
+      "prompt_text": "a childish naive modern simple comic-strip drawing of an aluminium can with a happy face, over a fridge rack",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 23:13",
+      "feed_rank": 47,
+      "source_url": "https://www.midjourney.com/jobs/92be7f6a-e7cc-445e-9c65-2d7c3333d92e",
+      "image": {
+        "url": "https://cdn.midjourney.com/92be7f6a-e7cc-445e-9c65-2d7c3333d92e/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 47,
+        "why": "儿童简笔漫画易拉罐，非人物肖像"
+      }
+    },
+    {
+      "id": "dbcf3959-79f4-480c-b147-28eb335c428f",
+      "source": "midjourney",
+      "author": "vikachu_ru",
+      "prompt_text": "Wildflower Meadow, broad painterly masses and organic shapes, poetic fine-art composition with visible brushwork. Sophisticated gallery-quality impressionist painting inspired by the atmospheric qualities of Monet-era painting, luminous natural light, loose expressive brushwork, layered painterly strokes, broken color, soft atmospheric transitions, subtle optical color variation, organic forms, visible individual brushstrokes, textured canvas or fine art paper, elegant composition, poetic atmosphere, painterly depth, refined museum-quality fine art feeling, natural imperfect edges, nuanced pigment variation, harmonious color relationships, artistic rather than photographic, contemporary collectible wall-art sensibility, avoid overly literal reproduction of any specific painting, no text, no lettering, no numbers, no logos, no watermark.",
+      "params": {
+        "version": "8.2",
+        "ar": "1:2",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [
+          "290519525"
+        ],
+        "personalize": "km5cxsm"
+      },
+      "size": {
+        "width": 1552,
+        "height": 3104
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-08 03:51",
+      "feed_rank": 52,
+      "source_url": "https://www.midjourney.com/jobs/dbcf3959-79f4-480c-b147-28eb335c428f",
+      "image": {
+        "url": "https://cdn.midjourney.com/dbcf3959-79f4-480c-b147-28eb335c428f/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 52,
+        "why": "野花草甸抽象绘画，无人物"
+      }
+    },
+    {
+      "id": "96897206-be6c-4cfa-9c4a-73fcc02edc52",
+      "source": "midjourney",
+      "author": "crippledbull",
+      "prompt_text": "Stained glass window depicting Jimi Hendrix guitar play, flowing Art Nouveau lines, elegant ornamental borders, peacock feather motifs, vibrant translucent glass, celestial halo of colorful light, rich cobalt, amber, amethyst and emerald tones, intricate craftsmanship, luminous sunlight, decorative masterpiece, highly detailed, fantasy cathedral aesthetic, enchanting reflections, exquisite glasswork",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 19:15",
+      "feed_rank": 54,
+      "source_url": "https://www.midjourney.com/jobs/96897206-be6c-4cfa-9c4a-73fcc02edc52",
+      "image": {
+        "url": "https://cdn.midjourney.com/96897206-be6c-4cfa-9c4a-73fcc02edc52/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 54,
+        "why": "彩色玻璃吉他手，非少女肖像"
+      }
+    },
+    {
+      "id": "46db8acd-656d-4ada-8aa8-c3899917a8ba",
+      "source": "midjourney",
+      "author": "flurry7828",
+      "prompt_text": "生成一张2:3竖版\"徐霞客\"电影概念海报，【核心创意】一座由无数纸张堆叠而成的\"山\"，犹如侧面古人人脸（只有轮廓，没有五官细节），纸片边缘毛糙、层层叠叠。一个非常非常小的古人人物，穿着素色长衫，手拿竹杖，在登山，背影望向远方。光意境苍凉又宏大，纸的纹理清晰，电影感，4K。【画幅与摄影机】 2:3竖版电影海报。 摄影机位于人物左前上方，以约38°--45°俯角斜向下观看地面，使用45--60mm中长焦镜头。 垂直90°航拍。",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1792,
+        "height": 2688
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 22:03",
+      "feed_rank": 55,
+      "source_url": "https://www.midjourney.com/jobs/46db8acd-656d-4ada-8aa8-c3899917a8ba",
+      "image": {
+        "url": "https://cdn.midjourney.com/46db8acd-656d-4ada-8aa8-c3899917a8ba/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 55,
+        "why": "徐霞客概念海报，人物极小且为古人"
+      }
+    },
+    {
+      "id": "5c9e4727-0678-4c5e-b118-77aa6bcae99c",
+      "source": "midjourney",
+      "author": "u5741356937",
+      "prompt_text": "패트와 매트같은 점토 애니메이션 캐릭터",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 19:11",
+      "feed_rank": 56,
+      "source_url": "https://www.midjourney.com/jobs/5c9e4727-0678-4c5e-b118-77aa6bcae99c",
+      "image": {
+        "url": "https://cdn.midjourney.com/5c9e4727-0678-4c5e-b118-77aa6bcae99c/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 56,
+        "why": "黏土动画角色，非少女肖像"
+      }
+    },
+    {
+      "id": "13fb56f1-a8f9-4011-b7b9-3787524b13b5",
+      "source": "midjourney",
+      "author": "qiufengluan",
+      "prompt_text": "霸王茶姬水墨云图，红色茶饮杯置于画面中心，纯白宣纸背景，流动朱砂红墨晕染扩散，居中构图，唯美静谧，精致水墨笔触，东方高级氛围感",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": 600,
+        "chaos": 25,
+        "weird": 13,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "zf84ck8"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:45",
+      "feed_rank": 58,
+      "source_url": "https://www.midjourney.com/jobs/13fb56f1-a8f9-4011-b7b9-3787524b13b5",
+      "image": {
+        "url": "https://cdn.midjourney.com/13fb56f1-a8f9-4011-b7b9-3787524b13b5/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 58,
+        "why": "水墨茶饮海报，无人物肖像"
+      }
+    },
+    {
+      "id": "b4ee198c-9dd8-41ee-9333-d62d5f7a7aa1",
+      "source": "midjourney",
+      "author": "u9734827799",
+      "prompt_text": "a profile picture of 20s korean girl only face long black hair, white background, black tshirt",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:04",
+      "feed_rank": 59,
+      "source_url": "https://www.midjourney.com/jobs/b4ee198c-9dd8-41ee-9333-d62d5f7a7aa1",
+      "image": {
+        "url": "https://cdn.midjourney.com/b4ee198c-9dd8-41ee-9333-d62d5f7a7aa1/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 59,
+        "why": "仅面部证件照式头像，白底黑T恤，毫无抽象与个性化。"
+      }
+    },
+    {
+      "id": "527bcf60-875e-4e58-bc0f-6f4d74b57e23",
+      "source": "midjourney",
+      "author": "banu2787735155",
+      "prompt_text": "a window isolated on a white background, there is autumn scenery outside of the windows, there is a cup of coffe in front of the window, watercolor comic book style, solid vibrant empty background with a frame",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "4puzz2i"
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 20:52",
+      "feed_rank": 60,
+      "source_url": "https://www.midjourney.com/jobs/527bcf60-875e-4e58-bc0f-6f4d74b57e23",
+      "image": {
+        "url": "https://cdn.midjourney.com/527bcf60-875e-4e58-bc0f-6f4d74b57e23/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 60,
+        "why": "窗户秋景水彩，无人物"
+      }
+    },
+    {
+      "id": "670e3905-9883-4988-81eb-84a12abdf429",
+      "source": "midjourney",
+      "author": "ArgiveArt",
+      "prompt_text": "cute medieval art knight owl, add writing \"attire\"",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 04:07",
+      "feed_rank": 68,
+      "source_url": "https://www.midjourney.com/jobs/670e3905-9883-4988-81eb-84a12abdf429",
+      "image": {
+        "url": "https://cdn.midjourney.com/670e3905-9883-4988-81eb-84a12abdf429/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 68,
+        "why": "中世纪猫头鹰骑士，非少女"
+      }
+    },
+    {
+      "id": "c1714227-bd09-4782-a187-6ec4a094e041",
+      "source": "midjourney",
+      "author": "jixitaqeko81",
+      "prompt_text": "CZECH SKŘÍTEK AND RARAŠEK Two tiny house spirits in a cozy Czech attic: one shy and tidy, one cheeky and messy, sharing a small bowl of unsalted porridge between old chests, books, dried herbs and cobwebs. Wooden beams, warm candle glow. [COZY STYLE]. Negative space on the right for copy. no tekst",
+      "params": {
+        "version": "8.2",
+        "ar": "16:9",
+        "stylize": 400,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "2jqegoq"
+      },
+      "size": {
+        "width": 2944,
+        "height": 1648
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 17:55",
+      "feed_rank": 70,
+      "source_url": "https://www.midjourney.com/jobs/c1714227-bd09-4782-a187-6ec4a094e041",
+      "image": {
+        "url": "https://cdn.midjourney.com/c1714227-bd09-4782-a187-6ec4a094e041/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 70,
+        "why": "捷克家宅精灵，非少女肖像"
+      }
+    },
+    {
+      "id": "e544f996-cc6c-4e4d-b832-bdad0e3bd4b3",
+      "source": "midjourney",
+      "author": "sannemusen",
+      "prompt_text": "Watercolour clip art illustration of an elegant nutcracker dressed in ice blue and wine claret velvet with winter white trim and champagne gold details, loose impressionistic brushwork, palette of ice blue, wine claret, winter white and champagne gold, scattered gold flecks, on white background",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/XoyHlJdbYKs",
+          "https://s.mj.run/ziyiZP3ObBI"
+        ],
+        "personalize": "xpn3bs1"
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 23:58",
+      "feed_rank": 71,
+      "source_url": "https://www.midjourney.com/jobs/e544f996-cc6c-4e4d-b832-bdad0e3bd4b3",
+      "image": {
+        "url": "https://cdn.midjourney.com/e544f996-cc6c-4e4d-b832-bdad0e3bd4b3/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 71,
+        "why": "胡桃夹子水彩插画，非少女"
+      }
+    },
+    {
+      "id": "c591b74b-d185-4a9e-b85f-3597d1eca4c6",
+      "source": "midjourney",
+      "author": "nass321",
+      "prompt_text": "The Casbah of Algiers, minimalist Mediterranean alley poster, whitewashed facades, narrow passage, a few ascending stairs, one weathered wooden door, one small shutter, clean linework, flat brush-painted texture, very little detail, elegant and recognizable North African architecture, no people, no animals, no text",
+      "params": {
+        "version": "8.2",
+        "ar": "4:5",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/Knh3kEXa1ug",
+          "https://s.mj.run/p-TxUXE2quY",
+          "https://s.mj.run/um1P9srbGkM"
+        ],
+        "personalize": null
+      },
+      "size": {
+        "width": 1968,
+        "height": 2464
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 19:11",
+      "feed_rank": 73,
+      "source_url": "https://www.midjourney.com/jobs/c591b74b-d185-4a9e-b85f-3597d1eca4c6",
+      "image": {
+        "url": "https://cdn.midjourney.com/c591b74b-d185-4a9e-b85f-3597d1eca4c6/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 73,
+        "why": "极简地中海街景海报，无人物"
+      }
+    },
+    {
+      "id": "21bc1ce2-2269-44e4-af4c-6a71a6fe6d96",
+      "source": "midjourney",
+      "author": "Edee",
+      "prompt_text": "Ultra realistic premium handcrafted needle felted bunny. Sitting upright, long ears, gently open eyes with delicate black lashes, soft smile, short rounded muzzle, tiny handmade nose. Smooth satin finish, hand smoothed surfaces, naturally rounded edges, subtle crafting imperfections. Each part  ears, head, body, arms, legs, paws, tail  individually sculpted with visible joins. Handcrafted flower crown of blush pink, ivory, and dusty rose felt flowers with sage green veined leaves; slight size and shape variations. Soft sage green rolled felt scarf with impressed stitch detail and natural folds. Sculpted cheeks with petal dust. Matte felt colours. Tiny finger smoothed felt marks visible on close inspection. Authentic artisan needle felting craftsmanship. Photographed on light natural oak tabletop, Canon EOS R5, 100mm macro lens, soft natural window light, shallow depth of field, warm neutral background, premium Etsy product photography, extremely realistic.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "jgvwgrb"
+      },
+      "size": {
+        "width": 1648,
+        "height": 2944
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 20:55",
+      "feed_rank": 75,
+      "source_url": "https://www.midjourney.com/jobs/21bc1ce2-2269-44e4-af4c-6a71a6fe6d96",
+      "image": {
+        "url": "https://cdn.midjourney.com/21bc1ce2-2269-44e4-af4c-6a71a6fe6d96/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 1.0,
+        "score": 0.3,
+        "rank": 75,
+        "why": "羊毛毡兔子，非少女"
+      }
+    },
+    {
+      "id": "673f389e-6306-45c5-92bf-5b38428c440e",
+      "source": "midjourney",
+      "author": "audiorebel",
+      "prompt_text": "vintage poster, hand-drawn linocut illustration, black ink on aged cream paper, monochrome with neon color elements halftone grain, ukiyo-e engraving style, centered composition, retro print, the muses of the arts together in a circular design, distressed letterpress texture, vintage woodblock poster, linocut illustration, black ink on cream paper with neon colors, distressed letterpress texture, octopus. a word \"AUDIO REBEL\" written in circle",
+      "params": {
+        "version": "8.2",
+        "ar": "1:1",
+        "stylize": null,
+        "chaos": 5,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/gjQd2gWVsII",
+          "https://s.mj.run/gE2g9-HFzyk"
+        ],
+        "personalize": "7tso7re"
+      },
+      "size": {
+        "width": 2048,
+        "height": 2048
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 18:52",
+      "feed_rank": 77,
+      "source_url": "https://www.midjourney.com/jobs/673f389e-6306-45c5-92bf-5b38428c440e",
+      "image": {
+        "url": "https://cdn.midjourney.com/673f389e-6306-45c5-92bf-5b38428c440e/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.973,
+        "score": 0.297,
+        "rank": 77,
+        "why": "复古版画缪斯圆环，非少女肖像"
+      }
+    },
+    {
+      "id": "b37f64a7-69ed-4291-a6b7-4e7b42393b86",
+      "source": "midjourney",
+      "author": "katun.studio_66621",
+      "prompt_text": "An artistic drawing of a translucent red balloon dog, rendered in the style of an architectural blueprint, featuring technical annotations for width, depth, height, and invented dimensions visible within the image. Includes lines and sketches. Highly graphic, modern, and clean.",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:32",
+      "feed_rank": 85,
+      "source_url": "https://www.midjourney.com/jobs/b37f64a7-69ed-4291-a6b7-4e7b42393b86",
+      "image": {
+        "url": "https://cdn.midjourney.com/b37f64a7-69ed-4291-a6b7-4e7b42393b86/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.867,
+        "score": 0.287,
+        "rank": 85,
+        "why": "抽象图形化但主体是气球狗，无人物肖像。"
+      }
+    },
+    {
+      "id": "7fd7976e-2f60-4c36-bfa2-2b3d254d7596",
+      "source": "midjourney",
+      "author": "davincig331",
+      "prompt_text": "A handsome, sporty young man holding a badminton racket on a lawn in a modern park, 1999; high-definition image; commercial and magazine-style photography.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "po8k6eu"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:26",
+      "feed_rank": 93,
+      "source_url": "https://www.midjourney.com/jobs/7fd7976e-2f60-4c36-bfa2-2b3d254d7596",
+      "image": {
+        "url": "https://cdn.midjourney.com/7fd7976e-2f60-4c36-bfa2-2b3d254d7596/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.76,
+        "score": 0.276,
+        "rank": 93,
+        "why": "年轻男性运动肖像，性别与风格均不符。"
+      }
+    },
+    {
+      "id": "318f3b1a-9659-46d9-96be-0fe39b8ddc3e",
+      "source": "midjourney",
+      "author": "Ozz Dreamland",
+      "prompt_text": "Non-human, abstract villain, Lovecraftian style; concept art with dynamic \"cybersport\" energy, robust art style, bold ink lines, daylight, neutral-toned lighting, graphic-style shadows; white background; no recognizable logos, no text, no watermarks.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": 150,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [
+          "text or logos words names signatures kanji numbers, border"
+        ],
+        "sref": [],
+        "personalize": "znwiv4t"
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 00:39",
+      "feed_rank": 98,
+      "source_url": "https://www.midjourney.com/jobs/318f3b1a-9659-46d9-96be-0fe39b8ddc3e",
+      "image": {
+        "url": "https://cdn.midjourney.com/318f3b1a-9659-46d9-96be-0fe39b8ddc3e/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.693,
+        "score": 0.269,
+        "rank": 98,
+        "why": "抽象反派概念艺术，非少女肖像。"
+      }
+    },
+    {
+      "id": "e829f451-482d-4f9e-ac39-390d211b8baf",
+      "source": "midjourney",
+      "author": "lentizz",
+      "prompt_text": "An very simple illustration of a brain in monocolor",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:57",
+      "feed_rank": 100,
+      "source_url": "https://www.midjourney.com/jobs/e829f451-482d-4f9e-ac39-390d211b8baf",
+      "image": {
+        "url": "https://cdn.midjourney.com/e829f451-482d-4f9e-ac39-390d211b8baf/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.667,
+        "score": 0.267,
+        "rank": 100,
+        "why": "单色大脑简图，与少女肖像无关。"
+      }
+    },
+    {
+      "id": "0900d4e5-8b9e-4a9d-b6c0-0b032be9d39a",
+      "source": "midjourney",
+      "author": "mirriezv6560",
+      "prompt_text": "A simple hand-drawn sketch, A man is sitting on the edge of a cliff looking up at the starry sky., Deliberately present an imperfect handcrafted feel, highlighting the combination of Van Gogh's style and graffiti., Highlight the combination of Van Gogh's style and graffiti,no words",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:23",
+      "feed_rank": 104,
+      "source_url": "https://www.midjourney.com/jobs/0900d4e5-8b9e-4a9d-b6c0-0b032be9d39a",
+      "image": {
+        "url": "https://cdn.midjourney.com/0900d4e5-8b9e-4a9d-b6c0-0b032be9d39a/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.613,
+        "score": 0.261,
+        "rank": 104,
+        "why": "手绘星空人物，风格个性化但非少女肖像。"
+      }
+    },
+    {
+      "id": "568755ff-44fd-403b-9280-44cf51af9e8b",
+      "source": "midjourney",
+      "author": "図未",
+      "prompt_text": "a fantasy digital illustration of a handsome Persian mage with violet eyes and black hair in a messy bun and short beard with a small sleek polished black stone that floats between his hand sin front of him. The stone is carved in simple violet oriental patterns, glowing with violet magic. He wears white robes with dark purple accents and soft black oriental patterns on the white. He stands in a sandstone temple with lit braziers casting soft orange light in the darkness.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 17:52",
+      "feed_rank": 108,
+      "source_url": "https://www.midjourney.com/jobs/568755ff-44fd-403b-9280-44cf51af9e8b",
+      "image": {
+        "url": "https://cdn.midjourney.com/568755ff-44fd-403b-9280-44cf51af9e8b/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.56,
+        "score": 0.256,
+        "rank": 108,
+        "why": "波斯法师奇幻插画，非少女肖像。"
+      }
+    },
+    {
+      "id": "6792044f-d386-4623-95f7-476c0d7d6dd8",
+      "source": "midjourney",
+      "author": "SprigPrints",
+      "prompt_text": "a single Marigold with text October at the bottom. painted in contemporary gestural oil painting style, alla prima technique, thick impasto brushstrokes, bold flat color planes, simplified figurative forms, pastel colours for a nursery on a white background accents, neutral solid background, small-format panel painting aesthetic, post-impressionist color blocking, loose expressive marks, dynamic animal movement, painterly texture visible. Full page background no canvas outline within the picture",
+      "params": {
+        "version": "8.2",
+        "ar": "70:99",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 912,
+        "height": 1296
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 21:17",
+      "feed_rank": 115,
+      "source_url": "https://www.midjourney.com/jobs/6792044f-d386-4623-95f7-476c0d7d6dd8",
+      "image": {
+        "url": "https://cdn.midjourney.com/6792044f-d386-4623-95f7-476c0d7d6dd8/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.467,
+        "score": 0.247,
+        "rank": 115,
+        "why": "万寿菊静物油画，与少女肖像无关。"
+      }
+    },
+    {
+      "id": "bce3a152-044d-4b5c-8c9b-6cace61dcc39",
+      "source": "midjourney",
+      "author": "Alvares",
+      "prompt_text": "a vertical fantasy illustration of an enormous black cat sitting completely still on top of a low drystone wall beside a dirt road at night, seen from about eight paces away, the top of its head about one third of the height of the whole frame and the horizon line running low across the middle of the frame. the cat sits upright and faces straight at the viewer, calm and patient and waiting, its front legs straight, its long tail hanging down the face of the wall beside it and curling at the tip, and its ears up. it reads as a hard black silhouette with no detail visible inside it at all, cut flat against the glowing sky behind, and only the rough edge of its fur separates it from the night. its two eyes face straight forward at the viewer and burn a deep orange ember colour from inside, and they are the only bright thing anywhere on the animal.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/BkqaQqII3dQ",
+          "https://s.mj.run/K5KTkxSIQ1c"
+        ],
+        "personalize": null
+      },
+      "size": {
+        "width": 1648,
+        "height": 2944
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 18:58",
+      "feed_rank": 117,
+      "source_url": "https://www.midjourney.com/jobs/bce3a152-044d-4b5c-8c9b-6cace61dcc39",
+      "image": {
+        "url": "https://cdn.midjourney.com/bce3a152-044d-4b5c-8c9b-6cace61dcc39/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.44,
+        "score": 0.244,
+        "rank": 117,
+        "why": "黑猫奇幻插画，与少女肖像无关。"
+      }
+    },
+    {
+      "id": "65ad47c2-47df-4c1f-8412-bf194f626801",
+      "source": "midjourney",
+      "author": "morecreativethanai",
+      "prompt_text": "Human head with cat face",
+      "params": {
+        "version": "8.2",
+        "ar": "1:2",
+        "stylize": 50,
+        "chaos": 90,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "er6rnny"
+      },
+      "size": {
+        "width": 768,
+        "height": 1536
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 07:44",
+      "feed_rank": 133,
+      "source_url": "https://www.midjourney.com/jobs/65ad47c2-47df-4c1f-8412-bf194f626801",
+      "image": {
+        "url": "https://cdn.midjourney.com/65ad47c2-47df-4c1f-8412-bf194f626801/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.227,
+        "score": 0.223,
+        "rank": 133,
+        "why": "猫脸人头，沾边肖像但非少女且无个性化。"
+      }
+    },
+    {
+      "id": "e7e6a378-defc-47ec-88a1-101931f133bc",
+      "source": "midjourney",
+      "author": "matoucheperso",
+      "prompt_text": "un arbre fantastique dans lequel un enfant lis un livre, un autre fais de la balançoire dessous",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": 150,
+        "chaos": 5,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/UGqvhU_aN1E",
+          "https://s.mj.run/r_2tS6zDLpc"
+        ],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 23:53",
+      "feed_rank": 136,
+      "source_url": "https://www.midjourney.com/jobs/e7e6a378-defc-47ec-88a1-101931f133bc",
+      "image": {
+        "url": "https://cdn.midjourney.com/e7e6a378-defc-47ec-88a1-101931f133bc/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.2,
+        "heat": 0.187,
+        "score": 0.219,
+        "rank": 136,
+        "why": "奇幻树与儿童，沾边人物但非少女肖像。"
+      }
+    }
+  ]
+}
