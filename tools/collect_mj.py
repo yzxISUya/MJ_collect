@@ -25,6 +25,7 @@ from collector.config import ROOT, DEFAULT_CONFIG, load_config, merge_cli_config
 from collector.fetch import fetch_page, download_images  # noqa: E402
 from collector.filter import (  # noqa: E402
     build_scorer, passes_hard, resolve_gate, hit_count, above_line, pick_top,
+    keyword_weights,
 )
 from collector.schema import parse_entry, build_readme  # noqa: E402
 from collector.store import (  # noqa: E402
@@ -33,37 +34,64 @@ from collector.store import (  # noqa: E402
 )
 
 
-def build_parser() -> argparse.ArgumentParser:
+def build_parser(cfg: dict) -> argparse.ArgumentParser:
+    """CLI 解析器。所有［默认 …］都动态取自配置文件当前值——命令行只是临时覆盖。"""
+    grab, filt, img = cfg["抓取"], cfg["筛选"], cfg["图片"]
+    min_score, _, _ = resolve_gate(filt, keyword_weights(filt))
+
+    def d(v, none="不限"):
+        return none if v is None else v
+
     p = argparse.ArgumentParser(
         description="MJ 采集器：抓取 Midjourney 热榜作品，产出可编辑的选品 JSON（分数排序择优）。",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
+            "默认值来自 config/collector.json（命令行只做临时覆盖），"
+            "上方［默认 …］即该文件的当前值。\n"
             "示例:\n"
             "  python tools/collect_mj.py\n"
             "  python tools/collect_mj.py --target 8 --no-images\n"
             "  python tools/collect_mj.py --keyword girl portrait realistic --name vol1\n"
         ),
     )
-    p.add_argument("--config", type=Path, default=DEFAULT_CONFIG, help="配置文件路径")
-    p.add_argument("--target", type=int, help="清单新增条数，凑够即停（0=不限）")
+    p.add_argument("--config", type=Path, default=DEFAULT_CONFIG,
+                   help=f"配置文件路径［默认 {DEFAULT_CONFIG.relative_to(ROOT)}］")
+    p.add_argument("--target", type=int,
+                   help=f"清单新增条数，凑够即停（0=不限）［默认 {d(filt.get('目标条数'))}］")
     p.add_argument("--include-seen", action="store_true",
-                   help="关闭去重，联网可含历史上已抓过的作品（重看当前热榜）")
-    p.add_argument("--start-page", type=int, help="起始页码（默认 1）")
-    p.add_argument("--delay", type=float, help="请求间隔秒（默认 1.5，勿低于 1）")
-    p.add_argument("--timeout", type=float, help="单请求超时秒（默认 20）")
-    p.add_argument("--keyword", nargs="+", help="包含关键词（越靠前权重越高）")
+                   help=f"关闭去重，联网可含历史已抓作品（重看热榜）［默认 去重={'开' if filt.get('去重', True) else '关'}］")
+    p.add_argument("--start-page", type=int,
+                   help=f"起始页码［默认 {d(grab.get('起始页'), '1')}］")
+    p.add_argument("--delay", type=float,
+                   help=f"请求间隔秒，勿低于 1［默认 {d(grab.get('请求间隔秒'), '1.5')}］")
+    p.add_argument("--timeout", type=float,
+                   help=f"单请求超时秒［默认 {d(grab.get('请求超时秒'), '20')}］")
+    p.add_argument("--keyword", nargs="+",
+                   help=f"包含关键词，越靠前权重越高［默认 {filt.get('包含关键词') or '无（先到先得）'}］")
     p.add_argument("--weight", nargs="+", type=float,
-                   help="关键词权重，与关键词同序（默认 100 50 25 10…）")
-    p.add_argument("--min-score", type=float, help="最低分门槛（默认自动：w1+w最小）")
-    p.add_argument("--decay", type=float, help="翻页降分比例（默认 0.5）")
-    p.add_argument("--exclude", nargs="+", help="排除关键词（命中任一即弃）")
-    p.add_argument("--ar", nargs="+", help="画幅筛选，如 9:16 3:4")
-    p.add_argument("--min-len", type=int, help="prompt 字数下限")
-    p.add_argument("--max-len", type=int, help="prompt 字数上限")
-    p.add_argument("--no-images", action="store_true", help="不下载图片")
-    p.add_argument("--image-width", type=int, choices=[384, 640], help="图片宽度档")
-    p.add_argument("--grid", type=int, help="图片格子序号（2×2 网格，默认 0）")
-    p.add_argument("--name", help="选品清单文件名（不含扩展名，默认今天日期；同名自动追加合并）")
+                   help=f"关键词权重，与关键词同序［默认 {filt.get('关键词权重') or '100 50 25 10…'}］")
+    p.add_argument("--min-score", type=float,
+                   help="最低分门槛［默认 "
+                        + (str(filt["最低分"]) if filt.get("最低分") is not None
+                           else ("自动：w1+w最小=" + format(min_score, "g") if keyword_weights(filt) else "自动：无关键词=0"))
+                        + "］")
+    p.add_argument("--decay", type=float,
+                   help=f"翻页降分比例（0.25~0.5）［默认 {d(filt.get('翻页降分比例'), '0.5')}］")
+    p.add_argument("--exclude", nargs="+",
+                   help=f"排除关键词，命中任一即弃［默认 {filt.get('排除关键词') or '无'}］")
+    p.add_argument("--ar", nargs="+",
+                   help=f"画幅筛选，如 9:16 3:4［默认 {filt.get('画幅') or '全收'}］")
+    p.add_argument("--min-len", type=int,
+                   help=f"prompt 字数下限［默认 {d(filt.get('prompt字数下限'), '0')}］")
+    p.add_argument("--max-len", type=int,
+                   help=f"prompt 字数上限［默认 {d(filt.get('prompt字数上限'))}］")
+    p.add_argument("--no-images", action="store_true",
+                   help=f"不下载图片［默认 下载={'开' if img.get('下载图片', True) else '关'}］")
+    p.add_argument("--image-width", type=int, choices=[384, 640],
+                   help=f"图片宽度档［默认 {d(img.get('宽度档'), '640')}］")
+    p.add_argument("--grid", type=int,
+                   help=f"图片格子序号（2×2 网格）［默认 {d(img.get('格子'), '0')}］")
+    p.add_argument("--name", help="选品清单文件名（不含扩展名；同名自动追加合并）［默认 今天日期］")
     return p
 
 
@@ -75,8 +103,13 @@ def main() -> int:
         except Exception:  # noqa: BLE001
             pass
 
-    args = build_parser().parse_args()
-    cfg = merge_cli_config(load_config(args.config), args)
+    # 先取配置文件（--help 要动态显示它的当前值），再全量解析
+    pre = argparse.ArgumentParser(add_help=False)
+    pre.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    pre_args, _ = pre.parse_known_args()
+    cfg = load_config(pre_args.config)
+    args = build_parser(cfg).parse_args()
+    cfg = merge_cli_config(cfg, args)
     grab, filt, img, out = cfg["抓取"], cfg["筛选"], cfg["图片"], cfg["输出"]
 
     fetched_at = now_iso()
