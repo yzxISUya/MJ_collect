@@ -86,6 +86,25 @@ def write_json(path: Path, obj) -> None:
         f.write("\n")
 
 
+def load_seen_ids(*dirs: Path) -> set:
+    """汇总历史 pool/shortlist 文件里出现过的 job_id（跨次增量去重的『已见集合』）。"""
+    seen: set = set()
+    for d in dirs:
+        if not d.is_dir():
+            continue
+        for f in sorted(d.glob("*.json")):
+            try:
+                data = json.loads(f.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, OSError):
+                continue
+            if not isinstance(data, dict):
+                continue
+            for e in data.get("entries") or []:
+                if isinstance(e, dict) and e.get("id"):
+                    seen.add(e["id"])
+    return seen
+
+
 # 配置
 
 
@@ -99,6 +118,8 @@ def merge_cli_config(cfg: dict, args: argparse.Namespace) -> dict:
     grab, filt, img = cfg["抓取"], cfg["筛选"], cfg["图片"]
     if args.target is not None:
         filt["目标条数"] = args.target
+    if args.include_seen:
+        filt["去重"] = False
     if args.start_page is not None:
         grab["起始页"] = args.start_page
     if args.delay is not None:
@@ -128,14 +149,16 @@ def merge_cli_config(cfg: dict, args: argparse.Namespace) -> dict:
 
 
 def fetch_and_match(target, filt: dict, start_page: int, delay: float,
-                    timeout: float, fetched_at: str):
-    """逐页抓取并筛选，筛中凑够 target 条即提前停止翻页。
-    target 为 null/0 表示不设上限（可见数据全抓全筛）。
-    返回 (全部条目, 筛中条目, 错误列表)。筛中超出目标时截取前 target 条，其余留在全量里。
+                    timeout: float, fetched_at: str, seen: set):
+    """逐页抓取并筛选（去重时跳过已见、只处理新作品），筛中凑够 target 条即停止翻页。
+    target 为 null/0 表示不设上限。未命中条目不落盘（窗口内改筛选条件可回捞）。
+    返回 (新抓条目, 全部筛中条目, 错误列表, 跳过已见条数)。
     """
+    dedup = bool(filt.get("去重", True))
     entries: list = []
     matched: list = []
     errors: list = []
+    skipped = 0
     page = start_page
     while target is None or target <= 0 or len(matched) < target:
         url = f"{EXPLORE_API}?page={page}&feed=top&_ql=explore"
@@ -152,21 +175,26 @@ def fetch_and_match(target, filt: dict, start_page: int, delay: float,
         if not items:
             log(f"  第 {page} 页为空，可见数据已抓完")
             break
+        new_count = 0
         for raw in items:
+            job_id = raw.get("id", "")
+            if dedup:
+                if job_id in seen:
+                    skipped += 1
+                    continue
+                seen.add(job_id)  # 本次运行内也不重复
             entry = parse_entry(raw, fetched_at)
             entries.append(entry)
+            new_count += 1
             if match_filters(entry, filt):
                 matched.append(entry)
-        log(f"  第 {page} 页: +{len(items)} 条（累计抓取 {len(entries)}，筛中 {len(matched)}）")
+        log(f"  第 {page} 页: +{len(items)} 条（新 {new_count}，已见跳过 {len(items) - new_count}，筛中 {len(matched)}）")
         if target and len(matched) >= target:
-            log(f"  已达目标 {target} 条，停止翻页")
+            log(f"  筛中已达目标 {target} 条，停止翻页")
             break
         page += 1
         time.sleep(delay)
-    if target and target > 0 and len(matched) > target:
-        log(f"  命中共 {len(matched)} 条，截取前 {target} 条（其余留在采集池）")
-        matched = matched[:target]
-    return entries, matched, errors
+    return entries, matched, errors, skipped
 
 
 # 解析
@@ -292,6 +320,8 @@ def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
         "注意": [
             "author（作者署名）与 source_url（源链接）是合规红线，必留。",
             "entries 里的条目顺序即排版候选顺序，可自由挪动。",
+            "同名再运行=新命中追加到 entries 末尾，已有条目（含手改/手补）一字不动。",
+            "删掉的条目不会再被自动抓回（算已见）；要找回就去 data/pool 对应文件复制。",
             "多余字段可自行添加，后续流水线会忽略不认识的字段。",
         ],
         "字段说明": {
@@ -358,6 +388,8 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--config", type=Path, default=DEFAULT_CONFIG, help="配置文件路径")
     p.add_argument("--target", type=int, help="目标筛中条数，凑够即停（0=不限，默认 15）")
+    p.add_argument("--include-seen", action="store_true",
+                   help="关闭去重，包含历史上已抓过的作品（重看当前热榜）")
     p.add_argument("--start-page", type=int, help="起始页码（默认 1）")
     p.add_argument("--delay", type=float, help="请求间隔秒（默认 1.5，勿低于 1）")
     p.add_argument("--timeout", type=float, help="单请求超时秒（默认 20）")
@@ -369,7 +401,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--no-images", action="store_true", help="不下载图片")
     p.add_argument("--image-width", type=int, choices=[384, 640], help="图片宽度档")
     p.add_argument("--grid", type=int, help="图片格子序号（2×2 网格，默认 0）")
-    p.add_argument("--name", help="选品清单文件名（不含扩展名，默认今天日期）")
+    p.add_argument("--name", help="选品清单文件名（不含扩展名，默认今天日期；同名自动追加合并）")
     return p
 
 
@@ -387,69 +419,112 @@ def main() -> int:
 
     fetched_at = now_iso()
     target = filt.get("目标条数")
+    dedup = bool(filt.get("去重", True))
+    stamp = now_stamp()
     log(f"MJ 采集器 | 目标筛中 {target if target else '不限'} 条 | 间隔 {grab['请求间隔秒']}s")
     log(f"筛选: 包含={filt['包含关键词'] or '—'}  排除={filt['排除关键词'] or '—'}"
         f"  画幅={filt['画幅'] or '—'}  字数={filt['prompt字数下限']}~{filt['prompt字数上限'] or '∞'}")
 
+    # 0) 已见集合（跨次增量去重；--include-seen 时抓取不跳过，但入库仍只存新作品）
+    seen: set = load_seen_ids(ROOT / out["采集池目录"], ROOT / out["选品目录"])
+    if dedup:
+        log(f"去重：开，历史已见 {len(seen)} 条（本次只入库新作品）")
+    else:
+        log(f"去重：关（--include-seen，清单可含已见 {len(seen)} 条）")
+
     # 1) 边抓边筛，凑够目标即停
     log("\n[1/4] 抓取并筛选…")
-    entries, matched, errors = fetch_and_match(
+    entries, matched, errors, skipped = fetch_and_match(
         target=target,
         filt=filt,
         start_page=grab["起始页"],
         delay=grab["请求间隔秒"],
         timeout=grab["请求超时秒"],
         fetched_at=fetched_at,
+        seen=seen,
     )
     if not entries:
-        log("没有抓到任何数据，退出。")
-        return 1
+        if skipped:
+            log(f"没有新作品：{skipped} 条全部已见，本次无入库。")
+        else:
+            log("没有抓到任何数据，退出。")
+        if errors:
+            err_path = ROOT / out["采集池目录"] / f"mj_{stamp}_errors.json"
+            write_json(err_path, errors)
+            log(f"[!] {len(errors)} 个错误，详见 {err_path.relative_to(ROOT)}")
+        return 0 if skipped else 1
 
-    # 2) 全量存档（采集池）
-    stamp = now_stamp()
-    pool_path = ROOT / out["采集池目录"] / f"mj_{stamp}.json"
-    write_json(pool_path, {
-        "type": "pool",
-        "fetched_at": fetched_at,
-        "count": len(entries),
-        "entries": entries,
-    })
-    log(f"[2/4] 采集池 -> {pool_path.relative_to(ROOT)}（{len(entries)} 条全量）")
+    # 2) 口味库存（采集池=全部筛中作品，含超出清单目标的余量；--include-seen 时不重复入库）
+    pool_entries = matched if dedup else [e for e in matched if e["id"] not in seen]
+    if pool_entries:
+        pool_path = ROOT / out["采集池目录"] / f"mj_{stamp}.json"
+        write_json(pool_path, {
+            "type": "pool",
+            "fetched_at": fetched_at,
+            "count": len(pool_entries),
+            "entries": pool_entries,
+        })
+        log(f"[2/4] 采集池 -> {pool_path.relative_to(ROOT)}（筛中入库 {len(pool_entries)} 条）")
+    else:
+        log("[2/4] 无新筛中作品入库")
 
-    # 3) 选品清单（筛中条目）
+    # 3) 选品清单（同名追加合并：已有条目一字不动，只把新命中 append 进去）
     name = args.name or datetime.now().strftime("%Y-%m-%d")
     shortlist_path = ROOT / out["选品目录"] / f"{name}.json"
+    existing: list = []
     if shortlist_path.exists():
-        log(f"[!] 选品清单已存在，拒绝覆盖: {shortlist_path.relative_to(ROOT)}")
-        log(f"    请换名字运行（--name vol1），或自行删除/改名旧文件。")
-        return 1
+        try:
+            data = json.loads(shortlist_path.read_text(encoding="utf-8"))
+            existing = data.get("entries") or []
+        except (json.JSONDecodeError, OSError):
+            log(f"[!] 旧清单无法解析，拒绝合并: {shortlist_path.relative_to(ROOT)}")
+            return 1
+    existing_ids = {e.get("id") for e in existing if isinstance(e, dict)}
+    appended: list = []
+    for e in matched:
+        if target and target > 0 and len(appended) >= target:
+            break
+        if e["id"] in existing_ids:
+            continue
+        existing.append(e)
+        existing_ids.add(e["id"])
+        appended.append(e)
+    if len(matched) > len(appended):
+        log(f"  筛中共 {len(matched)} 条，清单只收 {len(appended)} 条（其余入采集池库存）")
     fetch_info = {
         "时间": fetched_at,
         "目标条数": target if target else "不限",
-        "抓取条数": len(entries),
+        "去重": "开" if dedup else "关",
+        "本次新抓": len(entries),
+        "跳过已见": skipped,
         "筛中条数": len(matched),
+        "清单新增": len(appended),
+        "清单总条数": len(existing),
         "报错数": len(errors),
     }
-    write_json(shortlist_path, {
-        "type": "shortlist",
-        "_readme": build_readme(fetch_info, filt, img),
-        "entries": matched,
-        "_manual_entry_template": MANUAL_ENTRY_TEMPLATE,
-    })
-    log(f"[3/4] 选品清单 -> {shortlist_path.relative_to(ROOT)}（筛中 {len(matched)}/{len(entries)} 条）")
+    if existing or appended:
+        write_json(shortlist_path, {
+            "type": "shortlist",
+            "_readme": build_readme(fetch_info, filt, img),
+            "entries": existing,
+            "_manual_entry_template": MANUAL_ENTRY_TEMPLATE,
+        })
+        log(f"[3/4] 选品清单 -> {shortlist_path.relative_to(ROOT)}（本次新增 {len(appended)} 条，共 {len(existing)} 条）")
+    else:
+        log("[3/4] 无筛中条目，选品清单未创建/未变更")
 
-    # 4) 下载筛中条目的图片
-    if img["下载图片"] and matched:
+    # 4) 只给本次新进清单的条目下图
+    if img["下载图片"] and appended:
         log("[4/4] 下载图片…")
         download_images(
-            matched, img, ROOT / out["图片目录"],
+            appended, img, ROOT / out["图片目录"],
             delay=grab["请求间隔秒"], timeout=grab["请求超时秒"], errors=errors,
         )
         # 图片本地路径回写进选品清单
         write_json(shortlist_path, {
             "type": "shortlist",
             "_readme": build_readme(fetch_info, filt, img),
-            "entries": matched,
+            "entries": existing,
             "_manual_entry_template": MANUAL_ENTRY_TEMPLATE,
         })
     else:
