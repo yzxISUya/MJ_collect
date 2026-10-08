@@ -1,0 +1,307 @@
+{
+  "type": "shortlist",
+  "_readme": {
+    "怎么删": "删掉 entries 数组里不要的整个 { } 块（注意保留上下条目的逗号）。删除后不会被重新送上（_consumed_ids 台账仍记着它）；反悔就去 data/pool 复制回来。",
+    "怎么加": "把文件末尾的 _manual_entry_template 整个复制进 entries 数组，改好内容；手动条目 source 写 'manual'（或其他平台名），id 自拟唯一即可。",
+    "注意": [
+      "author（作者署名）与 source_url（源链接）是合规红线，必留。",
+      "entries 里的条目顺序即排版候选顺序，可自由挪动。",
+      "同名再运行=新条目追加到 entries 末尾（分数排序择优），已有条目（含手改/手补）一字不动。",
+      "删掉的条目不会再被自动抓回（_consumed_ids 台账记着）；要找回就去 data/pool 对应文件复制。",
+      "多余字段可自行添加，后续流水线会忽略不认识的字段。"
+    ],
+    "字段说明": {
+      "id": "MJ job UUID；手动条目自拟唯一 id",
+      "source": "来源：midjourney / manual / 其他平台名",
+      "author": "作者署名（必填）",
+      "prompt_text": "prompt 原文（一字不动）",
+      "params": "MJ 参数（解析自原文）：版本/画幅ar/stylize/chaos/weird/seed/raw/no排除词/sref风格参考/personalize",
+      "size": "图像素尺寸",
+      "job_type": "MJ 任务类型",
+      "publish_time": "作品发布（入队）时间",
+      "feed_rank": "热榜位置（页码×50+序号；库存老条目为 null）",
+      "match": "评分结果（工具维护）：relevance 相关度 / heat 热度 / score 总分 / why 理由",
+      "source_url": "作品源链接（必填）",
+      "image.url": "图片直链（384/640 档）",
+      "image.local": "下载后的本地路径，没下图则为 null",
+      "fetched_at": "采集时间",
+      "notes": "人工备注位（自由使用）",
+      "_consumed_ids": "消费台账（工具维护）：进过本清单的全部 id，删条目不清账"
+    },
+    "本次运行": {
+      "时间": "2026-10-08T15:59:13+08:00",
+      "目标条数": 5,
+      "去重": "开",
+      "评分器": "llm",
+      "意图": "少女肖像，偏写实",
+      "热度权重": 0.1,
+      "热度高原/终点": "50/150",
+      "最低相关分": 0.2,
+      "库存候选": 1,
+      "联网新抓": 147,
+      "跳过已见": 3,
+      "候选总数": 148,
+      "达门槛数": 41,
+      "清单新增": 5,
+      "清单总条数": 5,
+      "报错数": 0
+    },
+    "筛选条件": {
+      "_说明": "目标条数=想给清单新增的条目数（按总分择优取 top-N）。『意图』用自然语言描述想要的作品（语义评分的核心输入，优先级也用自然语言写）；『包含关键词』在语义模式下是硬过滤（每个词都必须命中），在词法模式下是打分素材（权重默认第1词100/50/25/10，可用『关键词权重』覆盖；词边界匹配，首尾写 * 放宽）。排除词/画幅/字数是硬条件。删掉的条目有消费台账记账，永不再上（找回去 data/pool 复制）。",
+      "目标条数": 5,
+      "去重": true,
+      "意图": "少女肖像，偏写实",
+      "包含关键词": [],
+      "关键词权重": [],
+      "排除关键词": [],
+      "画幅": [],
+      "prompt字数下限": 0,
+      "prompt字数上限": null
+    },
+    "图片设置": {
+      "_说明": "只给本次新进清单的条目下图（从库存取出的也在此补下）。MJ 图床只认 384/640 两个宽度档；格子是 2×2 网格裁切序号，通常 0。不想下图就把『下载图片』改 false。",
+      "下载图片": true,
+      "宽度档": 640,
+      "格子": 0
+    }
+  },
+  "entries": [
+    {
+      "id": "7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35",
+      "source": "midjourney",
+      "author": "rem75.",
+      "prompt_text": "A beautiful 25 year old woman of unspecified ethnicity walking naturally along a rain soaked European city street under a large plain black umbrella, full body vertical street style composition. Dark brown hair tied back, oversized round tortoiseshell glasses, loose taupe gray cable knit sweater, short brown plaid pleated skirt, sheer black tights, chunky black Mary Jane shoes, black crossbody bag. One hand holds the umbrella; the other holds a single slim hand rolled cigarette of unbleached warm brown rolling paper close to her lips, small glowing ember, delicate wisp of smoke not obscuring her face, no filter. Eyes open, calm expression, natural movement, realistic matte skin, wet pavement reflections, soft overcast daylight, subtle drizzle. Candid Parisian street fashion photography, muted neutral tones, photorealistic, no coffee cup, no beverages, no logos.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": 35,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "bbrb74x"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 21:42",
+      "feed_rank": 17,
+      "source_url": "https://www.midjourney.com/jobs/7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35",
+      "image": {
+        "url": "https://cdn.midjourney.com/7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35/0_0_640_N.webp",
+        "local": "images/2026-10-08/7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35.webp"
+      },
+      "fetched_at": "2026-10-08T15:59:13+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.9,
+        "heat": 1.0,
+        "score": 0.99,
+        "rank": 17,
+        "why": "写实街拍风格的年轻女性全身肖像，皮肤质感与自然光描述明确，高度贴合少女肖像偏写实。"
+      }
+    },
+    {
+      "id": "1b941b78-b6a7-40d6-adb7-8934a09abc3d",
+      "source": "midjourney",
+      "author": "@Fasdop",
+      "prompt_text": "Use the exact facial identity and styling of the woman in the first reference image. She is 25 years old. Evening lit honey colored stone alley, Puglia. She sits sideways on a stationary pastel yellow vintage Italian scooter on its center stand. She wears a fitted yellow cotton halter neck midi sundress with tiny white daisies, square neckline, draped skirt, thigh high side slit. Tan leather low heeled open toe mules, small gold hoop earrings, two delicate gold necklaces. Long blonde hair in loose waves, gentle sea breeze. She holds a pistachio gelato cone near her lips, playful relaxed glance at camera. Slow forward dolly, medium full to waist up portrait, 50mm lens, shallow depth of field, blurred limestone background. One continuous 8 second shot, Italian fashion music video aesthetic, ARRI Alexa 35, cinematic 4K, accurate skin and fabric texture, controlled highlights, realistic anatomy. Gentle wind and distant street ambience only. No text, logos, or artifacts.",
+      "params": {
+        "version": "8.2",
+        "ar": "16:9",
+        "stylize": 750,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1456,
+        "height": 816
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 18:53",
+      "feed_rank": 85,
+      "source_url": "https://www.midjourney.com/jobs/1b941b78-b6a7-40d6-adb7-8934a09abc3d",
+      "image": {
+        "url": "https://cdn.midjourney.com/1b941b78-b6a7-40d6-adb7-8934a09abc3d/0_0_640_N.webp",
+        "local": "images/2026-10-08/1b941b78-b6a7-40d6-adb7-8934a09abc3d.webp"
+      },
+      "fetched_at": "2026-10-08T15:59:13+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.8,
+        "heat": 0.65,
+        "score": 0.852,
+        "rank": 85,
+        "why": "写实电影感年轻女性肖像，皮肤与布料质感真实，但更偏时尚视频而非静态肖像。"
+      }
+    },
+    {
+      "id": "a1583d26-731d-48f9-af06-6d01844f5d6e",
+      "source": "midjourney",
+      "author": "ottoart813",
+      "prompt_text": "Photorealistic portrait of a strikingly attractive woman with an hourglass figure, standing confidently before a massive ornately carved asymmetric picture frame - organic baroque curves blending into surreal abstract angles, half melted gold and dark wood intertwined - towering behind her, containing faint swirling mist. She wears an elegant fitted dress with rich textured fabric, one hand resting on the frame's edge, long flowing hair caught by a light breeze, enigmatic gaze directly at camera. Soft cinematic lighting: warm key light from one side, cool rim light outlining her silhouette. Background: dimly lit grand gallery hall, tall arched windows, faint visitor silhouettes, golden dust particles, architectural details in bokeh. Shallow depth of field. Canon EOS R5, 85mm f/1.4, ultra realistic skin texture, hyper detailed fabric and frame textures, volumetric lighting, high dynamic range, 8K.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [
+          "1281111984"
+        ],
+        "personalize": "or6gme4"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 22:37",
+      "feed_rank": 119,
+      "source_url": "https://www.midjourney.com/jobs/a1583d26-731d-48f9-af06-6d01844f5d6e",
+      "image": {
+        "url": "https://cdn.midjourney.com/a1583d26-731d-48f9-af06-6d01844f5d6e/0_0_640_N.webp",
+        "local": "images/2026-10-08/a1583d26-731d-48f9-af06-6d01844f5d6e.webp"
+      },
+      "fetched_at": "2026-10-08T15:59:13+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.7,
+        "heat": 0.31,
+        "score": 0.722,
+        "rank": 119,
+        "why": "超写实女性肖像，皮肤质感细腻，但场景奇幻、构图偏环境人像。"
+      }
+    },
+    {
+      "id": "4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+      "source": "midjourney",
+      "author": "bitstas",
+      "prompt_text": "High fashion editorial photo of a pale young female model wearing a fitted knee length dress made entirely from glossy red adhesive tape strips. Sleek, elegant silhouette; knees, arms, and hands fully visible and unwrapped. Set in a narrow medieval European street with aged stone walls, worn plaster, old wooden doors, wet cobblestones, and soft autumn atmosphere with yellow, red, and orange foliage. Hard directional side light cutting across the street, model partly illuminated and partly in deep shadow, sharp architectural shadows, glossy red tape catching specular highlights, high contrast, rich blacks, restrained cinematic color grading. High angle shot, model on the right third of the frame, large negative space left. Cinematic fashion realism, sophisticated and strange. 35mm analog photography, fine film grain, subtle halation, soft highlight bloom, realistic lens imperfections, rich tonal depth.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": 15,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "xbwnv61"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 19:16",
+      "feed_rank": 138,
+      "source_url": "https://www.midjourney.com/jobs/4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+      "image": {
+        "url": "https://cdn.midjourney.com/4a3580b8-32bb-4bb2-ad41-36939be02d1b/0_0_640_N.webp",
+        "local": "images/2026-10-08/4a3580b8-32bb-4bb2-ad41-36939be02d1b.webp"
+      },
+      "fetched_at": "2026-10-08T15:59:13+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.7,
+        "heat": 0.12,
+        "score": 0.708,
+        "rank": 138,
+        "why": "写实时尚大片年轻女模肖像，胶片质感真实，但胶带服装设定偏概念。"
+      }
+    },
+    {
+      "id": "16181f24-510c-435a-850b-4b2978781439",
+      "source": "midjourney",
+      "author": "u6481343534",
+      "prompt_text": "生成3D都市女主，眉眼生得极美，属于淡极生艳的类型。眉形是天然舒展的细远山眉，颜色浅黑不浓重。一双琉璃色琥珀褐瞳，眼型偏长，眼尾微微轻扬，睫毛细密纤长，垂眸的时候会在眼下投出浅浅的阴影。情绪平静时眼底是一片清冷淡凉，不带什么温度；笑起来的时候眼尾弯起，柔和冲淡了身上那股疏离感。鼻梁挺翘精致，鼻尖秀气，唇形饱满，唇色是自然淡粉。下颌线条利落收紧，下巴尖瘦。黑发乌黑浓密，发质柔软，多数时候扎成高马尾，碎发落在颈侧；披发的时候长发垂落脊背，黑发衬得肤色愈发莹白。整张脸没有甜腻的幼态感，带着少年人的清韧，又藏着少女的柔艳，安静站在人群里就格外惹眼。",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [],
+        "personalize": "cyet1b4"
+      },
+      "size": {
+        "width": 2048,
+        "height": 2048
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 17:06",
+      "feed_rank": 142,
+      "source_url": "https://www.midjourney.com/jobs/16181f24-510c-435a-850b-4b2978781439",
+      "image": {
+        "url": "https://cdn.midjourney.com/16181f24-510c-435a-850b-4b2978781439/0_0_640_N.webp",
+        "local": "images/2026-10-08/16181f24-510c-435a-850b-4b2978781439.webp"
+      },
+      "fetched_at": "2026-10-08T15:59:13+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.7,
+        "heat": 0.08,
+        "score": 0.706,
+        "rank": 142,
+        "why": "细致刻画少女面部五官与气质，写实向但偏3D都市女主设定，肖像感强。"
+      }
+    }
+  ],
+  "_consumed_ids": [
+    "7d0a4cdf-5530-4d0c-9ebd-a2a1dfad7c35",
+    "1b941b78-b6a7-40d6-adb7-8934a09abc3d",
+    "a1583d26-731d-48f9-af06-6d01844f5d6e",
+    "4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+    "16181f24-510c-435a-850b-4b2978781439"
+  ],
+  "_manual_entry_template": {
+    "id": "manual-YYYYMMDD-01",
+    "source": "manual",
+    "author": "原作者署名（必填）",
+    "prompt_text": "prompt 原文，没有就留空字符串",
+    "params": {
+      "version": null,
+      "ar": null,
+      "stylize": null,
+      "chaos": null,
+      "weird": null,
+      "seed": null,
+      "raw": false,
+      "no": [],
+      "sref": [],
+      "personalize": null
+    },
+    "size": {
+      "width": null,
+      "height": null
+    },
+    "job_type": null,
+    "publish_time": null,
+    "feed_rank": null,
+    "match": null,
+    "source_url": "作品源链接（必填）",
+    "image": {
+      "url": null,
+      "local": null
+    },
+    "fetched_at": "录入时间",
+    "notes": ""
+  }
+}
