@@ -5,7 +5,7 @@ MJ 采集器入口（命令行参数可临时覆盖 config/collector.json）
 eg:
   python tools/collect_mj.py
   python tools/collect_mj.py --target 8 --no-images
-  python tools/collect_mj.py --intent "少女肖像，偏写实" --name vol1
+  python tools/collect_mj.py --intent "少女肖像10，偏抽象2，个性化5" --name vol1
   python tools/collect_mj.py --scorer embedding --intent "荒诞超现实"
   python tools/collect_mj.py --include-seen
 """
@@ -26,7 +26,7 @@ from collector.fetch import fetch_page, download_images  # noqa: E402
 from collector.filter import passes_hard, heat_score, fuse_score  # noqa: E402
 from collector.schema import parse_entry, build_readme  # noqa: E402
 from collector.scorers import (  # noqa: E402
-    build_scorers, ChainScorer, set_env_path, ScorerUnavailable,
+    build_scorers, ChainScorer, set_env_path, parse_intent, ScorerUnavailable,
 )
 from collector.store import (  # noqa: E402
     write_json, load_seen_ids, load_consumed, load_inventory,
@@ -59,7 +59,8 @@ def build_parser(cfg: dict) -> argparse.ArgumentParser:
     p.add_argument("--target", type=int,
                    help=f"清单新增条数，择优取 top-N（0=不限）［默认 {d(filt.get('目标条数'))}］")
     p.add_argument("--intent", type=str,
-                   help=f"选品意图（自然语言，语义评分的核心输入）［默认 {filt.get('意图') or '空'}］")
+                   help=f"选品意图分面：'少女肖像10，偏抽象2'（尾随数字=权重）/ '少女肖像=10' / 裸词权重1"
+                        f"［默认 {filt.get('意图') or '空'}］")
     p.add_argument("--scorer", choices=["auto", "llm", "embedding", "lexical"],
                    help=f"评分器（auto=llm→embedding→lexical 降级链）［默认 {score_cfg.get('评分器', 'auto')}］")
     p.add_argument("--beta", type=float,
@@ -119,9 +120,12 @@ def main() -> int:
     stamp = now_stamp()
     target = filt.get("目标条数")
     dedup = bool(filt.get("去重", True))
-    intent = (filt.get("意图") or "").strip()
+    intent_raw = filt.get("意图")
+    facets = parse_intent(intent_raw)
+    intent = (intent_raw if isinstance(intent_raw, str) else "；".join(
+        f"{f['text']}×{f['weight']:g}" for f in facets)) or ""
     mode = (score_cfg.get("评分器") or "auto").lower()
-    semantic = bool(intent) and mode != "lexical"
+    semantic = bool(facets) and mode != "lexical"
     beta = float(score_cfg.get("热度权重") if score_cfg.get("热度权重") is not None else 0.1)
     k_plateau = float(score_cfg.get("热度高原") or 50)
     m_end = float(score_cfg.get("热度终点") or 150)
@@ -129,6 +133,8 @@ def main() -> int:
 
     log(f"MJ 采集器 | 清单新增 {target if target else '不限'} 条 | 间隔 {grab['请求间隔秒']}s")
     log(f"意图: {intent or '—（词法/纯热榜）'}  评分器: {mode}  β={beta:g}  软门槛={r_min:g}")
+    if facets:
+        log("分面: " + "  ".join(f"{f['text']}×{f['weight']:g}" for f in facets))
     log(f"硬条件: 包含(AND)={filt['包含关键词'] or '—'}  排除={filt['排除关键词'] or '—'}"
         f"  画幅={filt['画幅'] or '—'}  字数={filt['prompt字数下限']}~{filt['prompt字数上限'] or '∞'}")
 
@@ -214,7 +220,8 @@ def main() -> int:
     log(f"  实际评分器: {used}")
 
     scored: list = []  # [(S, R, entry)]
-    for e, (r, why) in zip(candidates, results):
+    for e, res in zip(candidates, results):
+        r = res["relevance"]
         h = heat_score(e.get("feed_rank"), k_plateau, m_end)
         s = fuse_score(r, h, beta)
         e["match"] = {
@@ -222,7 +229,8 @@ def main() -> int:
             "heat": round(h, 3),
             "score": round(s, 3),
             "rank": e.get("feed_rank"),
-            "why": why,
+            "why": res["why"],
+            "facets": res["facets"],
         }
         scored.append((s, r, e))
     # 达软门槛优先，其次按总分降序（稳定排序，同分保持扫描序）

@@ -20,7 +20,7 @@
       "job_type": "MJ 任务类型",
       "publish_time": "作品发布（入队）时间",
       "feed_rank": "热榜位置（页码×50+序号；库存老条目为 null）",
-      "match": "评分结果（工具维护）：relevance 相关度 / heat 热度 / score 总分 / why 理由",
+      "match": "评分结果（工具维护）：relevance 相关度 / heat 热度 / score 总分 / why 理由 / facets 分面明细（text,weight,score,why）",
       "source_url": "作品源链接（必填）",
       "image.url": "图片直链（384/640 档）",
       "image.local": "下载后的本地路径，没下图则为 null",
@@ -29,11 +29,11 @@
       "_consumed_ids": "消费台账（工具维护）：进过本清单的全部 id，删条目不清账"
     },
     "本次运行": {
-      "时间": "2026-10-08T16:31:42+08:00",
+      "时间": "2026-10-08T16:59:45+08:00",
       "目标条数": 5,
       "去重": "开",
       "评分器": "llm",
-      "意图": "少女肖像，偏抽象，个性化",
+      "意图": "少女肖像10，偏抽象3，个性化4",
       "热度权重": 0.5,
       "热度高原/终点": "75/150",
       "最低相关分": 0.2,
@@ -41,16 +41,16 @@
       "联网新抓": 150,
       "跳过已见": 0,
       "候选总数": 150,
-      "达门槛数": 82,
+      "达门槛数": 90,
       "清单新增": 5,
       "清单总条数": 5,
       "报错数": 0
     },
     "筛选条件": {
-      "_说明": "目标条数=想给清单新增的条目数（按总分择优取 top-N）。『意图』用自然语言描述想要的作品（语义评分的核心输入，优先级也用自然语言写）；『包含关键词』在语义模式下是硬过滤（每个词都必须命中），在词法模式下是打分素材（权重默认第1词100/50/25/10，可用『关键词权重』覆盖；词边界匹配，首尾写 * 放宽）。排除词/画幅/字数是硬条件。删掉的条目有消费台账记账，永不再上（找回去 data/pool 复制）。",
+      "_说明": "目标条数=想给清单新增的条目数（按总分择优取 top-N）。『意图』=带权重的分面，如 \"少女肖像10，偏抽象2，个性化5\"（尾随数字=权重；'少女肖像=10' 显式写法适合文本自带数字的分面；不写数字=权重1；也可在配置里写成 [{\"文本\":\"少女肖像\",\"权重\":10},…]）。相关度=各分面打分后加权平均，大权重分面主导——想让某分面绝对必须，用『包含关键词』硬闸（语义模式下每个词都必须命中）。『包含关键词』在词法模式下是打分素材（权重默认第1词100/50/25/10，可用『关键词权重』覆盖；词边界匹配，首尾写 * 放宽）。排除词/画幅/字数是硬条件。删掉的条目有消费台账记账，永不再上（找回去 data/pool 复制）。",
       "目标条数": 5,
       "去重": true,
-      "意图": "少女肖像，偏抽象，个性化",
+      "意图": "少女肖像10，偏抽象3，个性化4",
       "包含关键词": [],
       "关键词权重": [],
       "排除关键词": [],
@@ -91,98 +91,40 @@
       },
       "job_type": "v8-2_diffusion",
       "publish_time": "2026-10-08 02:13",
-      "feed_rank": 66,
+      "feed_rank": 69,
       "source_url": "https://www.midjourney.com/jobs/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
       "image": {
         "url": "https://cdn.midjourney.com/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff/0_0_640_N.webp",
         "local": "images/2026-10-08/5871b7ba-2cd7-4cf4-8854-1dfe42b199ff.webp"
       },
-      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "fetched_at": "2026-10-08T16:59:45+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.9,
+        "relevance": 0.894,
         "heat": 1.0,
-        "score": 1.35,
-        "rank": 66,
-        "why": "女性面部特写，油画笔触溶解、颜料滴落与梦幻忧郁氛围高度抽象且极具个人风格。"
-      }
-    },
-    {
-      "id": "d6897a30-1529-4b56-8b5c-9f5978109082",
-      "source": "midjourney",
-      "author": "AsteroidTank",
-      "prompt_text": "a vintage retro black ink line art drawing on a white background. the drawing depicts stylized face, eyes closed, chin up, mouth slightly open. Vector art. No shading.",
-      "params": {
-        "version": "8.2",
-        "ar": "3:4",
-        "stylize": 50,
-        "chaos": null,
-        "weird": 4,
-        "seed": null,
-        "raw": false,
-        "no": [],
-        "sref": [],
-        "personalize": null
-      },
-      "size": {
-        "width": 928,
-        "height": 1232
-      },
-      "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 01:37",
-      "feed_rank": 96,
-      "source_url": "https://www.midjourney.com/jobs/d6897a30-1529-4b56-8b5c-9f5978109082",
-      "image": {
-        "url": "https://cdn.midjourney.com/d6897a30-1529-4b56-8b5c-9f5978109082/0_0_640_N.webp",
-        "local": "images/2026-10-08/d6897a30-1529-4b56-8b5c-9f5978109082.webp"
-      },
-      "fetched_at": "2026-10-08T16:31:42+08:00",
-      "notes": "",
-      "match": {
-        "relevance": 0.8,
-        "heat": 0.72,
-        "score": 1.088,
-        "rank": 96,
-        "why": "风格化面部线稿，闭眼仰头，极简黑白矢量，抽象且个性鲜明。"
-      }
-    },
-    {
-      "id": "bbc6d239-9afe-461b-98e6-7aa78d2e57ee",
-      "source": "midjourney",
-      "author": "u6926988781",
-      "prompt_text": "a womans body, beautyful face, but thougtful look. Abstract realism.",
-      "params": {
-        "version": "8.2",
-        "ar": "3:4",
-        "stylize": null,
-        "chaos": null,
-        "weird": null,
-        "seed": null,
-        "raw": false,
-        "no": [],
-        "sref": [],
-        "personalize": "6o6ikca"
-      },
-      "size": {
-        "width": 928,
-        "height": 1232
-      },
-      "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-07 22:57",
-      "feed_rank": 99,
-      "source_url": "https://www.midjourney.com/jobs/bbc6d239-9afe-461b-98e6-7aa78d2e57ee",
-      "image": {
-        "url": "https://cdn.midjourney.com/bbc6d239-9afe-461b-98e6-7aa78d2e57ee/0_0_640_N.webp",
-        "local": "images/2026-10-08/bbc6d239-9afe-461b-98e6-7aa78d2e57ee.webp"
-      },
-      "fetched_at": "2026-10-08T16:31:42+08:00",
-      "notes": "",
-      "match": {
-        "relevance": 0.8,
-        "heat": 0.68,
-        "score": 1.072,
-        "rank": 99,
-        "why": "女性身体与面部，明确标注抽象现实主义，沉思神态契合抽象与个性化。"
+        "score": 1.341,
+        "rank": 69,
+        "why": "主分面[少女肖像] 特写女性面部，闭眼，完全符合少女肖像",
+        "facets": [
+          {
+            "text": "少女肖像",
+            "weight": 10.0,
+            "score": 1.0,
+            "why": "特写女性面部，闭眼，完全符合少女肖像"
+          },
+          {
+            "text": "个性化",
+            "weight": 4.0,
+            "score": 0.7,
+            "why": "锈色点缀、桃色温暖等细节体现个性化"
+          },
+          {
+            "text": "偏抽象",
+            "weight": 3.0,
+            "score": 0.8,
+            "why": "松散表现主义油画，溶解滴落，抽象感强"
+          }
+        ]
       }
     },
     {
@@ -208,31 +150,51 @@
       },
       "job_type": "v8-2_diffusion",
       "publish_time": "2026-10-08 03:12",
-      "feed_rank": 1,
+      "feed_rank": 48,
       "source_url": "https://www.midjourney.com/jobs/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
       "image": {
         "url": "https://cdn.midjourney.com/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186/0_0_640_N.webp",
         "local": "images/2026-10-08/dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186.webp"
       },
-      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "fetched_at": "2026-10-08T16:59:45+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.7,
+        "relevance": 0.8,
         "heat": 1.0,
-        "score": 1.05,
-        "rank": 1,
-        "why": "女性面部特写肖像，金箔蓝闪粉妆容与黑鸟前景带来强烈抽象艺术感，个性化突出。"
+        "score": 1.2,
+        "rank": 48,
+        "why": "主分面[少女肖像] 女性面部微距肖像，非常聚焦",
+        "facets": [
+          {
+            "text": "少女肖像",
+            "weight": 10.0,
+            "score": 0.9,
+            "why": "女性面部微距肖像，非常聚焦"
+          },
+          {
+            "text": "个性化",
+            "weight": 4.0,
+            "score": 0.7,
+            "why": "乌鸦前景和装饰妆容有特色"
+          },
+          {
+            "text": "偏抽象",
+            "weight": 3.0,
+            "score": 0.6,
+            "why": "金箔蓝闪粉装饰，有一定抽象感"
+          }
+        ]
       }
     },
     {
-      "id": "2c278770-2e06-4ad4-b7f3-2093463ddee3",
+      "id": "c1899306-175b-470a-8e82-8a9dc60de9cb",
       "source": "midjourney",
-      "author": "u5296997712",
-      "prompt_text": "Abstract flat 2D artwork of a bald adult male head and neck in strict left facing side profile. Completely smooth bald scalp, no hair or hairline. Strong masculine silhouette: prominent forehead, defined straight nose, masculine lips, angular jaw, pronounced chin, strong neck. Entire silhouette constructed from large thick interconnected organic shapes, rounded psychedelic curves, flowing liquid forms, smooth maze like patterns following facial contours. Inside the upper skull, ONLY the words \"BRAIN FEELING\" - extremely large and dominant. \"BRAIN\" fills the upper skull, \"FEELING\" directly beneath, both spanning nearly full head width. Lettering is thick, rounded, fluid, psychedelic, organically merging into surrounding shapes, clearly readable. \"BRAIN FEELING\" IS THE ONLY TEXT IN THE IMAGE. Colors: rich saturated cobalt blue (#173EBB) and pure white (#FFFFFF) only. Solid pure white background edge to edge. Very subtle grain inside blue shapes only. No gradients, shadows, 3D, beard, realistic eyes, borders, logos, symbols, or extra elements.",
+      "author": "Gen413X",
+      "prompt_text": "a digital painting of a young woman's face in a close up portrait. her skin is warm toned and covered in prominent freckles across her nose and cheeks. she has dark wavy hair framing her face, long dark eyelashes, and green eyes looking forward with a slight squint. her lips are full and painted with a glossy red lipstick, slightly parted. the background is dark with bokeh lights",
       "params": {
         "version": "8.2",
-        "ar": "4:5",
-        "stylize": 40,
+        "ar": "25:14",
+        "stylize": null,
         "chaos": null,
         "weird": null,
         "seed": null,
@@ -242,34 +204,172 @@
         "personalize": null
       },
       "size": {
-        "width": 1968,
-        "height": 2464
+        "width": 1456,
+        "height": 816
       },
-      "job_type": "v8-2_hd_diffusion",
-      "publish_time": "2026-10-07 17:05",
-      "feed_rank": 83,
-      "source_url": "https://www.midjourney.com/jobs/2c278770-2e06-4ad4-b7f3-2093463ddee3",
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 20:58",
+      "feed_rank": 32,
+      "source_url": "https://www.midjourney.com/jobs/c1899306-175b-470a-8e82-8a9dc60de9cb",
       "image": {
-        "url": "https://cdn.midjourney.com/2c278770-2e06-4ad4-b7f3-2093463ddee3/0_0_640_N.webp",
-        "local": "images/2026-10-08/2c278770-2e06-4ad4-b7f3-2093463ddee3.webp"
+        "url": "https://cdn.midjourney.com/c1899306-175b-470a-8e82-8a9dc60de9cb/0_0_640_N.webp",
+        "local": "images/2026-10-08/c1899306-175b-470a-8e82-8a9dc60de9cb.webp"
       },
-      "fetched_at": "2026-10-08T16:31:42+08:00",
+      "fetched_at": "2026-10-08T16:59:45+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.6,
-        "heat": 0.893,
-        "score": 0.868,
-        "rank": 83,
-        "why": "抽象扁平男性头部侧影，有机曲线与文字构成强抽象性，但主体为男性。"
+        "relevance": 0.718,
+        "heat": 1.0,
+        "score": 1.076,
+        "rank": 32,
+        "why": "主分面[少女肖像] 年轻女性面部特写肖像，完全贴合",
+        "facets": [
+          {
+            "text": "少女肖像",
+            "weight": 10.0,
+            "score": 1.0,
+            "why": "年轻女性面部特写肖像，完全贴合"
+          },
+          {
+            "text": "个性化",
+            "weight": 4.0,
+            "score": 0.4,
+            "why": "雀斑、绿眼等特征常见，个性化一般"
+          },
+          {
+            "text": "偏抽象",
+            "weight": 3.0,
+            "score": 0.2,
+            "why": "数字绘画写实风格，无抽象"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d6897a30-1529-4b56-8b5c-9f5978109082",
+      "source": "midjourney",
+      "author": "AsteroidTank",
+      "prompt_text": "a vintage retro black ink line art drawing on a white background. the drawing depicts stylized face, eyes closed, chin up, mouth slightly open. Vector art. No shading.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": 50,
+        "chaos": null,
+        "weird": 4,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 01:37",
+      "feed_rank": 43,
+      "source_url": "https://www.midjourney.com/jobs/d6897a30-1529-4b56-8b5c-9f5978109082",
+      "image": {
+        "url": "https://cdn.midjourney.com/d6897a30-1529-4b56-8b5c-9f5978109082/0_0_640_N.webp",
+        "local": "images/2026-10-08/d6897a30-1529-4b56-8b5c-9f5978109082.webp"
+      },
+      "fetched_at": "2026-10-08T16:59:45+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.712,
+        "heat": 1.0,
+        "score": 1.068,
+        "rank": 43,
+        "why": "主分面[少女肖像] 风格化面部，但无性别年龄细节",
+        "facets": [
+          {
+            "text": "少女肖像",
+            "weight": 10.0,
+            "score": 0.7,
+            "why": "风格化面部，但无性别年龄细节"
+          },
+          {
+            "text": "个性化",
+            "weight": 4.0,
+            "score": 0.6,
+            "why": "复古墨线风格有特色"
+          },
+          {
+            "text": "偏抽象",
+            "weight": 3.0,
+            "score": 0.9,
+            "why": "黑白墨线矢量艺术，高度抽象"
+          }
+        ]
+      }
+    },
+    {
+      "id": "4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+      "source": "midjourney",
+      "author": "bitstas",
+      "prompt_text": "High fashion editorial photo of a pale young female model wearing a fitted knee length dress made entirely from glossy red adhesive tape strips. Sleek, elegant silhouette; knees, arms, and hands fully visible and unwrapped. Set in a narrow medieval European street with aged stone walls, worn plaster, old wooden doors, wet cobblestones, and soft autumn atmosphere with yellow, red, and orange foliage. Hard directional side light cutting across the street, model partly illuminated and partly in deep shadow, sharp architectural shadows, glossy red tape catching specular highlights, high contrast, rich blacks, restrained cinematic color grading. High angle shot, model on the right third of the frame, large negative space left. Cinematic fashion realism, sophisticated and strange. 35mm analog photography, fine film grain, subtle halation, soft highlight bloom, realistic lens imperfections, rich tonal depth.",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": null,
+        "chaos": 15,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "xbwnv61"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 19:16",
+      "feed_rank": 55,
+      "source_url": "https://www.midjourney.com/jobs/4a3580b8-32bb-4bb2-ad41-36939be02d1b",
+      "image": {
+        "url": "https://cdn.midjourney.com/4a3580b8-32bb-4bb2-ad41-36939be02d1b/0_0_640_N.webp",
+        "local": "images/2026-10-08/4a3580b8-32bb-4bb2-ad41-36939be02d1b.webp"
+      },
+      "fetched_at": "2026-10-08T16:59:45+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.712,
+        "heat": 1.0,
+        "score": 1.068,
+        "rank": 55,
+        "why": "主分面[少女肖像] 年轻女模特肖像，但全身构图",
+        "facets": [
+          {
+            "text": "少女肖像",
+            "weight": 10.0,
+            "score": 0.8,
+            "why": "年轻女模特肖像，但全身构图"
+          },
+          {
+            "text": "个性化",
+            "weight": 4.0,
+            "score": 0.8,
+            "why": "红色胶带裙、中世纪街道等非常独特"
+          },
+          {
+            "text": "偏抽象",
+            "weight": 3.0,
+            "score": 0.3,
+            "why": "写实时尚摄影，无抽象元素"
+          }
+        ]
       }
     }
   ],
   "_consumed_ids": [
     "5871b7ba-2cd7-4cf4-8854-1dfe42b199ff",
-    "d6897a30-1529-4b56-8b5c-9f5978109082",
-    "bbc6d239-9afe-461b-98e6-7aa78d2e57ee",
     "dfd8f9c2-94e0-47fc-ba2c-d6dca47bb186",
-    "2c278770-2e06-4ad4-b7f3-2093463ddee3"
+    "c1899306-175b-470a-8e82-8a9dc60de9cb",
+    "d6897a30-1529-4b56-8b5c-9f5978109082",
+    "4a3580b8-32bb-4bb2-ad41-36939be02d1b"
   ],
   "_manual_entry_template": {
     "id": "manual-YYYYMMDD-01",

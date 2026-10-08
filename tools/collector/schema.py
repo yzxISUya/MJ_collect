@@ -114,7 +114,7 @@ def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
             "job_type": "MJ 任务类型",
             "publish_time": "作品发布（入队）时间",
             "feed_rank": "热榜位置（页码×50+序号；库存老条目为 null）",
-            "match": "评分结果（工具维护）：relevance 相关度 / heat 热度 / score 总分 / why 理由",
+            "match": "评分结果（工具维护）：relevance 相关度 / heat 热度 / score 总分 / why 理由 / facets 分面明细（text,weight,score,why）",
             "source_url": "作品源链接（必填）",
             "image.url": "图片直链（384/640 档）",
             "image.local": "下载后的本地路径，没下图则为 null",
