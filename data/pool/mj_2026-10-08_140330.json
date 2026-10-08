@@ -1,0 +1,198 @@
+{
+  "type": "pool",
+  "fetched_at": "2026-10-08T14:03:30+08:00",
+  "count": 6,
+  "entries": [
+    {
+      "id": "16a9c8cd-5b9f-4e6d-b915-4629443bc470",
+      "source": "midjourney",
+      "author": "u1343495433",
+      "prompt_text": "A close-up portrait of a trendy Gen Z \"it girl\" with a glowing, fresh-faced makeup look and a playful, soft smile. She is holding an elegant martini glass. Inside the glass are clear square ice cubes with shiny gold rings frozen perfectly inside the ice. Her hand is adorned with multiple trendy, chunky stacked gold rings. Candid party photography, bright direct flash, 35mm film grain, vibrant and fun atmosphere, highly detailed, realistic.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 20:49",
+      "source_url": "https://www.midjourney.com/jobs/16a9c8cd-5b9f-4e6d-b915-4629443bc470",
+      "image": {
+        "url": "https://cdn.midjourney.com/16a9c8cd-5b9f-4e6d-b915-4629443bc470/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T14:03:30+08:00",
+      "notes": ""
+    },
+    {
+      "id": "05e3573c-daff-4a49-a5b8-9076fdd2ac0e",
+      "source": "midjourney",
+      "author": "aigcyy",
+      "prompt_text": "a girl",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "r9ejl5b"
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 20:14",
+      "source_url": "https://www.midjourney.com/jobs/05e3573c-daff-4a49-a5b8-9076fdd2ac0e",
+      "image": {
+        "url": "https://cdn.midjourney.com/05e3573c-daff-4a49-a5b8-9076fdd2ac0e/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T14:03:30+08:00",
+      "notes": ""
+    },
+    {
+      "id": "d0471fad-2edc-4641-94b3-2068755a1456",
+      "source": "midjourney",
+      "author": "gravity4627",
+      "prompt_text": "Yao (瑶), iconic deer spirit heroine from Honor of Kings, faithful game character design, youthful East Asian fantasy girl, delicate oval face, large amber gold eyes, playful innocent expression with elven mystery, long silver white hair with pale mint green and aqua gradients, signature branching translucent deer antler headpiece, flowing twin locks and delicate braids, white and pale green deer spirit costume, layered ivory silk, jade green accents, turquoise crystal ornaments, gold details, short layered fantasy dress, white and jade boots, glowing deer spirit markings, graceful dynamic pose reaching toward a floating magical orb, ribbons and hair streaming, ancient Chinese garden pavilion, moon gate, misty pond, bamboo, willow, plum, osmanthus, wisteria, floating petals, cool moonlight, cinematic depth, dreamy surreal atmosphere, high end 3D game cinematic render, detailed face and hair, full body, complete outfit, both shoes visible, no cropping, one character, no watermark, no text.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [
+          "https://s.mj.run/Q_13IiuHw-g",
+          "https://s.mj.run/MBRKcfieCuI"
+        ],
+        "personalize": null
+      },
+      "size": {
+        "width": 1648,
+        "height": 2944
+      },
+      "job_type": "v8-2_hd_diffusion",
+      "publish_time": "2026-10-07 15:11",
+      "source_url": "https://www.midjourney.com/jobs/d0471fad-2edc-4641-94b3-2068755a1456",
+      "image": {
+        "url": "https://cdn.midjourney.com/d0471fad-2edc-4641-94b3-2068755a1456/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T14:03:30+08:00",
+      "notes": ""
+    },
+    {
+      "id": "ed6766f5-065b-469c-8cb4-d48c6f329c20",
+      "source": "midjourney",
+      "author": "kyz2021",
+      "prompt_text": "Painting in expressionist style, A sweet girl，dancing in a pastel dream, strange garden, soft apocalypse.",
+      "params": {
+        "version": "8.2",
+        "ar": "9:16",
+        "stylize": 90,
+        "chaos": 20,
+        "weird": null,
+        "seed": null,
+        "raw": true,
+        "no": [],
+        "sref": [
+          "6531962495"
+        ],
+        "personalize": "w5tgviu"
+      },
+      "size": {
+        "width": 816,
+        "height": 1456
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 14:31",
+      "source_url": "https://www.midjourney.com/jobs/ed6766f5-065b-469c-8cb4-d48c6f329c20",
+      "image": {
+        "url": "https://cdn.midjourney.com/ed6766f5-065b-469c-8cb4-d48c6f329c20/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T14:03:30+08:00",
+      "notes": ""
+    },
+    {
+      "id": "fdbc59ee-04ac-49ad-8c2f-507f6a0b77c3",
+      "source": "midjourney",
+      "author": "ghostgoo88",
+      "prompt_text": "girl doll brain the style of Tetsuo, horror, different angles, advertisement, detailed screen printed, ar 3:2",
+      "params": {
+        "version": "8.2",
+        "ar": "2:3",
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 21:50",
+      "source_url": "https://www.midjourney.com/jobs/fdbc59ee-04ac-49ad-8c2f-507f6a0b77c3",
+      "image": {
+        "url": "https://cdn.midjourney.com/fdbc59ee-04ac-49ad-8c2f-507f6a0b77c3/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T14:03:30+08:00",
+      "notes": ""
+    },
+    {
+      "id": "f73621d9-d327-4bad-983d-8aebecac882a",
+      "source": "midjourney",
+      "author": "juwonlee",
+      "prompt_text": "cute magician girl, mideval castle room, alchemist, making magic potion, glowing, evening golden time, oil painting texture, concept art",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-07 16:14",
+      "source_url": "https://www.midjourney.com/jobs/f73621d9-d327-4bad-983d-8aebecac882a",
+      "image": {
+        "url": "https://cdn.midjourney.com/f73621d9-d327-4bad-983d-8aebecac882a/0_0_640_N.webp",
+        "local": null
+      },
+      "fetched_at": "2026-10-08T14:03:30+08:00",
+      "notes": ""
+    }
+  ]
+}

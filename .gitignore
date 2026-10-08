@@ -4,9 +4,6 @@ __pycache__/
 .venv/
 venv/
 
-#采集池
-data/pool/
-
 #其实传也行，但是清单里有 url 仍可重新下载（但愿一直能），存本地算了
 images/
 
