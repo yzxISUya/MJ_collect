@@ -8,8 +8,9 @@
 绝对必须的条件请用『包含关键词』硬闸（AND 一票否决），不混进权重体系。
 
 评分器（模式）：
-  llm       C 方案：LLM 分面评审（意图理解最强，附分面理由）——OpenAI 兼容接口
-  embedding B 方案：本地向量（离线、排序几何好）
+  embedding B 方案（默认）：本地向量（零 token、离线、排序几何好）
+  hybrid    省 token 混合：embedding 全量粗筛 + LLM 只精评 top-K
+  llm       C 方案：LLM 分面评审（意图理解最强，token 最贵）——OpenAI 兼容接口
   lexical   A 方案：词法命中（零依赖兜底，中文分面是整词匹配，较糙）
   auto      依次尝试 llm → embedding → lexical，失败自动降级
 
@@ -25,8 +26,10 @@ import math
 import os
 import re
 import urllib.request
+from pathlib import Path
 
 from collector import log
+from collector.config import ROOT
 from collector.filter import compile_word, keyword_weights
 
 # ---------------------------------------------------------------- 意图分面
@@ -161,15 +164,17 @@ _EMB_HI = 0.65
 
 
 class EmbeddingScorer(BaseScorer):
-    """各分面单独向量化，cos(prompt, 分面) 校准后加权平均。需要 fastembed。"""
+    """各分面单独向量化，cos(prompt, 分面) 校准后加权平均。需要 fastembed。
+    模型缓存在『嵌入缓存目录』（默认项目内 models/，约 240MB，不进 git）。"""
 
     name = "embedding"
 
-    def __init__(self, facets: list, model_name: str):
+    def __init__(self, facets: list, model_name: str, cache_dir=None):
         if not facets:
             raise ScorerUnavailable("语义评分需要『意图』文本")
         self.facets = facets
         self.model_name = model_name
+        self.cache_dir = cache_dir
         self._model = None
 
     def _ensure(self):
@@ -179,7 +184,7 @@ class EmbeddingScorer(BaseScorer):
             from fastembed import TextEmbedding
         except ImportError as e:
             raise ScorerUnavailable(f"fastembed 未安装（pip install fastembed）: {e}")
-        self._model = TextEmbedding(model_name=self.model_name)
+        self._model = TextEmbedding(model_name=self.model_name, cache_dir=self.cache_dir)
 
     def score(self, entries: list) -> list:
         self._ensure()
@@ -318,6 +323,40 @@ class LLMScorer(BaseScorer):
         return results
 
 
+# ---------------------------------------------------------------- 混合：粗筛+精评
+
+
+class HybridScorer(BaseScorer):
+    """embedding 全量粗筛（本地免费）→ LLM 只精评 top-K（token 省约 8 成）。
+    终选段质量≈纯 LLM；粗筛只需把好作品捞进 top-K，向量足够。"""
+
+    name = "hybrid"
+
+    def __init__(self, emb: EmbeddingScorer, llm: LLMScorer, refine_top: int = 30):
+        self.emb = emb
+        self.llm = llm
+        self.refine_top = max(1, int(refine_top or 30))
+
+    def score(self, entries: list) -> list:
+        res = self.emb.score(entries)
+        if len(res) <= self.refine_top:
+            try:
+                return self.llm.score(entries)
+            except Exception as e:  # noqa: BLE001
+                log(f"  hybrid LLM 精评失败（沿用向量分）: {e}")
+                return res
+        order = sorted(range(len(res)), key=lambda i: -res[i]["relevance"])[: self.refine_top]
+        try:
+            refined = self.llm.score([entries[i] for i in order])
+            for i, r in zip(order, refined):
+                if r["relevance"] > 0:
+                    res[i] = r
+            log(f"  hybrid：向量粗筛 {len(res)} 条，LLM 精评 {len(order)} 条")
+        except Exception as e:  # noqa: BLE001
+            log(f"  hybrid LLM 精评失败（沿用向量分）: {e}")
+        return res
+
+
 # ---------------------------------------------------------------- 组装
 
 _ROOT_ENV = None  # 由 set_env_path 注入（避免循环依赖 config）
@@ -342,10 +381,15 @@ def build_scorers(mode: str, filt: dict, score_cfg: dict) -> list:
         )
 
     def emb():
+        cache = score_cfg.get("嵌入缓存目录") or "models"
+        cache_path = Path(cache)
+        if not cache_path.is_absolute():
+            cache_path = ROOT / cache_path
         return EmbeddingScorer(
             facets=facets,
             model_name=score_cfg.get("嵌入模型")
             or "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+            cache_dir=cache_path,
         )
 
     if mode == "lexical":
@@ -356,6 +400,13 @@ def build_scorers(mode: str, filt: dict, score_cfg: dict) -> list:
         return [llm()]
     if mode == "embedding":
         return [emb()]
+    if mode == "hybrid":
+        try:
+            return [HybridScorer(emb(), llm(),
+                                 refine_top=score_cfg.get("精评条数") or 30)]
+        except ScorerUnavailable as e:
+            log(f"  hybrid 不可用（{e}），降级向量")
+            return [emb()]
     # auto：按 C → B → A 探测可用性
     chain = []
     for factory in (llm, emb):

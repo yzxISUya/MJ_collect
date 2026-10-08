@@ -22,13 +22,15 @@
   },
 
   "评分": {
-    "_说明": "总分 S = 相关度R × (1 + 热度权重×热度H)，H(rank) = 1.0 --(M-rank)/(M-K) --0，K是高原，M是终点。评分器：auto=llm→embedding→lexical 逐级降级；llm=DeepSeek 等 OpenAI 兼容接口（需 API 密钥，放 .env 的 DEEPSEEK_API_KEY）；embedding=本地向量（pip install fastembed，模型已实测定型，离线可用）；lexical=词法兜底。热度 H 是弱加分项：热榜前『热度高原』名满分持平，到『热度终点』线性衰减（位置即平台热度，无显式分数）。『最低相关分』是软门槛：够用就守，不够优雅放宽保证有产出。",
-    "评分器": "auto",
+    "_说明": "总分 S = 相关度R × (1 + 热度权重×热度H)，H(rank) = 1.0 --(M-rank)/(M-K) --0，K是高原，M是终点。评分器：embedding=本地向量（默认，零 token 离线）；hybrid=embedding 全量粗筛 + LLM 只精评前『精评条数』名（token 省约 8 成，终选质量≈纯 LLM）；llm=纯 LLM 全量评审（token 最贵）；lexical=词法兜底；auto=llm→embedding→lexical 降级链。热度 H 是弱加分项：热榜前『热度高原』名满分持平，到『热度终点』线性衰减（位置即平台热度，无显式分数）。『最低相关分』是软门槛：够用就守，不够优雅放宽保证有产出。",
+    "评分器": "embedding",
+    "精评条数": 30,
     "热度权重": 0.5,
     "热度高原": 75,
     "热度终点": 150,
     "最低相关分": 0.2,
     "嵌入模型": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "嵌入缓存目录": "models",
     "LLM接口": "https://api.deepseek.com",
     "LLM模型": "deepseek-chat",
     "LLM密钥": "DEEPSEEK_API_KEY"

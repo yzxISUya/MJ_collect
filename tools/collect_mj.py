@@ -61,8 +61,9 @@ def build_parser(cfg: dict) -> argparse.ArgumentParser:
     p.add_argument("--intent", type=str,
                    help=f"选品意图分面：'少女肖像10，偏抽象2'（尾随数字=权重）/ '少女肖像=10' / 裸词权重1"
                         f"［默认 {filt.get('意图') or '空'}］")
-    p.add_argument("--scorer", choices=["auto", "llm", "embedding", "lexical"],
-                   help=f"评分器（auto=llm→embedding→lexical 降级链）［默认 {score_cfg.get('评分器', 'auto')}］")
+    p.add_argument("--scorer", choices=["embedding", "hybrid", "llm", "lexical", "auto"],
+                   help=f"评分器：embedding=本地向量(零token) / hybrid=向量粗筛+LLM精评top / llm=纯LLM / lexical=词法"
+                        f"［默认 {score_cfg.get('评分器', 'embedding')}］")
     p.add_argument("--beta", type=float,
                    help=f"热度权重 β（很低，仅相近时起作用）［默认 {d(score_cfg.get('热度权重'), '0.1')}］")
     p.add_argument("--min-rel", type=float,
