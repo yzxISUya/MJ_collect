@@ -32,10 +32,15 @@ def merge_cli_config(cfg: dict, args) -> dict:
         filt["包含关键词"] = args.keyword
     if args.weight is not None:
         filt["关键词权重"] = args.weight
-    if args.min_score is not None:
-        filt["最低分"] = args.min_score
-    if args.decay is not None:
-        filt["翻页降分比例"] = args.decay
+    if args.intent is not None:
+        filt["意图"] = args.intent
+    score = cfg["评分"]
+    if args.scorer is not None:
+        score["评分器"] = args.scorer
+    if args.beta is not None:
+        score["热度权重"] = args.beta
+    if args.min_rel is not None:
+        score["最低相关分"] = args.min_rel
     if args.exclude is not None:
         filt["排除关键词"] = args.exclude
     if args.ar is not None:

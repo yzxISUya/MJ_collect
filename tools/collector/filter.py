@@ -65,13 +65,20 @@ def build_scorer(filt: dict):
     return score_fn, weights
 
 
-def passes_hard(entry: dict, filt: dict) -> bool:
-    """硬条件：排除词（命中任一即拒）/ 画幅 / prompt 字数。与分数无关。"""
+def passes_hard(entry: dict, filt: dict, must_keywords: bool = False) -> bool:
+    """硬条件：排除词（命中任一即拒）/ 画幅 / prompt 字数；与分数无关。
+    must_keywords=True（语义模式）时，『包含关键词』降级为硬过滤：全部必须命中（AND）。
+    词法模式（must_keywords=False）下关键词是打分素材，不作硬闸。"""
     text = (entry.get("prompt_text") or "").lower()
 
     for kw in filt.get("排除关键词") or []:
         if compile_word(kw).search(text):
             return False
+
+    if must_keywords:
+        for kw in filt.get("包含关键词") or []:
+            if not compile_word(kw).search(text):
+                return False
 
     ars = filt.get("画幅") or []
     if ars and (entry.get("params") or {}).get("ar") not in ars:
@@ -121,3 +128,24 @@ def pick_top(candidates: list, target) -> list:
     if target and target > 0:
         ordered = ordered[:target]
     return [e for _, e in ordered]
+
+
+# ---------------------------------------------------------------- v3：热度与融合
+# S = R × (1 + β·H)。热度是加分项不是及格线（乘性加成：零相关永远垫底）；
+# 热榜头部是一片高原——前 K 名 H 满分持平，K~M 线性衰减（项目笔记 §13.9）。
+
+
+def heat_score(rank, k: float = 50, m: float = 150) -> float:
+    """位置→热度 [0,1]。rank=None（库存老条目）取 0.5 中性。"""
+    if rank is None:
+        return 0.5
+    if rank <= k:
+        return 1.0
+    if rank <= m:
+        return (m - rank) / (m - k)
+    return 0.0
+
+
+def fuse_score(r: float, h: float, beta: float = 0.1) -> float:
+    """总分 = 相关度 × (1 + β·热度)。"""
+    return r * (1.0 + beta * h)

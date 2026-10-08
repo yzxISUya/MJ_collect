@@ -10,10 +10,13 @@ from collector.schema import MANUAL_ENTRY_TEMPLATE
 
 
 def write_json(path: Path, obj) -> None:
+    """原子写入：先写临时文件再替换，崩溃也不留半截 JSON（清单是手改文件，安全第一）。"""
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8", newline="\n") as f:
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    with open(tmp, "w", encoding="utf-8", newline="\n") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)
         f.write("\n")
+    tmp.replace(path)
 
 
 def read_json(path: Path):

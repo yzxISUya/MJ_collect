@@ -5,8 +5,8 @@ MJ 采集器入口（命令行参数可临时覆盖 config/collector.json）
 eg:
   python tools/collect_mj.py
   python tools/collect_mj.py --target 8 --no-images
-  python tools/collect_mj.py --keyword girl portrait realistic --name vol1
-  python tools/collect_mj.py --keyword girl portrait abstract --min-score 125
+  python tools/collect_mj.py --intent "少女肖像，偏写实" --name vol1
+  python tools/collect_mj.py --scorer embedding --intent "荒诞超现实"
   python tools/collect_mj.py --include-seen
 """
 
@@ -23,11 +23,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collector import log, now_iso, now_stamp  # noqa: E402
 from collector.config import ROOT, DEFAULT_CONFIG, load_config, merge_cli_config  # noqa: E402
 from collector.fetch import fetch_page, download_images  # noqa: E402
-from collector.filter import (  # noqa: E402
-    build_scorer, passes_hard, resolve_gate, hit_count, above_line, pick_top,
-    keyword_weights,
-)
+from collector.filter import passes_hard, heat_score, fuse_score  # noqa: E402
 from collector.schema import parse_entry, build_readme  # noqa: E402
+from collector.scorers import (  # noqa: E402
+    build_scorers, ChainScorer, set_env_path, ScorerUnavailable,
+)
 from collector.store import (  # noqa: E402
     write_json, load_seen_ids, load_consumed, load_inventory,
     load_shortlist, save_shortlist,
@@ -37,27 +37,35 @@ from collector.store import (  # noqa: E402
 def build_parser(cfg: dict) -> argparse.ArgumentParser:
     """CLI 解析器。所有［默认 …］都动态取自配置文件当前值——命令行只是临时覆盖。"""
     grab, filt, img = cfg["抓取"], cfg["筛选"], cfg["图片"]
-    min_score, _, _ = resolve_gate(filt, keyword_weights(filt))
+    score_cfg = cfg["评分"]
 
     def d(v, none="不限"):
         return none if v is None else v
 
     p = argparse.ArgumentParser(
-        description="MJ 采集器：抓取 Midjourney 热榜作品，产出可编辑的选品 JSON（分数排序择优）。",
+        description="MJ 采集器：抓取 Midjourney 热榜作品，评分择优产出可编辑的选品 JSON。",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
             "默认值来自 config/collector.json（命令行只做临时覆盖），"
             "上方［默认 …］即该文件的当前值。\n"
+            "评分: S = 相关度R × (1 + 热度权重×热度H)；R 由评分器给出（llm/embedding/lexical）。\n"
             "示例:\n"
-            "  python tools/collect_mj.py\n"
-            "  python tools/collect_mj.py --target 8 --no-images\n"
-            "  python tools/collect_mj.py --keyword girl portrait realistic --name vol1\n"
+            "  python tools/collect_mj.py --intent \"少女肖像，偏写实\" --name vol1\n"
+            "  python tools/collect_mj.py --scorer embedding --intent \"荒诞超现实\"\n"
         ),
     )
     p.add_argument("--config", type=Path, default=DEFAULT_CONFIG,
                    help=f"配置文件路径［默认 {DEFAULT_CONFIG.relative_to(ROOT)}］")
     p.add_argument("--target", type=int,
-                   help=f"清单新增条数，凑够即停（0=不限）［默认 {d(filt.get('目标条数'))}］")
+                   help=f"清单新增条数，择优取 top-N（0=不限）［默认 {d(filt.get('目标条数'))}］")
+    p.add_argument("--intent", type=str,
+                   help=f"选品意图（自然语言，语义评分的核心输入）［默认 {filt.get('意图') or '空'}］")
+    p.add_argument("--scorer", choices=["auto", "llm", "embedding", "lexical"],
+                   help=f"评分器（auto=llm→embedding→lexical 降级链）［默认 {score_cfg.get('评分器', 'auto')}］")
+    p.add_argument("--beta", type=float,
+                   help=f"热度权重 β（很低，仅相近时起作用）［默认 {d(score_cfg.get('热度权重'), '0.1')}］")
+    p.add_argument("--min-rel", type=float,
+                   help=f"软门槛：相关度下限，不够优雅放宽保产出［默认 {d(score_cfg.get('最低相关分'), '0.2')}］")
     p.add_argument("--include-seen", action="store_true",
                    help=f"关闭去重，联网可含历史已抓作品（重看热榜）［默认 去重={'开' if filt.get('去重', True) else '关'}］")
     p.add_argument("--start-page", type=int,
@@ -67,20 +75,13 @@ def build_parser(cfg: dict) -> argparse.ArgumentParser:
     p.add_argument("--timeout", type=float,
                    help=f"单请求超时秒［默认 {d(grab.get('请求超时秒'), '20')}］")
     p.add_argument("--keyword", nargs="+",
-                   help=f"包含关键词，越靠前权重越高［默认 {filt.get('包含关键词') or '无（先到先得）'}］")
+                   help=f"包含关键词：词法模式打分素材；语义模式=必须全命中硬过滤［默认 {filt.get('包含关键词') or '无'}］")
     p.add_argument("--weight", nargs="+", type=float,
-                   help=f"关键词权重，与关键词同序［默认 {filt.get('关键词权重') or '100 50 25 10…'}］")
-    p.add_argument("--min-score", type=float,
-                   help="最低分门槛［默认 "
-                        + (str(filt["最低分"]) if filt.get("最低分") is not None
-                           else ("自动：w1+w最小=" + format(min_score, "g") if keyword_weights(filt) else "自动：无关键词=0"))
-                        + "］")
-    p.add_argument("--decay", type=float,
-                   help=f"翻页降分比例（0.25~0.5）［默认 {d(filt.get('翻页降分比例'), '0.5')}］")
+                   help=f"词法模式关键词权重，同序［默认 {filt.get('关键词权重') or '100 50 25 10…'}］")
     p.add_argument("--exclude", nargs="+",
-                   help=f"排除关键词，命中任一即弃［默认 {filt.get('排除关键词') or '无'}］")
+                   help=f"排除关键词，命中任一即弃（硬条件）［默认 {filt.get('排除关键词') or '无'}］")
     p.add_argument("--ar", nargs="+",
-                   help=f"画幅筛选，如 9:16 3:4［默认 {filt.get('画幅') or '全收'}］")
+                   help=f"画幅筛选，如 9:16 3:4（硬条件）［默认 {filt.get('画幅') or '全收'}］")
     p.add_argument("--min-len", type=int,
                    help=f"prompt 字数下限［默认 {d(filt.get('prompt字数下限'), '0')}］")
     p.add_argument("--max-len", type=int,
@@ -111,110 +112,136 @@ def main() -> int:
     args = build_parser(cfg).parse_args()
     cfg = merge_cli_config(cfg, args)
     grab, filt, img, out = cfg["抓取"], cfg["筛选"], cfg["图片"], cfg["输出"]
+    score_cfg = cfg["评分"]
 
+    set_env_path(ROOT / ".env")
     fetched_at = now_iso()
     stamp = now_stamp()
     target = filt.get("目标条数")
     dedup = bool(filt.get("去重", True))
-    score_fn, weights = build_scorer(filt)
-    min_score, decay_step, floor = resolve_gate(filt, weights)
+    intent = (filt.get("意图") or "").strip()
+    mode = (score_cfg.get("评分器") or "auto").lower()
+    semantic = bool(intent) and mode != "lexical"
+    beta = float(score_cfg.get("热度权重") if score_cfg.get("热度权重") is not None else 0.1)
+    k_plateau = float(score_cfg.get("热度高原") or 50)
+    m_end = float(score_cfg.get("热度终点") or 150)
+    r_min = float(score_cfg.get("最低相关分") or 0.0)
 
     log(f"MJ 采集器 | 清单新增 {target if target else '不限'} 条 | 间隔 {grab['请求间隔秒']}s")
-    log(f"筛选: 包含={filt['包含关键词'] or '—'}  权重={weights or '—'}  排除={filt['排除关键词'] or '—'}"
+    log(f"意图: {intent or '—（词法/纯热榜）'}  评分器: {mode}  β={beta:g}  软门槛={r_min:g}")
+    log(f"硬条件: 包含(AND)={filt['包含关键词'] or '—'}  排除={filt['排除关键词'] or '—'}"
         f"  画幅={filt['画幅'] or '—'}  字数={filt['prompt字数下限']}~{filt['prompt字数上限'] or '∞'}")
-    log(f"门槛: 最低分 {min_score:g}，每翻一页降 {decay_step:g}，下限 {floor:g}"
-        + ("（无关键词：先到先得）" if not weights else "（主词必中+至少再中一个）"))
 
     # 0) 库存与台账
     pool_dir = ROOT / out["采集池目录"]
     shortlist_dir = ROOT / out["选品目录"]
     consumed = load_consumed(shortlist_dir)
     seen = load_seen_ids(pool_dir, shortlist_dir)
-    seen0 = set(seen)  # 本次运行前的已见快照（新入库判定基准）
+    seen0 = set(seen)
     if dedup:
         log(f"去重：开，历史已见 {len(seen)} 条（联网只捞新作品）")
     else:
         log(f"去重：关（--include-seen，联网可含已见 {len(seen)} 条）")
 
-    # 1) 候选池：库存=第 0 页，联网翻页补足；门槛只管停止与录取线
-    log("\n[1/4] 选品取货（分数排序，衰减门槛）…")
-    candidates: list = []  # [(score, entry)]，扫描序 = 库存 FIFO + 热榜序
+    # 1) 候选收集：库存=第 0 页 + 联网全扫（v3 无翻页门槛机器，全量收集后评分择优）
+    log("\n[1/4] 收集候选…")
+    candidates: list = []
     cand_ids: set = set()
-    inv_count = 0
     for e in load_inventory(pool_dir, consumed):
-        if not passes_hard(e, filt):
+        if not passes_hard(e, filt, must_keywords=semantic):
             continue
-        inv_count += 1
         cand_ids.add(e["id"])
-        candidates.append((score_fn(e), e))
+        candidates.append(e)
+    inv_count = len(candidates)
     log(f"  库存候选 {inv_count} 条（过硬条件）")
 
-    threshold = min_score
     errors: list = []
     skipped = 0
     fetched_new = 0
     page = grab["起始页"]
-    exhausted = False
     while True:
-        if target and target > 0 and hit_count(candidates, threshold) >= target:
-            log(f"  达线 {hit_count(candidates, threshold)} 条 ≥ 门槛 {threshold:g}，停止翻页")
-            break
         items, err = fetch_page(page, grab["请求超时秒"])
         if items is None:
             errors.append({"环节": "抓取列表", "页码": page, "错误": err})
             log(f"  [!] 第 {page} 页抓取失败: {err}")
-            exhausted = True
             break
         if not items:
             log(f"  第 {page} 页为空，可见数据已抓完")
-            exhausted = True
             break
         new_count = 0
-        for raw in items:
+        for idx, raw in enumerate(items):
             job_id = raw.get("id", "")
             if dedup and job_id in seen:
                 skipped += 1
                 continue
             if dedup:
-                seen.add(job_id)  # 仅本次运行内防重；未入库的下次仍可回捞
+                seen.add(job_id)
             if job_id in cand_ids:
-                continue  # --include-seen 时防库存/页间重复
-            entry = parse_entry(raw, fetched_at)
+                continue
+            rank = (page - 1) * 50 + idx + 1  # 热榜全局位置
+            entry = parse_entry(raw, fetched_at, rank=rank)
             new_count += 1
             fetched_new += 1
-            if not passes_hard(entry, filt):
+            if not passes_hard(entry, filt, must_keywords=semantic):
                 continue
             cand_ids.add(job_id)
-            candidates.append((score_fn(entry), entry))
-        log(f"  第 {page} 页: 新 {new_count} 跳过 {len(items) - new_count}"
-            f" | 累计候选 {len(candidates)} | 达线 {hit_count(candidates, threshold)}（门槛 {threshold:g}）")
+            candidates.append(entry)
+        log(f"  第 {page} 页: 新 {new_count} 跳过 {len(items) - new_count} | 累计候选 {len(candidates)}")
         page += 1
-        if target and target > 0:
-            threshold = max(threshold - decay_step, floor)
         time.sleep(grab["请求间隔秒"])
 
-    # 录取线：目标凑满=当前门槛；搜到尽头=降到底线（保证有产出）
-    final_line = floor if exhausted else threshold
-    admitted = above_line(candidates, final_line)
-    picked = pick_top(admitted, target)
-    if admitted:
-        scores = ", ".join(f"{s:g}" for s, _ in sorted(admitted, key=lambda c: -c[0])[:len(picked)])
-        log(f"  录取线 {final_line:g}：达线 {len(admitted)} 条，取 top {len(picked)}（分数 {scores}）")
-    else:
-        log(f"  录取线 {final_line:g} 之上无候选"
-            + (f"（候选 {len(candidates)} 条都不达线，可调低最低分）" if candidates else ""))
-
-    if not admitted:
-        if skipped and not fetched_new:
-            log(f"没有新作品：{skipped} 条全部已见，本次无入库。")
+    if not candidates:
+        if skipped:
+            log(f"没有新作品：{skipped} 条全部已见，本次无候选。")
+        else:
+            log("没有候选数据，退出。")
         if errors:
             err_path = pool_dir / f"mj_{stamp}_errors.json"
             write_json(err_path, errors)
             log(f"[!] {len(errors)} 个错误，详见 {err_path.relative_to(ROOT)}")
-        return 0 if (candidates or skipped) else 1
+        return 0 if skipped else 1
 
-    # 2) 口味库存：达线者（含溢出），只入本次新见
-    pool_entries = [e for _, e in admitted if e["id"] not in seen0]
+    # 2) 评分：R（相关度）→ 融合 H（热度）→ S
+    log(f"\n[2/4] 评分（{len(candidates)} 条）…")
+    chain = build_scorers(mode, filt, score_cfg)
+    scorer = ChainScorer(chain) if len(chain) > 1 else chain[0]
+    try:
+        results = scorer.score(candidates)
+    except ScorerUnavailable as e:
+        log(f"[!] 评分失败: {e}")
+        return 1
+    used = getattr(scorer, "used", scorer.name)
+    log(f"  实际评分器: {used}")
+
+    scored: list = []  # [(S, R, entry)]
+    for e, (r, why) in zip(candidates, results):
+        h = heat_score(e.get("feed_rank"), k_plateau, m_end)
+        s = fuse_score(r, h, beta)
+        e["match"] = {
+            "relevance": round(r, 3),
+            "heat": round(h, 3),
+            "score": round(s, 3),
+            "rank": e.get("feed_rank"),
+            "why": why,
+        }
+        scored.append((s, r, e))
+    # 达软门槛优先，其次按总分降序（稳定排序，同分保持扫描序）
+    scored.sort(key=lambda x: (x[1] >= r_min, x[0]), reverse=True)
+    gate_passed = [x for x in scored if x[1] >= r_min]
+    picked_rows = scored[:target] if target and target > 0 else scored
+    if target and target > 0 and len(gate_passed) < target:
+        log(f"  软门槛 {r_min:g} 只有 {len(gate_passed)} 条，放宽补足（共取 {len(picked_rows)}）")
+    picked = [e for _, _, e in picked_rows]
+    if picked:
+        tops = ", ".join(f"{s:.2f}" for s, _, _ in picked_rows[:8])
+        log(f"  取 top {len(picked)}（S: {tops}）")
+
+    # 3) 口味库存：达软门槛者（含溢出）+ 被取走的放宽条目，只入本次新见
+    picked_ids = {e["id"] for e in picked}
+    pool_entries = [
+        e for s, r, e in scored
+        if (r >= r_min or e["id"] in picked_ids) and e["id"] not in seen0
+    ]
     if pool_entries:
         pool_path = pool_dir / f"mj_{stamp}.json"
         write_json(pool_path, {
@@ -223,11 +250,11 @@ def main() -> int:
             "count": len(pool_entries),
             "entries": pool_entries,
         })
-        log(f"[2/4] 采集池 -> {pool_path.relative_to(ROOT)}（达线入库 {len(pool_entries)} 条）")
+        log(f"[3/4] 采集池 -> {pool_path.relative_to(ROOT)}（入库 {len(pool_entries)} 条）")
     else:
-        log("[2/4] 无新达线作品入库")
+        log("[3/4] 无新作品入库")
 
-    # 3) 选品清单（同名追加合并 + 消费台账；已有条目一字不动）
+    # 4) 选品清单（同名追加合并 + 消费台账；已有条目一字不动）
     name = args.name or datetime.now().strftime("%Y-%m-%d")
     shortlist_path = shortlist_dir / f"{name}.json"
     loaded = load_shortlist(shortlist_path)
@@ -235,7 +262,6 @@ def main() -> int:
         log(f"[!] 旧清单无法解析，拒绝合并: {shortlist_path.relative_to(ROOT)}")
         return 1
     existing, file_consumed = loaded
-    # 台账回填：兼容没有 _consumed_ids 的旧文件（现存 entries 视为已消费）
     for e in existing:
         if isinstance(e, dict) and e.get("id") and e["id"] not in file_consumed:
             file_consumed.append(e["id"])
@@ -245,32 +271,32 @@ def main() -> int:
         "时间": fetched_at,
         "目标条数": target if target else "不限",
         "去重": "开" if dedup else "关",
-        "最低分": min_score,
-        "每页降分": decay_step,
-        "录取线": final_line,
+        "评分器": used,
+        "意图": intent or None,
+        "热度权重": beta,
+        "热度高原/终点": f"{k_plateau:g}/{m_end:g}",
+        "最低相关分": r_min,
         "库存候选": inv_count,
         "联网新抓": fetched_new,
         "跳过已见": skipped,
         "候选总数": len(candidates),
-        "达线条数": len(admitted),
+        "达门槛数": len(gate_passed),
         "清单新增": len(picked),
         "清单总条数": len(existing),
         "报错数": len(errors),
     }
     readme = build_readme(fetch_info, filt, img)
     save_shortlist(shortlist_path, existing, file_consumed, readme)
-    log(f"[3/4] 选品清单 -> {shortlist_path.relative_to(ROOT)}（本次新增 {len(picked)} 条，共 {len(existing)} 条）")
+    log(f"[4/4] 选品清单 -> {shortlist_path.relative_to(ROOT)}（本次新增 {len(picked)} 条，共 {len(existing)} 条）")
 
-    # 4) 只给本次新进清单的条目下图
+    # 图片：只给本次新进清单的条目下
     if img["下载图片"] and picked:
-        log("[4/4] 下载图片…")
+        log("下载图片…")
         download_images(
             picked, img, ROOT / out["图片目录"],
             delay=grab["请求间隔秒"], timeout=grab["请求超时秒"], errors=errors,
         )
         save_shortlist(shortlist_path, existing, file_consumed, build_readme(fetch_info, filt, img))
-    else:
-        log("[4/4] 跳过图片下载")
 
     if errors:
         err_path = pool_dir / f"mj_{stamp}_errors.json"

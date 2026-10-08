@@ -9,8 +9,8 @@ JOB_PAGE = "https://www.midjourney.com/jobs/{job_id}"
 CDN_IMAGE = "https://cdn.midjourney.com/{job_id}/0_{grid}_{width}_N.webp"
 
 
-def parse_entry(raw: dict, fetched_at: str) -> dict:
-    """把 MJ 原始条目整理成可读的选品条目结构。"""
+def parse_entry(raw: dict, fetched_at: str, rank: int | None = None) -> dict:
+    """把 MJ 原始条目整理成可读的选品条目结构。rank=热榜位置（页内序号的全局序）。"""
     prompt = raw.get("prompt") or {}
     segments = prompt.get("decodedPrompt") or []
     prompt_text = " ".join(seg.get("content", "") for seg in segments).strip()
@@ -49,6 +49,7 @@ def parse_entry(raw: dict, fetched_at: str) -> dict:
         "size": {"width": raw.get("width"), "height": raw.get("height")},
         "job_type": raw.get("job_type"),
         "publish_time": enqueue_str,
+        "feed_rank": rank,
         "source_url": JOB_PAGE.format(job_id=job_id),
         "image": {
             "url": CDN_IMAGE.format(job_id=job_id, grid="0", width="640"),  # 占位，下载时按配置改写
@@ -79,6 +80,8 @@ MANUAL_ENTRY_TEMPLATE = {
     "size": {"width": None, "height": None},
     "job_type": None,
     "publish_time": None,
+    "feed_rank": None,
+    "match": None,
     "source_url": "作品源链接（必填）",
     "image": {"url": None, "local": None},
     "fetched_at": "录入时间",
@@ -110,6 +113,8 @@ def build_readme(fetch_info: dict, filt: dict, img_cfg: dict) -> dict:
             "size": "图像素尺寸",
             "job_type": "MJ 任务类型",
             "publish_time": "作品发布（入队）时间",
+            "feed_rank": "热榜位置（页码×50+序号；库存老条目为 null）",
+            "match": "评分结果（工具维护）：relevance 相关度 / heat 热度 / score 总分 / why 理由",
             "source_url": "作品源链接（必填）",
             "image.url": "图片直链（384/640 档）",
             "image.local": "下载后的本地路径，没下图则为 null",
