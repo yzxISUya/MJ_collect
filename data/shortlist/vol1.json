@@ -29,27 +29,27 @@
       "_consumed_ids": "消费台账（工具维护）：进过本清单的全部 id，删条目不清账"
     },
     "本次运行": {
-      "时间": "2026-10-08T20:56:38+08:00",
-      "目标条数": 4,
+      "时间": "2026-10-08T22:01:38+08:00",
+      "目标条数": 2,
       "去重": "开",
       "评分器": "embedding",
-      "意图": "robot30，简约2，Machine4",
-      "热度权重": 0.5,
-      "热度高原/终点": "75/150",
-      "最低相关分": 0.2,
+      "意图": "robot30，简约2，machine4",
+      "热度权重": 0.4,
+      "热度高原/终点": "100/150",
+      "最低相关分": 0.3,
       "联网新抓": 150,
       "跳过已见": 0,
       "候选总数": 150,
-      "达门槛数": 23,
-      "清单新增": 4,
-      "清单总条数": 4,
+      "达门槛数": 11,
+      "清单新增": 2,
+      "清单总条数": 2,
       "报错数": 0
     },
     "筛选条件": {
       "_说明": "目标条数=想给清单新增的条目数（按总分择优取 top-N）。『意图』=带权重的分面，如 \"少女肖像10，偏抽象2，个性化5\"（尾随数字=权重；'少女肖像=10' 显式写法适合文本自带数字的分面；不写数字=权重1；也可在配置里写成 [{\"文本\":\"少女肖像\",\"权重\":10},…]）。相关度=各分面打分后加权平均，大权重分面主导——想让某分面绝对必须，用『包含关键词』硬闸（语义模式下每个词都必须命中）。『包含关键词』在词法模式下是打分素材（权重默认第1词100/50/25/10，可用『关键词权重』覆盖；词边界匹配，首尾写 * 放宽）。排除词/画幅/字数是硬条件。删掉的条目有消费台账记账，永不再上（找回去 data/pool 复制）。",
-      "目标条数": 4,
+      "目标条数": 2,
       "去重": true,
-      "意图": "robot30，简约2，Machine4",
+      "意图": "robot30，简约2，machine4",
       "包含关键词": [],
       "关键词权重": [],
       "排除关键词": [],
@@ -88,19 +88,19 @@
       },
       "job_type": "v8-2_hd_diffusion",
       "publish_time": "2026-10-08 02:47",
-      "feed_rank": 82,
+      "feed_rank": 64,
       "source_url": "https://www.midjourney.com/jobs/26cf29c3-9e70-4115-9036-123e06cbd158",
       "image": {
         "url": "https://cdn.midjourney.com/26cf29c3-9e70-4115-9036-123e06cbd158/0_0_640_N.webp",
         "local": "images/2026-10-08/26cf29c3-9e70-4115-9036-123e06cbd158.webp"
       },
-      "fetched_at": "2026-10-08T20:56:38+08:00",
+      "fetched_at": "2026-10-08T22:01:38+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.886,
-        "heat": 0.907,
-        "score": 1.288,
-        "rank": 82,
+        "relevance": 0.887,
+        "heat": 1.0,
+        "score": 1.242,
+        "rank": 64,
         "why": "主分面[robot] 向量相似度 0.688",
         "facets": [
           {
@@ -110,10 +110,10 @@
             "why": "向量相似度 0.688"
           },
           {
-            "text": "Machine",
+            "text": "machine",
             "weight": 4.0,
-            "score": 0.429,
-            "why": "向量相似度 0.393"
+            "score": 0.435,
+            "why": "向量相似度 0.396"
           },
           {
             "text": "简约",
@@ -125,13 +125,13 @@
       }
     },
     {
-      "id": "57b47577-2f95-4449-8a5a-0f69a7a07ffc",
+      "id": "b78e27ef-b3cb-4eca-8b0b-3031041ffdc8",
       "source": "midjourney",
-      "author": "Docix",
-      "prompt_text": "a jack o lantern themed mecha battle robot caricature, holding a cheeseburger, field background",
+      "author": "lin_xiiiii",
+      "prompt_text": "真人超写实环太平洋怪兽风格，肉胎膨胀成约12米高的畸形巨兽，身上嵌着多种灾兽骨甲，胸腹间不断睁开诡异眼睛",
       "params": {
         "version": "8.2",
-        "ar": "2:3",
+        "ar": "9:16",
         "stylize": null,
         "chaos": null,
         "weird": null,
@@ -139,164 +139,46 @@
         "raw": false,
         "no": [],
         "sref": [],
-        "personalize": "4mp2qy3"
+        "personalize": "p9lusxj"
       },
       "size": {
-        "width": 896,
-        "height": 1344
+        "width": 816,
+        "height": 1456
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-07 23:40",
-      "feed_rank": 16,
-      "source_url": "https://www.midjourney.com/jobs/57b47577-2f95-4449-8a5a-0f69a7a07ffc",
+      "publish_time": "2026-10-08 14:45",
+      "feed_rank": 57,
+      "source_url": "https://www.midjourney.com/jobs/b78e27ef-b3cb-4eca-8b0b-3031041ffdc8",
       "image": {
-        "url": "https://cdn.midjourney.com/57b47577-2f95-4449-8a5a-0f69a7a07ffc/0_0_640_N.webp",
-        "local": "images/2026-10-08/57b47577-2f95-4449-8a5a-0f69a7a07ffc.webp"
+        "url": "https://cdn.midjourney.com/b78e27ef-b3cb-4eca-8b0b-3031041ffdc8/0_0_640_N.webp",
+        "local": "images/2026-10-08/b78e27ef-b3cb-4eca-8b0b-3031041ffdc8.webp"
       },
-      "fetched_at": "2026-10-08T20:56:38+08:00",
+      "fetched_at": "2026-10-08T22:01:38+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.692,
+        "relevance": 0.44,
         "heat": 1.0,
-        "score": 1.038,
-        "rank": 16,
-        "why": "主分面[robot] 向量相似度 0.551",
+        "score": 0.616,
+        "rank": 57,
+        "why": "主分面[robot] 向量相似度 0.436",
         "facets": [
           {
             "text": "robot",
             "weight": 30.0,
-            "score": 0.78,
-            "why": "向量相似度 0.551"
+            "score": 0.525,
+            "why": "向量相似度 0.436"
           },
           {
-            "text": "Machine",
-            "weight": 4.0,
-            "score": 0.378,
-            "why": "向量相似度 0.370"
-          },
-          {
-            "text": "简约",
-            "weight": 2.0,
-            "score": 0.0,
-            "why": "向量相似度 0.138"
-          }
-        ]
-      }
-    },
-    {
-      "id": "29a8adf0-4aab-4866-9d0a-442f1c76ab19",
-      "source": "midjourney",
-      "author": "annahalle",
-      "prompt_text": "funny alien captain sketches",
-      "params": {
-        "version": "8.2",
-        "ar": null,
-        "stylize": null,
-        "chaos": null,
-        "weird": null,
-        "seed": null,
-        "raw": false,
-        "no": [],
-        "sref": [],
-        "personalize": "sumlejl"
-      },
-      "size": {
-        "width": 1024,
-        "height": 1024
-      },
-      "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 11:51",
-      "feed_rank": 43,
-      "source_url": "https://www.midjourney.com/jobs/29a8adf0-4aab-4866-9d0a-442f1c76ab19",
-      "image": {
-        "url": "https://cdn.midjourney.com/29a8adf0-4aab-4866-9d0a-442f1c76ab19/0_0_640_N.webp",
-        "local": "images/2026-10-08/29a8adf0-4aab-4866-9d0a-442f1c76ab19.webp"
-      },
-      "fetched_at": "2026-10-08T20:56:38+08:00",
-      "notes": "",
-      "match": {
-        "relevance": 0.461,
-        "heat": 1.0,
-        "score": 0.691,
-        "rank": 43,
-        "why": "主分面[robot] 向量相似度 0.444",
-        "facets": [
-          {
-            "text": "robot",
-            "weight": 30.0,
-            "score": 0.541,
-            "why": "向量相似度 0.444"
-          },
-          {
-            "text": "Machine",
+            "text": "machine",
             "weight": 4.0,
             "score": 0.0,
-            "why": "向量相似度 0.139"
+            "why": "向量相似度 0.165"
           },
           {
             "text": "简约",
             "weight": 2.0,
-            "score": 0.176,
-            "why": "向量相似度 0.279"
-          }
-        ]
-      }
-    },
-    {
-      "id": "09dfb7ae-2a05-427b-abc3-f6a565f7f909",
-      "source": "midjourney",
-      "author": "centurymedia",
-      "prompt_text": "DIGITAL",
-      "params": {
-        "version": "8.2",
-        "ar": null,
-        "stylize": null,
-        "chaos": null,
-        "weird": null,
-        "seed": null,
-        "raw": false,
-        "no": [],
-        "sref": [],
-        "personalize": null
-      },
-      "size": {
-        "width": 1024,
-        "height": 1024
-      },
-      "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 05:48",
-      "feed_rank": 76,
-      "source_url": "https://www.midjourney.com/jobs/09dfb7ae-2a05-427b-abc3-f6a565f7f909",
-      "image": {
-        "url": "https://cdn.midjourney.com/09dfb7ae-2a05-427b-abc3-f6a565f7f909/0_0_640_N.webp",
-        "local": "images/2026-10-08/09dfb7ae-2a05-427b-abc3-f6a565f7f909.webp"
-      },
-      "fetched_at": "2026-10-08T20:56:38+08:00",
-      "notes": "",
-      "match": {
-        "relevance": 0.456,
-        "heat": 0.987,
-        "score": 0.681,
-        "rank": 76,
-        "why": "主分面[robot] 向量相似度 0.395",
-        "facets": [
-          {
-            "text": "robot",
-            "weight": 30.0,
-            "score": 0.432,
-            "why": "向量相似度 0.395"
-          },
-          {
-            "text": "Machine",
-            "weight": 4.0,
-            "score": 0.674,
-            "why": "向量相似度 0.503"
-          },
-          {
-            "text": "简约",
-            "weight": 2.0,
-            "score": 0.372,
-            "why": "向量相似度 0.367"
+            "score": 0.052,
+            "why": "向量相似度 0.223"
           }
         ]
       }
@@ -304,9 +186,7 @@
   ],
   "_consumed_ids": [
     "26cf29c3-9e70-4115-9036-123e06cbd158",
-    "57b47577-2f95-4449-8a5a-0f69a7a07ffc",
-    "29a8adf0-4aab-4866-9d0a-442f1c76ab19",
-    "09dfb7ae-2a05-427b-abc3-f6a565f7f909"
+    "b78e27ef-b3cb-4eca-8b0b-3031041ffdc8"
   ],
   "_manual_entry_template": {
     "id": "manual-YYYYMMDD-01",

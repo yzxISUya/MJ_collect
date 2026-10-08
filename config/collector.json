@@ -29,6 +29,8 @@
     "热度高原": 100,
     "热度终点": 150,
     "最低相关分": 0.3,
+    "短文本降噪起点": 20,
+    "超短零点": 0.5,
     "嵌入模型": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
     "嵌入缓存目录": "models",
     "LLM接口": "https://api.deepseek.com",

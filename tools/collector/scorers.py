@@ -159,23 +159,44 @@ class LexicalScorer(BaseScorer):
 # ---------------------------------------------------------------- B 向量
 
 # 校准：无关≈-0.03~0.18、堆砌≈0.29、相关≈0.32~0.75（2026-10-08 实测）
-_EMB_LO = 0.20
-_EMB_HI = 0.65
+_EMB_LO = 0.20   # 标准零点（正常长度文本）
+_EMB_HI = 0.65   # 满分点
+# 短文本降噪（2026-10-08 晚定标）：超短 prompt（DIGITAL/홍조 级）的向量噪声
+# 会把无关 cos 顶到 0.3~0.5，而真命中（A robot）是 0.9+——分开它们的不是长度
+# 而是 cos 本身。所以按 token 数『抬高入场券』（零点），噪声全灭、真命中满分依旧。
+_SHORT_TINY = 6    # ≤该 token 数：用超短零点
+_SHORT_FULL = 20   # ≥该 token 数：用标准零点（中间线性过渡）
+
+
+def short_floor(n_tokens: float, full: float = _SHORT_FULL,
+                tiny: float = _SHORT_TINY, short_lo: float = 0.50) -> float:
+    """长度相关的校准零点：越短入场券越贵（这就是『超短文本降权』的实现）。"""
+    if n_tokens >= full:
+        return _EMB_LO
+    if n_tokens <= tiny:
+        return short_lo
+    t = (n_tokens - tiny) / (full - tiny)
+    return short_lo + (_EMB_LO - short_lo) * t
 
 
 class EmbeddingScorer(BaseScorer):
     """各分面单独向量化，cos(prompt, 分面) 校准后加权平均。需要 fastembed。
-    模型缓存在『嵌入缓存目录』（默认项目内 models/，约 240MB，不进 git）。"""
+    模型缓存在『嵌入缓存目录』（默认项目内 models/，约 240MB，不进 git）。
+    短 prompt 的 cos 虚高（向量噪声），按 token 数抬高校准零点降噪。"""
 
     name = "embedding"
 
-    def __init__(self, facets: list, model_name: str, cache_dir=None):
+    def __init__(self, facets: list, model_name: str, cache_dir=None,
+                 short_full: float = _SHORT_FULL, short_lo: float = 0.50):
         if not facets:
             raise ScorerUnavailable("语义评分需要『意图』文本")
         self.facets = facets
         self.model_name = model_name
         self.cache_dir = cache_dir
+        self.short_full = float(short_full)
+        self.short_lo = float(short_lo)
         self._model = None
+        self._tokenizer = None
 
     def _ensure(self):
         if self._model is not None:
@@ -185,6 +206,24 @@ class EmbeddingScorer(BaseScorer):
         except ImportError as e:
             raise ScorerUnavailable(f"fastembed 未安装（pip install fastembed）: {e}")
         self._model = TextEmbedding(model_name=self.model_name, cache_dir=self.cache_dir)
+        # 顺手加载同目录的 tokenizer 用于精确 token 计数（降噪阈值的依据）
+        try:
+            from tokenizers import Tokenizer
+            if self.cache_dir:
+                hits = sorted(self.cache_dir.rglob("tokenizer.json"))
+                if hits:
+                    self._tokenizer = Tokenizer.from_file(str(hits[0]))
+        except Exception:  # noqa: BLE001 — 没有就用粗略估算
+            self._tokenizer = None
+
+    def _n_tokens(self, text: str) -> float:
+        if self._tokenizer is not None:
+            try:
+                return float(len(self._tokenizer.encode(text).ids))
+            except Exception:  # noqa: BLE001
+                pass
+        cjk = sum(1 for ch in text if "一" <= ch <= "鿿")
+        return float(len(text.split()) + cjk)  # 粗略兜底
 
     def score(self, entries: list) -> list:
         self._ensure()
@@ -198,13 +237,18 @@ class EmbeddingScorer(BaseScorer):
             return num / den if den else 0.0
 
         out = []
-        for dv in d_vecs:
+        for dv, doc in zip(d_vecs, docs):
+            lo = short_floor(self._n_tokens(doc), self.short_full,
+                             _SHORT_TINY, self.short_lo)
             rows = []
             for f, qv in zip(self.facets, q_vecs):
                 c = float(cos(qv, dv))  # numpy 标量 → Python float（JSON 可序列化）
-                r = max(0.0, min(1.0, (c - _EMB_LO) / (_EMB_HI - _EMB_LO)))
+                r = max(0.0, min(1.0, (c - lo) / (_EMB_HI - lo)))
+                note = f"向量相似度 {c:.3f}"
+                if lo > _EMB_LO + 0.01:
+                    note += f"（短文本零点 {lo:.2f}）"
                 rows.append({"text": f["text"], "weight": f["weight"],
-                             "score": float(r), "why": f"向量相似度 {c:.3f}"})
+                             "score": float(r), "why": note})
             out.append(finalize(rows))
         return out
 
@@ -390,6 +434,8 @@ def build_scorers(mode: str, filt: dict, score_cfg: dict) -> list:
             model_name=score_cfg.get("嵌入模型")
             or "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
             cache_dir=cache_path,
+            short_full=float(score_cfg.get("短文本降噪起点") or 20),
+            short_lo=float(score_cfg.get("超短零点") or 0.50),
         )
 
     if mode == "lexical":
