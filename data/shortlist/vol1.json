@@ -29,7 +29,7 @@
       "_consumed_ids": "消费台账（工具维护）：进过本清单的全部 id，删条目不清账"
     },
     "本次运行": {
-      "时间": "2026-10-09T09:38:09+08:00",
+      "时间": "2026-10-09T11:36:40+08:00",
       "目标条数": 2,
       "去重": "开",
       "评分器": "embedding",
@@ -40,7 +40,7 @@
       "联网新抓": 150,
       "跳过已见": 0,
       "候选总数": 150,
-      "达门槛数": 1,
+      "达门槛数": 21,
       "清单新增": 2,
       "清单总条数": 2,
       "报错数": 0
@@ -88,121 +88,121 @@
       },
       "job_type": "v8-2_diffusion",
       "publish_time": "2026-10-08 11:43",
-      "feed_rank": 81,
+      "feed_rank": 28,
       "source_url": "https://www.midjourney.com/jobs/d9c5d9c1-0ca5-4a89-a041-bd092d1a2767",
       "image": {
         "url": "https://cdn.midjourney.com/d9c5d9c1-0ca5-4a89-a041-bd092d1a2767/0_0_640_N.webp",
         "local": "images/2026-10-09/d9c5d9c1-0ca5-4a89-a041-bd092d1a2767.webp"
       },
-      "fetched_at": "2026-10-09T09:38:09+08:00",
+      "fetched_at": "2026-10-09T11:36:40+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.4,
+        "relevance": 0.517,
         "heat": 1.0,
-        "score": 0.56,
-        "rank": 81,
-        "why": "主分面[machine] 向量相似度 0.382",
+        "score": 0.724,
+        "rank": 28,
+        "why": "主分面[machine] 向量相似度 0.362（段「human-sized huma」0.354｜全文 0.382）",
         "facets": [
           {
             "text": "machine",
             "weight": 1.0,
-            "score": 0.404,
-            "why": "向量相似度 0.382"
+            "score": 0.36,
+            "why": "向量相似度 0.362（段「human-sized huma」0.354｜全文 0.382）"
           },
           {
             "text": "机器",
             "weight": 1.0,
-            "score": 0.499,
-            "why": "向量相似度 0.425"
+            "score": 0.457,
+            "why": "向量相似度 0.406（段「human-sized huma」0.397｜全文 0.425）"
           },
           {
             "text": "机械感",
             "weight": 1.0,
-            "score": 0.423,
-            "why": "向量相似度 0.391"
+            "score": 0.671,
+            "why": "向量相似度 0.502（段「articulated meta」0.550｜全文 0.391）"
           },
           {
             "text": "冷机械美学",
             "weight": 1.0,
-            "score": 0.464,
-            "why": "向量相似度 0.409"
+            "score": 0.667,
+            "why": "向量相似度 0.500（段「articulated meta」0.539｜全文 0.409）"
           },
           {
             "text": "工业结构",
             "weight": 1.0,
-            "score": 0.208,
-            "why": "向量相似度 0.294"
+            "score": 0.429,
+            "why": "向量相似度 0.393（段「derelict warehou」0.435｜全文 0.294）"
           }
         ]
       }
     },
     {
-      "id": "5f529c42-907f-4fa1-b236-405a07458717",
+      "id": "c8b879a9-e87b-44bd-a289-16cd4df9a0d0",
       "source": "midjourney",
-      "author": "et_shinji",
-      "prompt_text": "AIと人生の作戦会議 というタイトルの本の表紙",
+      "author": "u3957523777",
+      "prompt_text": "1950s American retro surrealist advertising photography，美式复古梦核，超现实主义童话摄影，Kodachrome复古彩色胶片质感。严格参考上传图片的场景氛围与视觉风格，深邃纯净的蓝色天空，巨大的蓬松白云，阳光明媚的复古美式花园，盛开的白色野花、结满橙色果实的树木，色彩浓郁而温暖。一个楼梯从花园延伸至天空搭在彩红上，严格参考人物形象，1950年代棕色复古卷发欧美少女，粉色波点衬衫、薄荷绿色半身裙、红色高跟鞋。少女站在高处，背对镜头，一只手拿着复古油漆滚筒，正在深蓝色天空中绘制一道巨大的弧形彩虹，彩虹如真实油漆涂抹在天空表面，具有明显的细腻颜料纹理，彩虹只绘制了一部分。低机位仰拍，中远景构图，充满童话般的荒诞与浪漫，真实实体布景质感，柔和阳光，轻微胶片颗粒噪点，复古柔焦，非CG塑料质感，9:16竖屏，无文字。",
       "params": {
         "version": "8.2",
-        "ar": null,
+        "ar": "9:16",
         "stylize": null,
         "chaos": null,
-        "weird": null,
+        "weird": 4,
         "seed": null,
-        "raw": false,
+        "raw": true,
         "no": [],
         "sref": [],
         "personalize": null
       },
       "size": {
-        "width": 1024,
-        "height": 1024
+        "width": 816,
+        "height": 1456
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 15:16",
-      "feed_rank": 64,
-      "source_url": "https://www.midjourney.com/jobs/5f529c42-907f-4fa1-b236-405a07458717",
+      "publish_time": "2026-10-08 13:23",
+      "feed_rank": 7,
+      "source_url": "https://www.midjourney.com/jobs/c8b879a9-e87b-44bd-a289-16cd4df9a0d0",
       "image": {
-        "url": "https://cdn.midjourney.com/5f529c42-907f-4fa1-b236-405a07458717/0_0_640_N.webp",
-        "local": "images/2026-10-09/5f529c42-907f-4fa1-b236-405a07458717.webp"
+        "url": "https://cdn.midjourney.com/c8b879a9-e87b-44bd-a289-16cd4df9a0d0/0_0_640_N.webp",
+        "local": "images/2026-10-09/c8b879a9-e87b-44bd-a289-16cd4df9a0d0.webp"
       },
-      "fetched_at": "2026-10-09T09:38:09+08:00",
+      "fetched_at": "2026-10-09T11:36:40+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.27,
+        "relevance": 0.488,
         "heat": 1.0,
-        "score": 0.378,
-        "rank": 64,
-        "why": "主分面[machine] 向量相似度 0.296（短文本零点 0.22）",
+        "score": 0.683,
+        "rank": 7,
+        "why": "主分面[machine] 向量相似度 0.440（段「低机位仰拍」0.609｜全文 0.046）",
         "facets": [
           {
             "text": "machine",
             "weight": 1.0,
-            "score": 0.175,
-            "why": "向量相似度 0.296（短文本零点 0.22）"
+            "score": 0.534,
+            "why": "向量相似度 0.440（段「低机位仰拍」0.609｜全文 0.046）"
           },
           {
             "text": "机器",
             "weight": 1.0,
-            "score": 0.266,
-            "why": "向量相似度 0.335（短文本零点 0.22）"
+            "score": 0.648,
+            "why": "向量相似度 0.492（段「低机位仰拍」0.665｜全文 0.087）"
           },
           {
             "text": "机械感",
             "weight": 1.0,
-            "score": 0.368,
-            "why": "向量相似度 0.379（短文本零点 0.22）"
+            "score": 0.522,
+            "why": "向量相似度 0.435（段「低机位仰拍」0.560｜全文 0.144）"
           },
           {
             "text": "冷机械美学",
             "weight": 1.0,
-            "score": 0.31,
-            "why": "向量相似度 0.354（短文本零点 0.22）"
+            "score": 0.54,
+            "why": "向量相似度 0.443（段「复古柔焦」0.499｜全文 0.311）"
           },
           {
             "text": "工业结构",
             "weight": 1.0,
-            "score": 0.23,
-            "why": "向量相似度 0.319（短文本零点 0.22）"
+            "score": 0.194,
+            "why": "向量相似度 0.287（段「中远景构图」0.338｜全文 0.168）"
           }
         ]
       }
@@ -210,7 +210,7 @@
   ],
   "_consumed_ids": [
     "d9c5d9c1-0ca5-4a89-a041-bd092d1a2767",
-    "5f529c42-907f-4fa1-b236-405a07458717"
+    "c8b879a9-e87b-44bd-a289-16cd4df9a0d0"
   ],
   "_manual_entry_template": {
     "id": "manual-YYYYMMDD-01",
