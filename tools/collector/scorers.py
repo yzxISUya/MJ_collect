@@ -166,11 +166,6 @@ _EMB_HI = 0.65   # 满分点
 # 而是 cos 本身。所以按 token 数『抬高入场券』（零点），噪声全灭、真命中满分依旧。
 _SHORT_TINY = 6    # ≤该 token 数：用超短零点
 _SHORT_FULL = 20   # ≥该 token 数：用标准零点（中间线性过渡）
-# 分段评分（2026-10-09，晚期交互 MaxSim 思想）：prompt 按标点切成多段各算向量，
-# 每分面取各段 max——正对整段池化的『稀释税』与 128-token 截断两大病灶。
-# 注意：降噪零点按【全文】token 数取（段落不是碎片 prompt，可信度来自全文）。
-_SEG_SPLIT = r"[，,。;；/\n]+"
-_TRUNCATE = 128  # 只看前 N 个 token：尾巴是关键词堆砌重灾区（与模型窗口一致）
 
 
 def short_floor(n_tokens: float, full: float = _SHORT_FULL,
@@ -185,24 +180,14 @@ def short_floor(n_tokens: float, full: float = _SHORT_FULL,
 
 
 class EmbeddingScorer(BaseScorer):
-    """分段向量 + 每分面取段落 max，再与全文分混合，校准后加权平均。需要 fastembed。
-
-    - 分段评分：prompt 按标点切成多段各自向量化（晚期交互），每分面对各段取 max
-      ——『这作品里有没有哪一段命中该分面』，免受整段池化的稀释税与 128-token 截断之苦。
-    - 全文混合（0.7×段max + 0.3×全文）：防段级噪声——短技术段（低机位仰拍/logo 级）
-      的虚高 cos 会被整篇语境拆穿（坏样本全文 0.16 vs 好样本 0.57）。
-    - 短文本降噪：降噪零点按【全文】token 数取（段落的可信度来自全文，不是自身长度）。
-    - 分面写成 / 连接的簇（如 machine/机器/机械感/冷机械美学）会池化为一个宽锚点——
-      单词锚点会被"机"字族术语围猎，簇锚点压噪声且抬真命中。
-    - 模型缓存在『嵌入缓存目录』（默认项目内 models/，约 240MB，不进 git）。
-    """
+    """各分面单独向量化，cos(prompt, 分面) 校准后加权平均。需要 fastembed。
+    模型缓存在『嵌入缓存目录』（默认项目内 models/，约 240MB，不进 git）。
+    短 prompt 的 cos 虚高（向量噪声），按 token 数抬高校准零点降噪。"""
 
     name = "embedding"
 
     def __init__(self, facets: list, model_name: str, cache_dir=None,
-                 short_full: float = _SHORT_FULL, short_lo: float = 0.50,
-                 segment: bool = True, blend: float = 0.3,
-                 truncate: int = _TRUNCATE):
+                 short_full: float = _SHORT_FULL, short_lo: float = 0.50):
         if not facets:
             raise ScorerUnavailable("语义评分需要『意图』文本")
         self.facets = facets
@@ -210,9 +195,6 @@ class EmbeddingScorer(BaseScorer):
         self.cache_dir = cache_dir
         self.short_full = float(short_full)
         self.short_lo = float(short_lo)
-        self.segment = bool(segment)
-        self.blend = max(0.0, min(1.0, float(blend)))
-        self.truncate = int(truncate) if truncate else 10 ** 9
         self._model = None
         self._tokenizer = None
 
@@ -231,8 +213,6 @@ class EmbeddingScorer(BaseScorer):
                 hits = sorted(self.cache_dir.rglob("tokenizer.json"))
                 if hits:
                     self._tokenizer = Tokenizer.from_file(str(hits[0]))
-                    # 模型自带 128 截断配置会让 encode 静默截断——关掉，截断由我们自己控
-                    self._tokenizer.no_truncation()
         except Exception:  # noqa: BLE001 — 没有就用粗略估算
             self._tokenizer = None
 
@@ -245,45 +225,11 @@ class EmbeddingScorer(BaseScorer):
         cjk = sum(1 for ch in text if "一" <= ch <= "鿿")
         return float(len(text.split()) + cjk)  # 粗略兜底
 
-    def _truncate(self, text: str) -> str:
-        """只保留前 truncate 个 token：尾部是关键词堆砌重灾区，整段丢弃。
-        与模型自身的输入窗口对齐——全文视图本来就看不到 128 之后。"""
-        if self._tokenizer is not None:
-            try:
-                ids = self._tokenizer.encode(text).ids
-                if len(ids) > self.truncate:
-                    return self._tokenizer.decode(ids[: self.truncate])
-                return text
-            except Exception:  # noqa: BLE001
-                pass
-        return text[: self.truncate * 4]  # 无 tokenizer 时按 4 字符≈1 token 粗切
-
-    def _segments(self, text: str) -> list:
-        """按标点分段；关掉分段或无分隔符时退化为全文单段（旧行为）。"""
-        if not self.segment:
-            return [text]
-        segs = [s.strip() for s in re.split(_SEG_SPLIT, text) if s.strip()]
-        return segs or [text]
-
     def score(self, entries: list) -> list:
         self._ensure()
-        # 反堆砌：只看原 prompt 前 N 个 token，尾巴连同堆砌一起丢
-        docs = [self._truncate((e.get("prompt_text") or "")[:2000]) for e in entries]
+        docs = [(e.get("prompt_text") or "")[:2000] for e in entries]
         q_vecs = list(self._model.embed([f["text"] for f in self.facets]))
-
-        # 全部段落 + 全文一次性向量化
-        flat: list = []
-        owners: list = []
-        for i, doc in enumerate(docs):
-            for seg in self._segments(doc):
-                flat.append(seg)
-                owners.append(i)
-        n_seg = len(flat)
-        all_vecs = list(self._model.embed(flat + docs))
-        s_vecs, d_vecs = all_vecs[:n_seg], all_vecs[n_seg:]
-        per_entry: list = [[] for _ in docs]
-        for vec, owner, seg in zip(s_vecs, owners, flat):
-            per_entry[owner].append((seg, vec))
+        d_vecs = list(self._model.embed(docs))
 
         def cos(a, b):
             num = sum(x * y for x, y in zip(a, b))
@@ -291,30 +237,16 @@ class EmbeddingScorer(BaseScorer):
             return num / den if den else 0.0
 
         out = []
-        for i, doc in enumerate(docs):
-            # 降噪零点看全文长度：段落不是碎片 prompt，可信度来自全文
+        for dv, doc in zip(d_vecs, docs):
             lo = short_floor(self._n_tokens(doc), self.short_full,
                              _SHORT_TINY, self.short_lo)
-            multi = len(per_entry[i]) > 1
             rows = []
             for f, qv in zip(self.facets, q_vecs):
-                c_seg, seg_best = -1.0, ""
-                for seg, sv in per_entry[i]:  # 每分面取各段 max
-                    c = float(cos(qv, sv))
-                    if c > c_seg:
-                        c_seg, seg_best = c, seg
-                c_whole = float(cos(qv, d_vecs[i]))
-                c_mix = (1.0 - self.blend) * c_seg + self.blend * c_whole
-                r = max(0.0, min(1.0, (c_mix - lo) / (_EMB_HI - lo)))
-                if self.blend > 0 and multi:
-                    note = (f"向量相似度 {c_mix:.3f}"
-                            f"（段「{seg_best[:16]}」{c_seg:.3f}｜全文 {c_whole:.3f}）")
-                elif multi:
-                    note = f"向量相似度 {c_mix:.3f}（段「{seg_best[:24]}」）"
-                else:
-                    note = f"向量相似度 {c_mix:.3f}"
+                c = float(cos(qv, dv))  # numpy 标量 → Python float（JSON 可序列化）
+                r = max(0.0, min(1.0, (c - lo) / (_EMB_HI - lo)))
+                note = f"向量相似度 {c:.3f}"
                 if lo > _EMB_LO + 0.01:
-                    note += f"（全文零点 {lo:.2f}）"
+                    note += f"（短文本零点 {lo:.2f}）"
                 rows.append({"text": f["text"], "weight": f["weight"],
                              "score": float(r), "why": note})
             out.append(finalize(rows))
@@ -504,9 +436,6 @@ def build_scorers(mode: str, filt: dict, score_cfg: dict) -> list:
             cache_dir=cache_path,
             short_full=float(score_cfg.get("短文本降噪起点") or 20),
             short_lo=float(score_cfg.get("超短零点") or 0.50),
-            segment=bool(score_cfg.get("分段评分", True)),
-            blend=float(score_cfg.get("全文混合") if score_cfg.get("全文混合") is not None else 0.3),
-            truncate=int(score_cfg.get("截断token数") or 128),
         )
 
     if mode == "lexical":
