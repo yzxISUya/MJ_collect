@@ -29,27 +29,27 @@
       "_consumed_ids": "消费台账（工具维护）：进过本清单的全部 id，删条目不清账"
     },
     "本次运行": {
-      "时间": "2026-10-09T11:36:40+08:00",
+      "时间": "2026-10-09T12:00:49+08:00",
       "目标条数": 2,
       "去重": "开",
       "评分器": "embedding",
-      "意图": "machine，机器，机械感，冷机械美学，工业结构",
+      "意图": "girl10,抽象1，ainme15",
       "热度权重": 0.4,
       "热度高原/终点": "100/150",
       "最低相关分": 0.3,
-      "联网新抓": 150,
-      "跳过已见": 0,
-      "候选总数": 150,
-      "达门槛数": 21,
+      "联网新抓": 148,
+      "跳过已见": 2,
+      "候选总数": 148,
+      "达门槛数": 48,
       "清单新增": 2,
-      "清单总条数": 2,
+      "清单总条数": 4,
       "报错数": 0
     },
     "筛选条件": {
       "_说明": "目标条数=想给清单新增的条目数（按总分择优取 top-N）。『意图』=带权重的分面，如 \"少女肖像10，偏抽象2，个性化5\"（尾随数字=权重；'少女肖像=10' 显式写法适合文本自带数字的分面；不写数字=权重1；也可在配置里写成 [{\"文本\":\"少女肖像\",\"权重\":10},…]）。相关度=各分面打分后加权平均，大权重分面主导——想让某分面绝对必须，用『包含关键词』硬闸（语义模式下每个词都必须命中）。『包含关键词』在词法模式下是打分素材（权重默认第1词100/50/25/10，可用『关键词权重』覆盖；词边界匹配，首尾写 * 放宽）。排除词/画幅/字数是硬条件。删掉的条目有消费台账记账，永不再上（找回去 data/pool 复制）。",
       "目标条数": 2,
       "去重": true,
-      "意图": "machine，机器，机械感，冷机械美学，工业结构",
+      "意图": "girl10,抽象1，ainme15",
       "包含关键词": [],
       "关键词权重": [],
       "排除关键词": [],
@@ -66,13 +66,13 @@
   },
   "entries": [
     {
-      "id": "d9c5d9c1-0ca5-4a89-a041-bd092d1a2767",
+      "id": "f73c7ae3-2fbe-4279-b64a-c72d12fd4d59",
       "source": "midjourney",
-      "author": "virtual006",
-      "prompt_text": "a lone, human-sized humanoid robot, articulated metallic body, in the ruins of a moss-covered, derelict warehouse, heavily rusted, covered in thick layers of green and brown moss and lichen, debris, rubble, overgrown wild plants, broken concrete and dirt, cinematic composition focused on the fallen robot",
+      "author": "aimismone",
+      "prompt_text": "draw a cool pile of wild cats, leopards, cheetahas, etc, on top of on another in graffiti covered hoodies on a white background, Vibrant, insanely detailed textures, a fecund realm of clashing paradigms, a visual language of cosmic chaos. In the style of Syd Mead,Cinematic lighting, reminiscent of Koyaanisqatsi and The Holy Mountain,",
       "params": {
         "version": "8.2",
-        "ar": "5:6",
+        "ar": "63:74",
         "stylize": null,
         "chaos": null,
         "weird": null,
@@ -83,134 +83,256 @@
         "personalize": null
       },
       "size": {
-        "width": 992,
-        "height": 1200
+        "width": 1008,
+        "height": 1184
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 11:43",
-      "feed_rank": 28,
-      "source_url": "https://www.midjourney.com/jobs/d9c5d9c1-0ca5-4a89-a041-bd092d1a2767",
+      "publish_time": "2026-10-08 22:11",
+      "feed_rank": 22,
+      "source_url": "https://www.midjourney.com/jobs/f73c7ae3-2fbe-4279-b64a-c72d12fd4d59",
       "image": {
-        "url": "https://cdn.midjourney.com/d9c5d9c1-0ca5-4a89-a041-bd092d1a2767/0_0_640_N.webp",
-        "local": "images/2026-10-09/d9c5d9c1-0ca5-4a89-a041-bd092d1a2767.webp"
+        "url": "https://cdn.midjourney.com/f73c7ae3-2fbe-4279-b64a-c72d12fd4d59/0_0_640_N.webp",
+        "local": "images/2026-10-09/f73c7ae3-2fbe-4279-b64a-c72d12fd4d59.webp"
       },
-      "fetched_at": "2026-10-09T11:36:40+08:00",
+      "fetched_at": "2026-10-09T11:55:21+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.517,
+        "relevance": 0.445,
         "heat": 1.0,
-        "score": 0.724,
-        "rank": 28,
-        "why": "主分面[machine] 向量相似度 0.362（段「human-sized huma」0.354｜全文 0.382）",
+        "score": 0.622,
+        "rank": 22,
+        "why": "主分面[machine] 向量相似度 0.367（段「etc」0.478｜全文 0.105）",
         "facets": [
           {
             "text": "machine",
             "weight": 1.0,
-            "score": 0.36,
-            "why": "向量相似度 0.362（段「human-sized huma」0.354｜全文 0.382）"
+            "score": 0.37,
+            "why": "向量相似度 0.367（段「etc」0.478｜全文 0.105）"
           },
           {
             "text": "机器",
             "weight": 1.0,
-            "score": 0.457,
-            "why": "向量相似度 0.406（段「human-sized huma」0.397｜全文 0.425）"
+            "score": 0.479,
+            "why": "向量相似度 0.416（段「etc」0.522｜全文 0.168）"
           },
           {
             "text": "机械感",
             "weight": 1.0,
-            "score": 0.671,
-            "why": "向量相似度 0.502（段「articulated meta」0.550｜全文 0.391）"
+            "score": 0.568,
+            "why": "向量相似度 0.455（段「etc」0.531｜全文 0.278）"
           },
           {
             "text": "冷机械美学",
             "weight": 1.0,
-            "score": 0.667,
-            "why": "向量相似度 0.500（段「articulated meta」0.539｜全文 0.409）"
+            "score": 0.537,
+            "why": "向量相似度 0.442（段「insanely detaile」0.454｜全文 0.413）"
           },
           {
             "text": "工业结构",
             "weight": 1.0,
-            "score": 0.429,
-            "why": "向量相似度 0.393（段「derelict warehou」0.435｜全文 0.294）"
+            "score": 0.27,
+            "why": "向量相似度 0.321（段「etc」0.392｜全文 0.156）"
           }
         ]
       }
     },
     {
-      "id": "c8b879a9-e87b-44bd-a289-16cd4df9a0d0",
+      "id": "da32dc03-5047-416d-a133-7c865587545e",
       "source": "midjourney",
-      "author": "u3957523777",
-      "prompt_text": "1950s American retro surrealist advertising photography，美式复古梦核，超现实主义童话摄影，Kodachrome复古彩色胶片质感。严格参考上传图片的场景氛围与视觉风格，深邃纯净的蓝色天空，巨大的蓬松白云，阳光明媚的复古美式花园，盛开的白色野花、结满橙色果实的树木，色彩浓郁而温暖。一个楼梯从花园延伸至天空搭在彩红上，严格参考人物形象，1950年代棕色复古卷发欧美少女，粉色波点衬衫、薄荷绿色半身裙、红色高跟鞋。少女站在高处，背对镜头，一只手拿着复古油漆滚筒，正在深蓝色天空中绘制一道巨大的弧形彩虹，彩虹如真实油漆涂抹在天空表面，具有明显的细腻颜料纹理，彩虹只绘制了一部分。低机位仰拍，中远景构图，充满童话般的荒诞与浪漫，真实实体布景质感，柔和阳光，轻微胶片颗粒噪点，复古柔焦，非CG塑料质感，9:16竖屏，无文字。",
+      "author": "kaylashap",
+      "prompt_text": "Museum quality conceptual fashion photograph, full body, female model wearing a wearable sculpture representing agoraphobia. A large rigid hollow protective shell inspired by a tortoise shell and portable shelter is mounted over her shoulders and upper back, made from overlapping curved wooden panels, aged metal, and dark translucent resin, with a small recessed front opening. Her head is withdrawn deep inside, barely visible in shadow. Beneath, she wears a fitted black tailored bodysuit, sculptural trousers, and elegant boots, contrasting the vulnerable body against the enormous structure. The shell functions as wearable architecture simultaneously sanctuary and prison a metaphor for safety versus the terror of the outside world. Surreal yet physically believable, dramatic silhouette, entire figure visible, front three quarter view, clean gallery background, editorial fashion photography, photorealistic.",
       "params": {
         "version": "8.2",
-        "ar": "9:16",
+        "ar": "2:3",
+        "stylize": 150,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [
+          "hood, fabric collar, cloak, coat, diving suit, astronaut helmet, princess dress, ball gown, close-up"
+        ],
+        "sref": [],
+        "personalize": "y5zzeiq"
+      },
+      "size": {
+        "width": 896,
+        "height": 1344
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 15:56",
+      "feed_rank": 10,
+      "source_url": "https://www.midjourney.com/jobs/da32dc03-5047-416d-a133-7c865587545e",
+      "image": {
+        "url": "https://cdn.midjourney.com/da32dc03-5047-416d-a133-7c865587545e/0_0_640_N.webp",
+        "local": "images/2026-10-09/da32dc03-5047-416d-a133-7c865587545e.webp"
+      },
+      "fetched_at": "2026-10-09T11:55:21+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.41,
+        "heat": 1.0,
+        "score": 0.574,
+        "rank": 10,
+        "why": "主分面[machine] 向量相似度 0.296（段「aged metal」0.346｜全文 0.180）",
+        "facets": [
+          {
+            "text": "machine",
+            "weight": 1.0,
+            "score": 0.214,
+            "why": "向量相似度 0.296（段「aged metal」0.346｜全文 0.180）"
+          },
+          {
+            "text": "机器",
+            "weight": 1.0,
+            "score": 0.284,
+            "why": "向量相似度 0.328（段「and elegant」0.372｜全文 0.225）"
+          },
+          {
+            "text": "机械感",
+            "weight": 1.0,
+            "score": 0.546,
+            "why": "向量相似度 0.446（段「and elegant」0.491｜全文 0.340）"
+          },
+          {
+            "text": "冷机械美学",
+            "weight": 1.0,
+            "score": 0.697,
+            "why": "向量相似度 0.514（段「sculptural trous」0.516｜全文 0.509）"
+          },
+          {
+            "text": "工业结构",
+            "weight": 1.0,
+            "score": 0.308,
+            "why": "向量相似度 0.338（段「aged metal」0.399｜全文 0.197）"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5aa9d2f1-3e32-4c9b-8edd-70bf6bbb6c49",
+      "source": "midjourney",
+      "author": "malbem",
+      "prompt_text": "Conceptual collectible sales receipt for HORSECAR, an independent automotive lifestyle design brand, playful intelligent visual identity, award-winning contemporary graphic design, unexpected typographic compositions, oversized bold modernist lettering, creative geometric layout, electric cobalt blue combined with warm cream paper and tiny vivid orange accents, clever visual rhythm, subtle humor through typography rather than illustrations, strong HORSECAR branding, handwritten NCR receipt table with ITEM, QTY, PRICE, AMOUNT and TOTAL, functional spacious writing area, resembles a limited-edition art print or museum shop stationery, unforgettable design with a premium editorial feel, no cartoons, no car illustrations, no Korean text, no generic corporate design",
+      "params": {
+        "version": "8.2",
+        "ar": "3:4",
+        "stylize": 300,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": "28bt2xy"
+      },
+      "size": {
+        "width": 928,
+        "height": 1232
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 15:21",
+      "feed_rank": 9,
+      "source_url": "https://www.midjourney.com/jobs/5aa9d2f1-3e32-4c9b-8edd-70bf6bbb6c49",
+      "image": {
+        "url": "https://cdn.midjourney.com/5aa9d2f1-3e32-4c9b-8edd-70bf6bbb6c49/0_0_640_N.webp",
+        "local": "images/2026-10-09/5aa9d2f1-3e32-4c9b-8edd-70bf6bbb6c49.webp"
+      },
+      "fetched_at": "2026-10-09T12:00:49+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.718,
+        "heat": 1.0,
+        "score": 1.005,
+        "rank": 9,
+        "why": "主分面[ainme] 向量相似度 0.612（段「AMO」0.799｜全文 0.176）",
+        "facets": [
+          {
+            "text": "ainme",
+            "weight": 15.0,
+            "score": 0.916,
+            "why": "向量相似度 0.612（段「AMO」0.799｜全文 0.176）"
+          },
+          {
+            "text": "girl",
+            "weight": 10.0,
+            "score": 0.444,
+            "why": "向量相似度 0.400（段「AMO」0.535｜全文 0.085）"
+          },
+          {
+            "text": "抽象",
+            "weight": 1.0,
+            "score": 0.472,
+            "why": "向量相似度 0.412（段「AMO」0.467｜全文 0.286）"
+          }
+        ]
+      }
+    },
+    {
+      "id": "99348385-4694-4288-a8e1-e289bbe73bfc",
+      "source": "midjourney",
+      "author": "ensavlacambre_23111",
+      "prompt_text": "une peinture de la renaissance ( huile sur chêne ) d'une scène de jésus chez Marthe et Marie, sur laquelle, Marie, au premier plan, tient un canard mort par les pattes, assise face a jésus, lui, assis par terre regardant marthe, debut, qui tient une broche sur laquelle est placé un orceau de viande crue. la scène comporte aussi un panier contenant un autre canard et des carottes posés sur une table en bas a gauche du tableau. Sur cette même table se trouve de la vaiselle et une autre pièce de viande dans une assiette rouge. la scène se trouvent dans un batiment a colonne en pierre grise, 5 personnes en fond du tableau regardent la scène , ils sont a peine reconnaissable et en blanc et noir.",
+      "params": {
+        "version": "8.2",
+        "ar": null,
         "stylize": null,
         "chaos": null,
-        "weird": 4,
+        "weird": null,
         "seed": null,
-        "raw": true,
+        "raw": false,
         "no": [],
         "sref": [],
         "personalize": null
       },
       "size": {
-        "width": 816,
-        "height": 1456
+        "width": 1024,
+        "height": 1024
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 13:23",
-      "feed_rank": 7,
-      "source_url": "https://www.midjourney.com/jobs/c8b879a9-e87b-44bd-a289-16cd4df9a0d0",
+      "publish_time": "2026-10-08 20:45",
+      "feed_rank": 35,
+      "source_url": "https://www.midjourney.com/jobs/99348385-4694-4288-a8e1-e289bbe73bfc",
       "image": {
-        "url": "https://cdn.midjourney.com/c8b879a9-e87b-44bd-a289-16cd4df9a0d0/0_0_640_N.webp",
-        "local": "images/2026-10-09/c8b879a9-e87b-44bd-a289-16cd4df9a0d0.webp"
+        "url": "https://cdn.midjourney.com/99348385-4694-4288-a8e1-e289bbe73bfc/0_0_640_N.webp",
+        "local": "images/2026-10-09/99348385-4694-4288-a8e1-e289bbe73bfc.webp"
       },
-      "fetched_at": "2026-10-09T11:36:40+08:00",
+      "fetched_at": "2026-10-09T12:00:49+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.488,
+        "relevance": 0.701,
         "heat": 1.0,
-        "score": 0.683,
-        "rank": 7,
-        "why": "主分面[machine] 向量相似度 0.440（段「低机位仰拍」0.609｜全文 0.046）",
+        "score": 0.981,
+        "rank": 35,
+        "why": "主分面[ainme] 向量相似度 0.562（段「sur laquelle」0.687｜全文 0.268）",
         "facets": [
           {
-            "text": "machine",
-            "weight": 1.0,
-            "score": 0.534,
-            "why": "向量相似度 0.440（段「低机位仰拍」0.609｜全文 0.046）"
+            "text": "ainme",
+            "weight": 15.0,
+            "score": 0.804,
+            "why": "向量相似度 0.562（段「sur laquelle」0.687｜全文 0.268）"
           },
           {
-            "text": "机器",
-            "weight": 1.0,
-            "score": 0.648,
-            "why": "向量相似度 0.492（段「低机位仰拍」0.665｜全文 0.087）"
+            "text": "girl",
+            "weight": 10.0,
+            "score": 0.577,
+            "why": "向量相似度 0.460（段「Marie」0.581｜全文 0.177）"
           },
           {
-            "text": "机械感",
+            "text": "抽象",
             "weight": 1.0,
-            "score": 0.522,
-            "why": "向量相似度 0.435（段「低机位仰拍」0.560｜全文 0.144）"
-          },
-          {
-            "text": "冷机械美学",
-            "weight": 1.0,
-            "score": 0.54,
-            "why": "向量相似度 0.443（段「复古柔焦」0.499｜全文 0.311）"
-          },
-          {
-            "text": "工业结构",
-            "weight": 1.0,
-            "score": 0.194,
-            "why": "向量相似度 0.287（段「中远景构图」0.338｜全文 0.168）"
+            "score": 0.405,
+            "why": "向量相似度 0.382（段「sur laquelle」0.465｜全文 0.189）"
           }
         ]
       }
     }
   ],
   "_consumed_ids": [
-    "d9c5d9c1-0ca5-4a89-a041-bd092d1a2767",
-    "c8b879a9-e87b-44bd-a289-16cd4df9a0d0"
+    "f73c7ae3-2fbe-4279-b64a-c72d12fd4d59",
+    "da32dc03-5047-416d-a133-7c865587545e",
+    "5aa9d2f1-3e32-4c9b-8edd-70bf6bbb6c49",
+    "99348385-4694-4288-a8e1-e289bbe73bfc"
   ],
   "_manual_entry_template": {
     "id": "manual-YYYYMMDD-01",

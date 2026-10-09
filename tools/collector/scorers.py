@@ -170,6 +170,7 @@ _SHORT_FULL = 20   # ≥该 token 数：用标准零点（中间线性过渡）
 # 每分面取各段 max——正对整段池化的『稀释税』与 128-token 截断两大病灶。
 # 注意：降噪零点按【全文】token 数取（段落不是碎片 prompt，可信度来自全文）。
 _SEG_SPLIT = r"[，,。;；/\n]+"
+_TRUNCATE = 128  # 只看前 N 个 token：尾巴是关键词堆砌重灾区（与模型窗口一致）
 
 
 def short_floor(n_tokens: float, full: float = _SHORT_FULL,
@@ -200,7 +201,8 @@ class EmbeddingScorer(BaseScorer):
 
     def __init__(self, facets: list, model_name: str, cache_dir=None,
                  short_full: float = _SHORT_FULL, short_lo: float = 0.50,
-                 segment: bool = True, blend: float = 0.3):
+                 segment: bool = True, blend: float = 0.3,
+                 truncate: int = _TRUNCATE):
         if not facets:
             raise ScorerUnavailable("语义评分需要『意图』文本")
         self.facets = facets
@@ -210,6 +212,7 @@ class EmbeddingScorer(BaseScorer):
         self.short_lo = float(short_lo)
         self.segment = bool(segment)
         self.blend = max(0.0, min(1.0, float(blend)))
+        self.truncate = int(truncate) if truncate else 10 ** 9
         self._model = None
         self._tokenizer = None
 
@@ -228,6 +231,8 @@ class EmbeddingScorer(BaseScorer):
                 hits = sorted(self.cache_dir.rglob("tokenizer.json"))
                 if hits:
                     self._tokenizer = Tokenizer.from_file(str(hits[0]))
+                    # 模型自带 128 截断配置会让 encode 静默截断——关掉，截断由我们自己控
+                    self._tokenizer.no_truncation()
         except Exception:  # noqa: BLE001 — 没有就用粗略估算
             self._tokenizer = None
 
@@ -240,6 +245,19 @@ class EmbeddingScorer(BaseScorer):
         cjk = sum(1 for ch in text if "一" <= ch <= "鿿")
         return float(len(text.split()) + cjk)  # 粗略兜底
 
+    def _truncate(self, text: str) -> str:
+        """只保留前 truncate 个 token：尾部是关键词堆砌重灾区，整段丢弃。
+        与模型自身的输入窗口对齐——全文视图本来就看不到 128 之后。"""
+        if self._tokenizer is not None:
+            try:
+                ids = self._tokenizer.encode(text).ids
+                if len(ids) > self.truncate:
+                    return self._tokenizer.decode(ids[: self.truncate])
+                return text
+            except Exception:  # noqa: BLE001
+                pass
+        return text[: self.truncate * 4]  # 无 tokenizer 时按 4 字符≈1 token 粗切
+
     def _segments(self, text: str) -> list:
         """按标点分段；关掉分段或无分隔符时退化为全文单段（旧行为）。"""
         if not self.segment:
@@ -249,7 +267,8 @@ class EmbeddingScorer(BaseScorer):
 
     def score(self, entries: list) -> list:
         self._ensure()
-        docs = [(e.get("prompt_text") or "")[:2000] for e in entries]
+        # 反堆砌：只看原 prompt 前 N 个 token，尾巴连同堆砌一起丢
+        docs = [self._truncate((e.get("prompt_text") or "")[:2000]) for e in entries]
         q_vecs = list(self._model.embed([f["text"] for f in self.facets]))
 
         # 全部段落 + 全文一次性向量化
@@ -487,6 +506,7 @@ def build_scorers(mode: str, filt: dict, score_cfg: dict) -> list:
             short_lo=float(score_cfg.get("超短零点") or 0.50),
             segment=bool(score_cfg.get("分段评分", True)),
             blend=float(score_cfg.get("全文混合") if score_cfg.get("全文混合") is not None else 0.3),
+            truncate=int(score_cfg.get("截断token数") or 128),
         )
 
     if mode == "lexical":
