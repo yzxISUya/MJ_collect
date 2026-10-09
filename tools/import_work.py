@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-手动选品导入：给 MJ 作品链接（或 job id），自动拉元数据+下图+并入选品清单。
-与 collect_mj.py 的清单同一套 schema/台账——导入后联网去重自动认账。
+手动选品导入：MJ 作品链接 → 元数据 + 原图 + 并入【手动清单】。
+与自动采集分开保存：手动进 <名字>.manual.json，自动进 <名字>.json（同目录，
+消费台账/去重互认——手动导入的作品不会被采集器重复捞来）。
 
 eg:
-  python tools/import_work.py https://www.midjourney.com/jobs/3b793474-4d69-4614-860f-562588fc3885?index=1
-  python tools/import_work.py <url1> <url2> --name vol1
-  python tools/import_work.py <url> --no-images
+  python tools/import_work.py --file data/intake/vol2.txt     # 批量：清单文件（主入口）
+  python tools/import_work.py <url> [url2 ...]                # 散手：单条/多条命令行
+  python tools/import_work.py <url> --name vol2 --no-images
 
-链接带 ?index=N 表示选批次里的第 N 格图（2×2 网格 0~3）；不带则取第 0 格。
+清单文件规格：每行 1 个链接（可带 ?index=N 选批次格子）；# 开头为注释；行序=导入序。
+文件名即期号：data/intake/vol2.txt → data/shortlist/vol2.manual.json。
 """
 
 from __future__ import annotations
@@ -29,7 +31,9 @@ from collector import log, now_iso  # noqa: E402
 from collector.config import ROOT, DEFAULT_CONFIG, load_config  # noqa: E402
 from collector.fetch import http_get_retry  # noqa: E402
 from collector.schema import JOB_PAGE, CDN_IMAGE, build_readme  # noqa: E402
-from collector.store import write_json, load_shortlist, save_shortlist  # noqa: E402
+from collector.store import (  # noqa: E402
+    load_consumed, load_shortlist, save_shortlist,
+)
 
 JOB_STATUS_API = "https://www.midjourney.com/api/job-status"
 UUID_RE = re.compile(r"([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})")
@@ -45,6 +49,22 @@ def parse_work_ref(ref: str) -> tuple[str, int]:
     if mi:
         idx = int(mi.group(1))
     return m.group(1), idx
+
+
+def extract_refs_from_file(path: Path) -> list:
+    """清单文件 → [(uuid, index)]，按出现顺序。
+    宽容解析：逐行去 # 注释，空白分词后凡含 uuid 的片段都算一条——txt/md 通吃。"""
+    refs: list = []
+    for line_no, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        code = line.split("#", 1)[0]
+        for tok in code.split():
+            if not UUID_RE.search(tok):
+                continue
+            try:
+                refs.append(parse_work_ref(tok))
+            except ValueError as e:
+                log(f"  [!] 第 {line_no} 行: {e}")
+    return refs
 
 
 def http_post_json(url: str, payload: dict, timeout: float, retries: int = 2):
@@ -99,7 +119,6 @@ def parse_command(full_command: str) -> tuple[str, dict]:
                 params[flag] = int(val) if flag == "seed" else float(val)
             except ValueError:
                 params[flag] = val
-        # 其余旗标（--hd 等）保留在 command 里，不进 params
     return text, params
 
 
@@ -154,9 +173,21 @@ def main() -> int:
         except Exception:  # noqa: BLE001
             pass
 
-    p = argparse.ArgumentParser(description="手动选品导入：MJ 链接 → 元数据+图片+选品清单")
-    p.add_argument("works", nargs="+", help="MJ 作品链接或 job id（可多个）")
-    p.add_argument("--name", default="vol1", help="选品清单文件名（不含扩展名）［默认 vol1］")
+    p = argparse.ArgumentParser(
+        description="手动选品导入：MJ 链接（或链接清单文件）→ 元数据+原图+手动清单",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "清单文件：每行 1 个链接（可带 ?index=N），# 注释，行序=导入序；\n"
+            "文件名即期号：data/intake/vol2.txt → data/shortlist/vol2.manual.json\n"
+            "示例:\n"
+            "  python tools/import_work.py --file data/intake/vol2.txt\n"
+            "  python tools/import_work.py https://www.midjourney.com/jobs/xxx?index=1\n"
+        ),
+    )
+    p.add_argument("works", nargs="*", help="MJ 作品链接或 job id（可多个）")
+    p.add_argument("--file", type=Path, help="链接清单文件（文件名即期号）")
+    p.add_argument("--name", default=None,
+                   help="清单名（默认=清单文件名，或 vol1）→ 存为 <名字>.manual.json")
     p.add_argument("--config", type=Path, default=DEFAULT_CONFIG, help="配置文件路径")
     p.add_argument("--no-images", action="store_true", help="不下载图片")
     p.add_argument("--timeout", type=float, default=20.0, help="请求超时秒［默认 20］")
@@ -165,14 +196,28 @@ def main() -> int:
     cfg = load_config(args.config)
     img_cfg = cfg["图片"]
 
-    # 1) 解析作品引用
-    refs: list = []  # [(uuid, index)]
+    # 1) 收集作品引用：清单文件（主入口）+ 命令行散手
+    refs: list = []
+    if args.file:
+        if not args.file.exists():
+            log(f"[!] 清单文件不存在: {args.file}")
+            return 1
+        file_refs = extract_refs_from_file(args.file)
+        log(f"清单 {args.file.name}: {len(file_refs)} 个链接")
+        refs.extend(file_refs)
     for w in args.works:
         try:
             refs.append(parse_work_ref(w))
         except ValueError as e:
             log(f"[!] {e}")
             return 1
+    if not refs:
+        log("没有可导入的链接。")
+        return 1
+
+    name = args.name or (args.file.stem if args.file else "vol1")
+    shortlist_dir = ROOT / cfg["输出"]["选品目录"]
+    shortlist_path = shortlist_dir / f"{name}.manual.json"
 
     # 2) 拉元数据（批量一次请求）
     log(f"拉取 {len(refs)} 个作品的元数据…")
@@ -185,9 +230,9 @@ def main() -> int:
         return 1
     by_id = {it.get("id"): it for it in items}
 
-    # 3) 并入选品清单（已存在的跳过，台账同步记账）
+    # 3) 并入手动清单（全目录查重：自动/手动清单里出现过的一律跳过）
     fetched_at = now_iso()
-    shortlist_path = ROOT / cfg["输出"]["选品目录"] / f"{args.name}.json"
+    global_consumed = load_consumed(shortlist_dir)
     loaded = load_shortlist(shortlist_path)
     if loaded is None:
         log(f"[!] 旧清单无法解析，拒绝合并: {shortlist_path.relative_to(ROOT)}")
@@ -204,8 +249,8 @@ def main() -> int:
             log(f"[!] 接口未返回该作品: {uuid}")
             continue
         entry = entry_from_job_status(raw, index, fetched_at)
-        if entry["id"] in file_consumed:
-            log(f"  跳过（清单里已有）: {entry['id']}")
+        if entry["id"] in global_consumed or entry["id"] in file_consumed:
+            log(f"  跳过（已入库）: {entry['id']}")
             continue
         if raw.get("current_status") not in (None, "completed"):
             log(f"  跳过（状态 {raw.get('current_status')}）: {entry['id']}")
@@ -226,18 +271,16 @@ def main() -> int:
         "清单总条数": len(existing),
     }
     save_shortlist(shortlist_path, existing, file_consumed, build_readme(fetch_info, cfg["筛选"], img_cfg))
-    log(f"选品清单 -> {shortlist_path.relative_to(ROOT)}（本次导入 {len(new_entries)} 条，共 {len(existing)} 条）")
+    log(f"手动清单 -> {shortlist_path.relative_to(ROOT)}（本次导入 {len(new_entries)} 条，共 {len(existing)} 条）")
 
     # 4) 下图（原图优先，按格子取图，文件名用条目 id）
     if not args.no_images and img_cfg.get("下载图片", True):
         day_dir = ROOT / cfg["输出"]["图片目录"] / datetime.now().strftime("%Y-%m-%d")
         for entry in new_entries:
-            uuid = entry["id"].rsplit("-", 1)[0] if entry["id"].count("-") > 4 else entry["id"]
-            # id 形如 {uuid}-{cell} 或 {uuid}；从 source_url 取格子更稳
             mi = re.search(r"[?&]index=(\d+)", entry["source_url"] or "")
             cell = int(mi.group(1)) if mi else 0
             saved = False
-            for url, ext in image_candidates(uuid, cell):
+            for url, ext in image_candidates(entry["id"].rsplit("-", 1)[0] if cell else entry["id"], cell):
                 body, derr = http_get_retry(url, timeout=args.timeout, image=True)
                 if body is None:
                     continue
