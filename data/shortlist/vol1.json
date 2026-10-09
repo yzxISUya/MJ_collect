@@ -29,18 +29,18 @@
       "_consumed_ids": "消费台账（工具维护）：进过本清单的全部 id，删条目不清账"
     },
     "本次运行": {
-      "时间": "2026-10-08T22:01:38+08:00",
+      "时间": "2026-10-09T09:38:09+08:00",
       "目标条数": 2,
       "去重": "开",
       "评分器": "embedding",
-      "意图": "robot30，简约2，machine4",
+      "意图": "machine，机器，机械感，冷机械美学，工业结构",
       "热度权重": 0.4,
       "热度高原/终点": "100/150",
       "最低相关分": 0.3,
       "联网新抓": 150,
       "跳过已见": 0,
       "候选总数": 150,
-      "达门槛数": 11,
+      "达门槛数": 1,
       "清单新增": 2,
       "清单总条数": 2,
       "报错数": 0
@@ -49,7 +49,7 @@
       "_说明": "目标条数=想给清单新增的条目数（按总分择优取 top-N）。『意图』=带权重的分面，如 \"少女肖像10，偏抽象2，个性化5\"（尾随数字=权重；'少女肖像=10' 显式写法适合文本自带数字的分面；不写数字=权重1；也可在配置里写成 [{\"文本\":\"少女肖像\",\"权重\":10},…]）。相关度=各分面打分后加权平均，大权重分面主导——想让某分面绝对必须，用『包含关键词』硬闸（语义模式下每个词都必须命中）。『包含关键词』在词法模式下是打分素材（权重默认第1词100/50/25/10，可用『关键词权重』覆盖；词边界匹配，首尾写 * 放宽）。排除词/画幅/字数是硬条件。删掉的条目有消费台账记账，永不再上（找回去 data/pool 复制）。",
       "目标条数": 2,
       "去重": true,
-      "意图": "robot30，简约2，machine4",
+      "意图": "machine，机器，机械感，冷机械美学，工业结构",
       "包含关键词": [],
       "关键词权重": [],
       "排除关键词": [],
@@ -66,72 +66,13 @@
   },
   "entries": [
     {
-      "id": "26cf29c3-9e70-4115-9036-123e06cbd158",
+      "id": "d9c5d9c1-0ca5-4a89-a041-bd092d1a2767",
       "source": "midjourney",
-      "author": "tao_heng_yuan",
-      "prompt_text": "一个小巧可爱的小女孩外表的机器人，全身照，手是机械手，手上没有任何东西。真实人物照片质感。",
+      "author": "virtual006",
+      "prompt_text": "a lone, human-sized humanoid robot, articulated metallic body, in the ruins of a moss-covered, derelict warehouse, heavily rusted, covered in thick layers of green and brown moss and lichen, debris, rubble, overgrown wild plants, broken concrete and dirt, cinematic composition focused on the fallen robot",
       "params": {
         "version": "8.2",
-        "ar": "9:16",
-        "stylize": null,
-        "chaos": null,
-        "weird": null,
-        "seed": null,
-        "raw": true,
-        "no": [],
-        "sref": [],
-        "personalize": "i7tiyk5"
-      },
-      "size": {
-        "width": 1648,
-        "height": 2944
-      },
-      "job_type": "v8-2_hd_diffusion",
-      "publish_time": "2026-10-08 02:47",
-      "feed_rank": 64,
-      "source_url": "https://www.midjourney.com/jobs/26cf29c3-9e70-4115-9036-123e06cbd158",
-      "image": {
-        "url": "https://cdn.midjourney.com/26cf29c3-9e70-4115-9036-123e06cbd158/0_0_640_N.webp",
-        "local": "images/2026-10-08/26cf29c3-9e70-4115-9036-123e06cbd158.webp"
-      },
-      "fetched_at": "2026-10-08T22:01:38+08:00",
-      "notes": "",
-      "match": {
-        "relevance": 0.887,
-        "heat": 1.0,
-        "score": 1.242,
-        "rank": 64,
-        "why": "主分面[robot] 向量相似度 0.688",
-        "facets": [
-          {
-            "text": "robot",
-            "weight": 30.0,
-            "score": 1.0,
-            "why": "向量相似度 0.688"
-          },
-          {
-            "text": "machine",
-            "weight": 4.0,
-            "score": 0.435,
-            "why": "向量相似度 0.396"
-          },
-          {
-            "text": "简约",
-            "weight": 2.0,
-            "score": 0.094,
-            "why": "向量相似度 0.242"
-          }
-        ]
-      }
-    },
-    {
-      "id": "b78e27ef-b3cb-4eca-8b0b-3031041ffdc8",
-      "source": "midjourney",
-      "author": "lin_xiiiii",
-      "prompt_text": "真人超写实环太平洋怪兽风格，肉胎膨胀成约12米高的畸形巨兽，身上嵌着多种灾兽骨甲，胸腹间不断睁开诡异眼睛",
-      "params": {
-        "version": "8.2",
-        "ar": "9:16",
+        "ar": "5:6",
         "stylize": null,
         "chaos": null,
         "weird": null,
@@ -139,54 +80,137 @@
         "raw": false,
         "no": [],
         "sref": [],
-        "personalize": "p9lusxj"
+        "personalize": null
       },
       "size": {
-        "width": 816,
-        "height": 1456
+        "width": 992,
+        "height": 1200
       },
       "job_type": "v8-2_diffusion",
-      "publish_time": "2026-10-08 14:45",
-      "feed_rank": 57,
-      "source_url": "https://www.midjourney.com/jobs/b78e27ef-b3cb-4eca-8b0b-3031041ffdc8",
+      "publish_time": "2026-10-08 11:43",
+      "feed_rank": 81,
+      "source_url": "https://www.midjourney.com/jobs/d9c5d9c1-0ca5-4a89-a041-bd092d1a2767",
       "image": {
-        "url": "https://cdn.midjourney.com/b78e27ef-b3cb-4eca-8b0b-3031041ffdc8/0_0_640_N.webp",
-        "local": "images/2026-10-08/b78e27ef-b3cb-4eca-8b0b-3031041ffdc8.webp"
+        "url": "https://cdn.midjourney.com/d9c5d9c1-0ca5-4a89-a041-bd092d1a2767/0_0_640_N.webp",
+        "local": "images/2026-10-09/d9c5d9c1-0ca5-4a89-a041-bd092d1a2767.webp"
       },
-      "fetched_at": "2026-10-08T22:01:38+08:00",
+      "fetched_at": "2026-10-09T09:38:09+08:00",
       "notes": "",
       "match": {
-        "relevance": 0.44,
+        "relevance": 0.4,
         "heat": 1.0,
-        "score": 0.616,
-        "rank": 57,
-        "why": "主分面[robot] 向量相似度 0.436",
+        "score": 0.56,
+        "rank": 81,
+        "why": "主分面[machine] 向量相似度 0.382",
         "facets": [
           {
-            "text": "robot",
-            "weight": 30.0,
-            "score": 0.525,
-            "why": "向量相似度 0.436"
+            "text": "machine",
+            "weight": 1.0,
+            "score": 0.404,
+            "why": "向量相似度 0.382"
           },
+          {
+            "text": "机器",
+            "weight": 1.0,
+            "score": 0.499,
+            "why": "向量相似度 0.425"
+          },
+          {
+            "text": "机械感",
+            "weight": 1.0,
+            "score": 0.423,
+            "why": "向量相似度 0.391"
+          },
+          {
+            "text": "冷机械美学",
+            "weight": 1.0,
+            "score": 0.464,
+            "why": "向量相似度 0.409"
+          },
+          {
+            "text": "工业结构",
+            "weight": 1.0,
+            "score": 0.208,
+            "why": "向量相似度 0.294"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5f529c42-907f-4fa1-b236-405a07458717",
+      "source": "midjourney",
+      "author": "et_shinji",
+      "prompt_text": "AIと人生の作戦会議 というタイトルの本の表紙",
+      "params": {
+        "version": "8.2",
+        "ar": null,
+        "stylize": null,
+        "chaos": null,
+        "weird": null,
+        "seed": null,
+        "raw": false,
+        "no": [],
+        "sref": [],
+        "personalize": null
+      },
+      "size": {
+        "width": 1024,
+        "height": 1024
+      },
+      "job_type": "v8-2_diffusion",
+      "publish_time": "2026-10-08 15:16",
+      "feed_rank": 64,
+      "source_url": "https://www.midjourney.com/jobs/5f529c42-907f-4fa1-b236-405a07458717",
+      "image": {
+        "url": "https://cdn.midjourney.com/5f529c42-907f-4fa1-b236-405a07458717/0_0_640_N.webp",
+        "local": "images/2026-10-09/5f529c42-907f-4fa1-b236-405a07458717.webp"
+      },
+      "fetched_at": "2026-10-09T09:38:09+08:00",
+      "notes": "",
+      "match": {
+        "relevance": 0.27,
+        "heat": 1.0,
+        "score": 0.378,
+        "rank": 64,
+        "why": "主分面[machine] 向量相似度 0.296（短文本零点 0.22）",
+        "facets": [
           {
             "text": "machine",
-            "weight": 4.0,
-            "score": 0.0,
-            "why": "向量相似度 0.165"
+            "weight": 1.0,
+            "score": 0.175,
+            "why": "向量相似度 0.296（短文本零点 0.22）"
           },
           {
-            "text": "简约",
-            "weight": 2.0,
-            "score": 0.052,
-            "why": "向量相似度 0.223"
+            "text": "机器",
+            "weight": 1.0,
+            "score": 0.266,
+            "why": "向量相似度 0.335（短文本零点 0.22）"
+          },
+          {
+            "text": "机械感",
+            "weight": 1.0,
+            "score": 0.368,
+            "why": "向量相似度 0.379（短文本零点 0.22）"
+          },
+          {
+            "text": "冷机械美学",
+            "weight": 1.0,
+            "score": 0.31,
+            "why": "向量相似度 0.354（短文本零点 0.22）"
+          },
+          {
+            "text": "工业结构",
+            "weight": 1.0,
+            "score": 0.23,
+            "why": "向量相似度 0.319（短文本零点 0.22）"
           }
         ]
       }
     }
   ],
   "_consumed_ids": [
-    "26cf29c3-9e70-4115-9036-123e06cbd158",
-    "b78e27ef-b3cb-4eca-8b0b-3031041ffdc8"
+    "d9c5d9c1-0ca5-4a89-a041-bd092d1a2767",
+    "5f529c42-907f-4fa1-b236-405a07458717"
   ],
   "_manual_entry_template": {
     "id": "manual-YYYYMMDD-01",
