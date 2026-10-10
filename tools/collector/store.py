@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from collector.config import ROOT
 from collector.schema import MANUAL_ENTRY_TEMPLATE
 
 
@@ -33,22 +34,27 @@ def read_json(path: Path):
         return None
 
 
-def load_consumed(shortlist_dir: Path) -> set:
+def load_consumed(*dirs: Path) -> set:
     """已消费台账 = 已见集合：进过任何清单的 id（entries 现存 + _consumed_ids 历史）。
-    双重职责：联网去重跳过这些 id；删条目不清台账保证『删掉=彻底放弃』不复活。"""
+    双重职责：联网去重跳过这些 id；删条目不清台账保证『删掉=彻底放弃』不复活。
+    扫描范围 = 传入目录 + posts/ 全树——手动（posts/volN/volN.json）与自动草稿
+    分树保存但台账互认，手动导入的作品不会被采集器重复捞来。"""
+    roots = {Path(d) for d in dirs if d}
+    roots.add(ROOT / "posts")
     consumed: set = set()
-    if not shortlist_dir.is_dir():
-        return consumed
-    for f in sorted(shortlist_dir.glob("*.json")):
-        data = read_json(f)
-        if not isinstance(data, dict):
+    for root in roots:
+        if not root.is_dir():
             continue
-        for e in data.get("entries") or []:
-            if isinstance(e, dict) and e.get("id"):
-                consumed.add(e["id"])
-        for cid in data.get("_consumed_ids") or []:
-            if cid:
-                consumed.add(cid)
+        for f in sorted(root.rglob("*.json")):
+            data = read_json(f)
+            if not isinstance(data, dict):
+                continue
+            for e in data.get("entries") or []:
+                if isinstance(e, dict) and e.get("id"):
+                    consumed.add(e["id"])
+            for cid in data.get("_consumed_ids") or []:
+                if cid:
+                    consumed.add(cid)
     return consumed
 
 

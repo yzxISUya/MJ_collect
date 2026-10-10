@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-手动选品导入：MJ 作品链接 → 元数据 + 原图 + 并入【手动清单】。
-与自动采集分开保存：手动进 <名字>.manual.json，自动进 <名字>.json（同目录，
-消费台账/去重互认——手动导入的作品不会被采集器重复捞来）。
+手动选品导入：MJ 作品链接 → 元数据 + 原图 + 并入【本期文件夹】。
+布局（posts/<期>/，与自动采集的草稿区分开）：
+  posts/vol2/vol2.txt     链接清单（# 注释，行序=导入序）
+  posts/vol2/vol2.json    作品条目（本工具写入）
+  posts/vol2/vol2_pic/    作品原图（本工具写入）
+  posts/vol2/vol2.md      最终稿件（写作环节产出）
+消费台账跨树互认——手动导入的作品不会被采集器重复捞来。
 
 eg:
-  python tools/import_work.py --file data/intake/vol2.txt     # 批量：清单文件（主入口）
-  python tools/import_work.py <url> [url2 ...]                # 散手：单条/多条命令行
+  python tools/import_work.py --file posts/vol2/vol2.txt     # 批量：清单文件（主入口）
+  python tools/import_work.py <url> [url2 ...]               # 散手：单条/多条命令行
   python tools/import_work.py <url> --name vol2 --no-images
-
-清单文件规格：每行 1 个链接（可带 ?index=N 选批次格子）；# 开头为注释；行序=导入序。
-文件名即期号：data/intake/vol2.txt → data/shortlist/vol2.manual.json。
 """
 
 from __future__ import annotations
@@ -177,17 +178,17 @@ def main() -> int:
         description="手动选品导入：MJ 链接（或链接清单文件）→ 元数据+原图+手动清单",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
-            "清单文件：每行 1 个链接（可带 ?index=N），# 注释，行序=导入序；\n"
-            "文件名即期号：data/intake/vol2.txt → data/shortlist/vol2.manual.json\n"
+            "清单文件：每行 1 个链接（可带 ?index=N），# 注释，行序=导入序。\n"
+            "文件名即期号，按期文件夹组织：posts/<期>/<期>.txt → 同目录 <期>.json + <期>_pic/\n"
             "示例:\n"
-            "  python tools/import_work.py --file data/intake/vol2.txt\n"
+            "  python tools/import_work.py --file posts/vol2/vol2.txt\n"
             "  python tools/import_work.py https://www.midjourney.com/jobs/xxx?index=1\n"
         ),
     )
     p.add_argument("works", nargs="*", help="MJ 作品链接或 job id（可多个）")
     p.add_argument("--file", type=Path, help="链接清单文件（文件名即期号）")
     p.add_argument("--name", default=None,
-                   help="清单名（默认=清单文件名，或 vol1）→ 存为 <名字>.manual.json")
+                   help="期号（默认=清单文件名，或 vol1）→ 输出到 posts/<期>/ 文件夹")
     p.add_argument("--config", type=Path, default=DEFAULT_CONFIG, help="配置文件路径")
     p.add_argument("--no-images", action="store_true", help="不下载图片")
     p.add_argument("--timeout", type=float, default=20.0, help="请求超时秒［默认 20］")
@@ -216,8 +217,15 @@ def main() -> int:
         return 1
 
     name = args.name or (args.file.stem if args.file else "vol1")
-    shortlist_dir = ROOT / cfg["输出"]["选品目录"]
-    shortlist_path = shortlist_dir / f"{name}.manual.json"
+    # 期目录布局（posts/<期>/）：<期>.txt 清单、<期>.json 作品、<期>_pic/ 图片、<期>.md 稿件
+    if args.file:
+        fpath = args.file if args.file.is_absolute() else ROOT / args.file
+        issue_dir = fpath.parent if fpath.parent.name == name else fpath.parent / name
+    else:
+        issue_dir = ROOT / "posts" / name
+    issue_dir.mkdir(parents=True, exist_ok=True)
+    shortlist_path = issue_dir / f"{name}.json"
+    pic_dir = issue_dir / f"{name}_pic"
 
     # 2) 拉元数据（批量一次请求）
     log(f"拉取 {len(refs)} 个作品的元数据…")
@@ -230,9 +238,9 @@ def main() -> int:
         return 1
     by_id = {it.get("id"): it for it in items}
 
-    # 3) 并入手动清单（全目录查重：自动/手动清单里出现过的一律跳过）
+    # 3) 并入本期清单（跨树查重：手动/自动清单里出现过的一律跳过）
     fetched_at = now_iso()
-    global_consumed = load_consumed(shortlist_dir)
+    global_consumed = load_consumed(shortlist_path.parent)
     loaded = load_shortlist(shortlist_path)
     if loaded is None:
         log(f"[!] 旧清单无法解析，拒绝合并: {shortlist_path.relative_to(ROOT)}")
@@ -273,9 +281,9 @@ def main() -> int:
     save_shortlist(shortlist_path, existing, file_consumed, build_readme(fetch_info, cfg["筛选"], img_cfg))
     log(f"手动清单 -> {shortlist_path.relative_to(ROOT)}（本次导入 {len(new_entries)} 条，共 {len(existing)} 条）")
 
-    # 4) 下图（原图优先，按格子取图，文件名用条目 id）
+    # 4) 下图（原图优先，按格子取图，文件名用条目 id）→ <期>_pic/
     if not args.no_images and img_cfg.get("下载图片", True):
-        day_dir = ROOT / cfg["输出"]["图片目录"] / datetime.now().strftime("%Y-%m-%d")
+        pic_dir.mkdir(parents=True, exist_ok=True)
         for entry in new_entries:
             mi = re.search(r"[?&]index=(\d+)", entry["source_url"] or "")
             cell = int(mi.group(1)) if mi else 0
@@ -284,7 +292,7 @@ def main() -> int:
                 body, derr = http_get_retry(url, timeout=args.timeout, image=True)
                 if body is None:
                     continue
-                path = day_dir / f"{entry['id']}{ext}"
+                path = pic_dir / f"{entry['id']}{ext}"
                 path.parent.mkdir(parents=True, exist_ok=True)
                 with open(path, "wb") as f:
                     f.write(body)
